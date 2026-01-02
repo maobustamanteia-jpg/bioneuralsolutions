@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://bioneuralsolutions.com.co/sitemap.xml
+
+# Si en el futuro tienes rutas admin o privadas, agrégalas aquí:
+# Disallow: /admin/
+# Disallow: /api/
