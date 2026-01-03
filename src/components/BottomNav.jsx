@@ -27,7 +27,7 @@ export default function BottomNav() {
 
             <div className="relative -top-6">
                 <a
-                    href="https://wa.me/57XXXXXXXXXX"
+                    href="https://wa.me/573203062007"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-14 h-14 bg-primary rounded-full shadow-lg shadow-primary/40 flex items-center justify-center text-white active:scale-95 transition-all transform hover:scale-105 border-4 border-background-light dark:border-background-dark"

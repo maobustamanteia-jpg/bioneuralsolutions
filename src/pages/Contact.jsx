@@ -11,7 +11,7 @@ export default function Contact() {
     const handleSubmit = (e) => {
         e.preventDefault();
         const text = `Hola BioNeural, mi nombre es ${formData.name}. Correo: ${formData.email}. Tema: ${formData.subject}. Mensaje: ${formData.message}`;
-        window.open(`https://wa.me/573142750383?text=${encodeURIComponent(text)}`, '_blank');
+        window.open(`https://wa.me/573203062007?text=${encodeURIComponent(text)}`, '_blank');
     };
 
     return (
@@ -33,14 +33,14 @@ export default function Contact() {
                 {/* Contact Grid */}
                 <div className="grid grid-cols-2 gap-4 mb-10">
                     <a
-                        href="tel:+573142750383"
+                        href="tel:+573203062007"
                         className="flex flex-col items-center justify-center p-6 bg-white dark:bg-surface-dark rounded-2xl shadow-soft border border-gray-50 dark:border-gray-800 hover:border-primary/30 transition-all group"
                     >
                         <div className="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition-all transform group-hover:rotate-6">
                             <span className="material-icons-round text-2xl">phone</span>
                         </div>
                         <span className="text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-1">Llámanos</span>
-                        <span className="text-xs font-bold text-secondary dark:text-white">314 2750383</span>
+                        <span className="text-xs font-bold text-secondary dark:text-white">320 306 2007</span>
                     </a>
 
                     <a

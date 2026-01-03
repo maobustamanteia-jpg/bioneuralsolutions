@@ -54,7 +54,7 @@ export default function ProductCard({ item, index }) {
 
                 <div className="flex items-center justify-between gap-3">
                     <a
-                        href={`https://wa.me/573142750383?text=Hola,%20quisiera%20más%20información%20sobre%20${encodeURIComponent(item.name)}`}
+                        href={`https://wa.me/573203062007?text=Hola,%20quisiera%20más%20información%20sobre%20${encodeURIComponent(item.name)}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex-1 btn-stitch-primary py-3 px-4 text-xs"

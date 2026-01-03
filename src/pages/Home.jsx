@@ -64,7 +64,7 @@ export default function Home() {
                             <span className="material-icons-round text-sm">arrow_forward</span>
                         </Link>
                         <a
-                            href="https://wa.me/573142750383"
+                            href="https://wa.me/573203062007"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="bg-white/10 backdrop-blur-md border border-white/20 text-white font-display font-bold py-4 rounded-2xl hover:bg-white/20 transition-all flex items-center justify-center gap-2"
@@ -149,7 +149,7 @@ export default function Home() {
                         Tenemos planes especiales por hectárea y asesoría personalizada en campo en la zona de Fresno.
                     </p>
                     <a
-                        href="https://wa.me/573142750383?text=Hola,%20soy%20productor%20y%20me%20interesa%20asesoría%20técnica."
+                        href="https://wa.me/573203062007?text=Hola,%20soy%20productor%20y%20me%20interesa%20asesoría%20técnica."
                         target="_blank"
                         rel="noopener noreferrer"
                         className="btn-stitch-primary py-4 w-full"

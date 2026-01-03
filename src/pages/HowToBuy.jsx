@@ -93,7 +93,7 @@ export default function HowToBuy() {
                 <div className="text-center pb-8">
                     <p className="text-xs text-gray-500 dark:text-gray-400 mb-3 font-medium">¿Necesitas ayuda personalizada con tu pedido?</p>
                     <a
-                        href="https://wa.me/573142750383"
+                        href="https://wa.me/573203062007"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-primary font-bold text-sm hover:underline inline-flex items-center justify-center gap-2 group"

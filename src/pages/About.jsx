@@ -111,7 +111,7 @@ export default function About() {
                 {/* CTA Final */}
                 <section className="px-2">
                     <a
-                        href="https://wa.me/573142750383"
+                        href="https://wa.me/573203062007"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="w-full bg-primary hover:bg-primary-dark text-white font-display font-bold py-5 rounded-2xl shadow-lg shadow-green-900/20 transform transition-all active:scale-95 flex items-center justify-center gap-3"

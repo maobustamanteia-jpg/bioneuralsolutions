@@ -68,7 +68,7 @@ export default function Products() {
                         Nuestros expertos pueden asesorarte para encontrar la mezcla perfecta para tu cultivo.
                     </p>
                     <a
-                        href="https://wa.me/573142750383"
+                        href="https://wa.me/573203062007"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 text-primary font-bold text-sm hover:underline"
