@@ -10,7 +10,7 @@ const AI_Assistant = lazy(() => import('./components/AI_Assistant'));
 // Componente de loading
 const LoadingSpinner = () => (
   <div className="flex items-center justify-center h-screen">
-    <div className="text-neon-green font-mono">Cargando...</div>
+    <div className="text-[--color-neon-green] font-[--font-family-mono]">Cargando...</div>
   </div>
 );
 
@@ -18,7 +18,7 @@ function HomeView() {
   return (
     <section className="h-screen flex flex-col items-center justify-center p-6 text-center relative overflow-hidden" aria-label="Página de inicio">
       <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?q=80&w=1000&auto=format&fit=crop')] opacity-20 bg-center bg-cover" role="img" aria-label="Imagen de fondo de agricultura" />
-      <div className="absolute inset-0 bg-gradient-to-b from-deep-dark via-deep-dark/80 to-deep-dark" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[--color-deep-dark] via-[--color-deep-dark]/80 to-[--color-deep-dark]" />
 
       <article className="relative z-10">
         <header>
@@ -28,11 +28,11 @@ function HomeView() {
             transition={{ duration: 0.8 }}
             className="mb-8 relative inline-block"
           >
-            <div className="absolute -inset-4 bg-neon-green/20 blur-xl rounded-full" />
-            <h1 className="text-5xl font-black font-mono text-white tracking-tighter">
-              BIO<span className="text-neon-green">NEURAL</span>
+            <div className="absolute -inset-4 bg-[--color-neon-green]/20 blur-xl rounded-full" />
+            <h1 className="text-5xl font-black font-[--font-family-mono] text-white tracking-tighter">
+              BIO<span className="text-[--color-neon-green]">NEURAL</span>
             </h1>
-            <p className="text-cyan-tech tracking-[0.5em] text-xs mt-2 font-bold" role="doc-subtitle">SOLUTIONS</p>
+            <p className="text-[--color-cyan-tech] tracking-[0.5em] text-xs mt-2 font-bold" role="doc-subtitle">SOLUTIONS</p>
           </motion.div>
         </header>
 
@@ -48,7 +48,7 @@ function HomeView() {
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="bg-neon-green text-black font-bold py-3 px-8 rounded-full shadow-[0_0_20px_rgba(0,255,157,0.4)]"
+          className="bg-[--color-neon-green] text-black font-bold py-3 px-8 rounded-full shadow-[0_0_20px_rgba(0,255,157,0.4)]"
           onClick={() => document.dispatchEvent(new CustomEvent('nav-change', { detail: 'catalog' }))}
           aria-label="Iniciar sistema BioNeural Solutions"
           type="button"
@@ -71,7 +71,7 @@ function App() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-deep-dark text-white font-sans selection:bg-neon-green selection:text-black" role="main">
+    <main className="min-h-screen bg-[--color-deep-dark] text-white font-[--font-family-sans] selection:bg-[--color-neon-green] selection:text-black" role="main">
       <Suspense fallback={<LoadingSpinner />}>
         <AnimatePresence mode="wait">
           {activeTab === 'home' && (

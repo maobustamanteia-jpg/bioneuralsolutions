@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 const NavItem = ({ icon: Icon, label, active, onClick }) => (
     <button
         onClick={onClick}
-        className={`relative flex flex-col items-center justify-center w-16 h-16 rounded-xl transition-all duration-300 ${active ? 'text-neon-green' : 'text-gray-400 hover:text-white'}`}
+        className={`relative flex flex-col items-center justify-center w-16 h-16 rounded-xl transition-all duration-300 ${active ? 'text-[--color-neon-green]' : 'text-gray-400 hover:text-white'}`}
         aria-label={`Ir a ${label}`}
         aria-current={active ? 'page' : undefined}
         type="button"
@@ -13,12 +13,12 @@ const NavItem = ({ icon: Icon, label, active, onClick }) => (
         {active && (
             <motion.div
                 layoutId="active-glow"
-                className="absolute inset-0 bg-neon-green/10 rounded-xl blur-md"
+                className="absolute inset-0 bg-[--color-neon-green]/10 rounded-xl blur-md"
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
             />
         )}
         <Icon size={24} className="z-10" aria-hidden="true" />
-        <span className="text-[10px] mt-1 font-mono tracking-wider z-10">{label}</span>
+        <span className="text-[10px] mt-1 font-[--font-family-mono] tracking-wider z-10">{label}</span>
     </button>
 );
 
