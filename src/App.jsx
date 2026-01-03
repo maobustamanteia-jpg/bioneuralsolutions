@@ -2,6 +2,7 @@ import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Header from './components/Header';
+import BottomNav from './components/BottomNav';
 
 // Lazy loading components
 const Home = lazy(() => import('./pages/Home'));
