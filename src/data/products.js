@@ -14,7 +14,14 @@ export const products = [
             "Fortalece el sistema inmune de las plantas",
             "100% natural y artesanal"
         ],
-        usage: "Aplicar diluido en agua (1:10) directamente al suelo. Ideal para todo tipo de cultivos.",
+        applications: [
+            "Recuperación de suelos degradados",
+            "Aceleración de compostaje",
+            "Tratamiento de aguas residuales agrícolas",
+            "Inóculo para semilleros"
+        ],
+        casesOfUse: "Ideal para cultivos de café y frutales en etapas de establecimiento. En huertas caseras, revitaliza macetas con tierra agotada.",
+        usage: "Dilución 1:10 en agua sin cloro. Aplicar vía drench o foliar al amanecer o atardecer.",
         category: "Suelo"
     },
     {
@@ -29,7 +36,14 @@ export const products = [
             "Compatible con otros productos",
             "No daña el suelo"
         ],
-        usage: "Aplicación foliar: 2-3 ml por litro de agua. Repetir cada 15 días.",
+        applications: [
+            "Corrección rápida de clorosis férrica",
+            "Etapas de alta demanda nutricional (floración)",
+            "Suplemento para suelos con pH extremo",
+            "Bio-estimulación foliar"
+        ],
+        casesOfUse: "Utilizar cuando las hojas presentan amarillamiento entre las venas. Muy efectivo en cítricos y hortalizas de hoja.",
+        usage: "2-3 ml por litro de agua para aplicación foliar. Repetir cada 15 días según necesidad.",
         category: "Nutrición"
     },
     {
@@ -44,7 +58,14 @@ export const products = [
             "Seguro para aplicar cerca de cosecha",
             "Biodegradable 100%"
         ],
-        usage: "Diluir 10-20 ml por litro de agua. Aplicar en las horas frescas del día.",
+        applications: [
+            "Control preventivo y curativo de insectos",
+            "Limpieza de melaza dejada por plagas",
+            "Coadyuvante para otros productos biológicos",
+            "Uso en agricultura urbana y jardinería"
+        ],
+        casesOfUse: "Aplicar ante los primeros avistamientos de pulgón. Útil para lavar hongos como la fumagina de las hojas.",
+        usage: "10-20 ml por litro de agua. Mojar bien el envés de las hojas. Aplicar bajo sombra.",
         category: "Protección"
     },
     {
@@ -59,7 +80,14 @@ export const products = [
             "Bajo costo y alta efectividad",
             "Preparación artesanal"
         ],
-        usage: "Diluir según concentración: 50-100 ml por litro. No aplicar en floración.",
+        applications: [
+            "Control de Oidios, Royas y Antracnosis",
+            "Tratamiento protector de invierno en frutales",
+            "Suministro de azufre elemental",
+            "Limpieza de troncos y ramas"
+        ],
+        casesOfUse: "Excelente para el control de la roya del café y el ácaro tostador en cítricos de forma orgánica.",
+        usage: "50-100 ml por litro de agua. No aplicar en temperaturas superiores a 28°C o pleno sol.",
         category: "Protección"
     },
     {
@@ -74,7 +102,14 @@ export const products = [
             "Fácil aplicación",
             "Ingredientes 100% naturales"
         ],
-        usage: "Diluir 5-10 ml por litro de agua. Aplicar cada 7-10 días como preventivo.",
+        applications: [
+            "Repelencia de hormigas y masticadores",
+            "Prevención de visitas de insectos plaga",
+            "Efecto irritante para desalojar nidos",
+            "Barrera biológica perimetral"
+        ],
+        casesOfUse: "Ideal como barrera preventiva en bordes de huertas o cuando se detecta actividad inicial de hormiga arriera.",
+        usage: "5-10 ml por litro de agua. Aplicar semanalmente o después de lluvias fuertes.",
         category: "Protección"
     },
     {
@@ -89,7 +124,14 @@ export const products = [
             "Regula el crecimiento de plagas",
             "Seguro para el medio ambiente"
         ],
-        usage: "Diluir 3-5 ml por litro de agua. Aplicar en la tarde o noche.",
+        applications: [
+            "Control sistémico de minadores",
+            "Interrupción del ciclo biológico de plagas",
+            "Control de nematodos en el suelo",
+            "Protección de granos almacenados"
+        ],
+        casesOfUse: "Muy efectivo contra el minador de la hoja en café y hortalizas, actuando desde el interior de la planta.",
+        usage: "3-5 ml por litro de agua. Emulsionar bien. Se recomienda usar con Jabón Potásico.",
         category: "Protección"
     },
     {
@@ -104,7 +146,14 @@ export const products = [
             "Rico en silicio natural",
             "Estimula el crecimiento"
         ],
-        usage: "Aplicar 5 ml por litro de agua. Ideal durante etapa vegetativa.",
+        applications: [
+            "Fortalecimiento de la pared celular vegetal",
+            "Resistencia al estrés hídrico y térmico",
+            "Mejora del llenado de grano y fruto",
+            "Bio-estimulación en viveros"
+        ],
+        casesOfUse: "Aplicar en etapas de crecimiento rápido para lograr estructuras más rígidas y resistentes al viento y hongos.",
+        usage: "5 ml por litro de agua vía foliar cada 15-20 días durante el levante.",
         category: "Nutrición"
     },
     {
@@ -119,7 +168,14 @@ export const products = [
             "Seguro para mascotas y humanos",
             "Larga duración de efecto"
         ],
-        usage: "Espolvorear directamente sobre plantas o suelo. Reaplicar después de lluvia.",
+        applications: [
+            "Control de hormigas, babosas y caracoles",
+            "Protección de semillas almacenadas",
+            "Aporte de silicio al suelo",
+            "Control de parásitos externos en animales"
+        ],
+        casesOfUse: "Espolvorear alrededor de la base de plantas jóvenes para protegerlas del ataque nocturno de babosas.",
+        usage: "Aplicación en seco sobre plantas o barrera en suelo. Reaplicar si se humedece o llueve.",
         category: "Protección"
     },
     {
@@ -134,7 +190,14 @@ export const products = [
             "Potencia la absorción de nutrientes",
             "Regenera suelos degradados"
         ],
-        usage: "Aplicar 2-3 kg por hectárea. Incorporar al suelo antes de siembra.",
+        applications: [
+            "Acondicionamiento de suelos compactados",
+            "Aumento de la capacidad de intercambio catiónico",
+            "Estimulación del desarrollo radicular",
+            "Desbloqueo de fósforo retenido"
+        ],
+        casesOfUse: "Indispensable en el abonado de fondo de nuevos cultivos y en la recuperación de suelos fatigados por químicos.",
+        usage: "2-3 kg por hectárea o 50g por árbol. Mezclar con la tierra del hoyo de siembra.",
         category: "Suelo"
     }
 ];

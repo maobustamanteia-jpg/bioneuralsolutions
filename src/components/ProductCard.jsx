@@ -16,7 +16,7 @@ export default function ProductCard({ item, index }) {
     };
 
     return (
-        <article id={item.shortName} className="bg-white dark:bg-surface-dark rounded-2xl shadow-soft border border-gray-100 dark:border-gray-800 overflow-hidden group hover:shadow-xl transition-all duration-300">
+        <article id={item.shortName} className="bg-white dark:bg-surface-dark rounded-2xl shadow-soft border border-gray-100 dark:border-gray-800 overflow-hidden group hover:shadow-xl transition-all duration-300 cursor-pointer">
             <div className="relative h-48 overflow-hidden">
                 <img
                     alt={item.name}
