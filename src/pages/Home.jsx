@@ -1,145 +1,160 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { products } from '../data/products';
 import ProductCard from '../components/ProductCard';
 
 export default function Home() {
+    // Tomamos el producto destacado (MM)
     const featuredProduct = products.find(p => p.shortName === "MM") || products[0];
 
+    const benefits = [
+        { icon: "eco", title: "100% Orgánico", desc: "Sin químicos sintéticos" },
+        { icon: "science", title: "Bio-Tecnología", desc: "Sabiduría ancestral" },
+        { icon: "terrain", title: "Suelo Vivo", desc: "Regeneración profunda" },
+        { icon: "auto_awesome", title: "Alto Rendimiento", desc: "Cultivos vigorosos" }
+    ];
+
     return (
-        <div className="animate-fade-in flex flex-col">
-            {/* Header / Hero Section de Stitch */}
-            <header className="relative bg-white dark:bg-surface-dark pt-20 pb-12 px-6 rounded-b-[40px] shadow-lg border-b border-gray-100 dark:border-gray-800 overflow-hidden">
-                {/* Background Image con overlay */}
+        <div className="animate-fade-in pb-20">
+            {/* Hero Section */}
+            <section className="relative h-[85vh] flex items-center justify-center overflow-hidden">
+                {/* Background Image with Overlay */}
                 <div
-                    className="absolute inset-0 z-0 bg-cover bg-center opacity-10"
-                    style={{ backgroundImage: "url('/images/brand/hero_concept.png')" }}
-                ></div>
-                <div className="absolute inset-0 circuit-bg pointer-events-none z-10"></div>
+                    className="absolute inset-0 z-0 scale-105 transition-transform duration-[10s] animate-slow-zoom"
+                    style={{
+                        backgroundImage: "url('/images/hero-bg.png')",
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center'
+                    }}
+                >
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-background dark:to-background-dark"></div>
+                </div>
 
-                <div className="relative z-20 flex flex-col items-center text-center">
-                    {/* Logo con efecto glow */}
-                    <div className="mb-8 relative group">
-                        <div className="absolute inset-0 bg-primary/20 blur-2xl rounded-full scale-125 group-hover:scale-150 transition-transform duration-700"></div>
-                        <img
-                            alt="BioNeural Logo"
-                            className="w-40 h-40 object-contain relative z-10 drop-shadow-2xl"
-                            src="/logo.png"
-                        />
-                    </div>
+                <div className="relative z-10 text-center px-6 max-w-md">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.8 }}
+                        className="mb-8"
+                    >
+                        <div className="relative inline-block">
+                            <div className="absolute inset-0 bg-primary blur-3xl opacity-30 animate-pulse"></div>
+                            <img
+                                alt="BioNeural Logo"
+                                className="w-40 h-40 object-contain relative z-10 drop-shadow-2xl"
+                                src="/logo.png"
+                            />
+                        </div>
+                    </motion.div>
 
-                    <h1 className="font-display font-bold text-3xl text-secondary dark:text-white mb-2 tracking-tight">
-                        BioNeural <span className="text-primary">Solutions</span>
+                    <h1 className="font-display font-bold text-4xl text-white mb-4 leading-tight tracking-tight drop-shadow-lg">
+                        Inteligencia <span className="text-primary italic">Bio-Orgánica</span>
                     </h1>
-
-                    <p className="text-primary font-bold text-xs mb-6 uppercase tracking-[0.2em] dark:text-green-400">
-                        Fertilizantes Orgánicos Inteligentes
+                    <p className="text-gray-200 text-sm mb-10 font-medium leading-relaxed drop-shadow-md">
+                        Transformamos la salud del suelo con microorganismos de montaña y nutrición avanzada.
                     </p>
 
-                    <p className="text-gray-600 dark:text-gray-300 text-base leading-relaxed mb-10 max-w-[280px]">
-                        Fusionamos la sabiduría de la naturaleza con biotecnología para cultivos más fuertes y sostenibles.
-                    </p>
-
-                    <div className="flex flex-col w-full gap-4 max-w-sm mx-auto">
-                        <Link to="/productos" className="btn-stitch-primary py-4 px-6">
-                            <span>Explorar Productos</span>
+                    <div className="flex flex-col gap-4">
+                        <Link
+                            to="/productos"
+                            className="btn-stitch-primary py-4 shadow-glow"
+                        >
+                            <span>Explorar Catálogo</span>
                             <span className="material-icons-round text-sm">arrow_forward</span>
                         </Link>
-                        <Link to="/quienes-somos" className="btn-stitch-secondary py-4 px-6">
-                            Nuestra Tecnología
-                        </Link>
-                    </div>
-                </div>
-            </header>
-
-            {/* Beneficios - Grid de Stitch */}
-            <section className="py-12 px-6">
-                <div className="flex items-center justify-between mb-8">
-                    <h2 className="font-display font-bold text-xl text-secondary dark:text-white tracking-tight">¿Por qué BioNeural?</h2>
-                    <Link to="/quienes-somos" className="text-xs font-bold text-primary dark:text-green-400">LEER MÁS</Link>
-                </div>
-
-                <div className="grid grid-cols-2 gap-5">
-                    <div className="bg-white dark:bg-surface-dark p-6 rounded-2xl shadow-soft border border-gray-100 dark:border-gray-800 hover:shadow-md transition-shadow group">
-                        <div className="w-12 h-12 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center mb-4 text-primary dark:text-green-400 group-hover:scale-110 transition-transform">
-                            <span className="material-icons-round">eco</span>
-                        </div>
-                        <h3 className="font-display font-bold text-sm text-secondary dark:text-white mb-2">100% Orgánico</h3>
-                        <p className="text-[11px] text-gray-500 dark:text-gray-400 leading-snug">Certificado y seguro para el medio ambiente.</p>
-                    </div>
-
-                    <div className="bg-white dark:bg-surface-dark p-6 rounded-2xl shadow-soft border border-gray-100 dark:border-gray-800 hover:shadow-md transition-shadow group">
-                        <div className="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-4 text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform">
-                            <span className="material-icons-round">psychology</span>
-                        </div>
-                        <h3 className="font-display font-bold text-sm text-secondary dark:text-white mb-2">Bio-Inteligencia</h3>
-                        <p className="text-[11px] text-gray-500 dark:text-gray-400 leading-snug">Formulaciones optimizadas por biotecnología.</p>
-                    </div>
-
-                    <div className="bg-white dark:bg-surface-dark p-6 rounded-2xl shadow-soft border border-gray-100 dark:border-gray-800 hover:shadow-md transition-shadow group">
-                        <div className="w-12 h-12 rounded-full bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center mb-4 text-amber-600 dark:text-amber-400 group-hover:scale-110 transition-transform">
-                            <span className="material-icons-round">trending_up</span>
-                        </div>
-                        <h3 className="font-display font-bold text-sm text-secondary dark:text-white mb-2">Alto Rendimiento</h3>
-                        <p className="text-[11px] text-gray-500 dark:text-gray-400 leading-snug">Maximiza tu cosecha sosteniblemente.</p>
-                    </div>
-
-                    <div className="bg-white dark:bg-surface-dark p-6 rounded-2xl shadow-soft border border-gray-100 dark:border-gray-800 hover:shadow-md transition-shadow group">
-                        <div className="w-12 h-12 rounded-full bg-teal-100 dark:bg-teal-900/30 flex items-center justify-center mb-4 text-teal-600 dark:text-teal-400 group-hover:scale-110 transition-transform">
-                            <span className="material-icons-round">biotech</span>
-                        </div>
-                        <h3 className="font-display font-bold text-sm text-secondary dark:text-white mb-2">Artesanal</h3>
-                        <p className="text-[11px] text-gray-500 dark:text-gray-400 leading-snug">Técnicas tradicionales y biotecnología.</p>
+                        <a
+                            href="https://wa.me/573142750383"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="bg-white/10 backdrop-blur-md border border-white/20 text-white font-display font-bold py-4 rounded-2xl hover:bg-white/20 transition-all flex items-center justify-center gap-2"
+                        >
+                            <span>Asesoría Técnica</span>
+                            <span className="material-icons-round text-sm">psychology</span>
+                        </a>
                     </div>
                 </div>
             </section>
 
-            {/* Producto Destacado - De Stitch */}
-            <section className="px-6 pb-12">
-                <h2 className="font-display font-bold text-xl text-secondary dark:text-white mb-6 tracking-tight">Producto Destacado</h2>
-                <div className="relative w-full h-80 rounded-[32px] overflow-hidden shadow-2xl group cursor-pointer transition-transform hover:scale-[1.02] duration-500">
-                    <img
-                        alt={featuredProduct.name}
-                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-110"
-                        src={featuredProduct.image || "https://images.unsplash.com/photo-1599420186946-7b6fb4eaba9a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
-                    <div className="absolute bottom-0 left-0 right-0 p-8">
-                        <div className="flex justify-between items-end">
-                            <div className="flex-1">
-                                <span className="inline-block px-3 py-1 bg-primary/90 backdrop-blur-md rounded-lg text-[10px] font-bold text-white mb-3 uppercase tracking-widest border border-white/10">BIO-ACTIVO</span>
-                                <h3 className="text-white font-display font-bold text-2xl mb-2 drop-shadow-md">
-                                    {featuredProduct.name}
-                                </h3>
-                                <p className="text-gray-300 text-sm line-clamp-2 max-w-[240px] opacity-90">
-                                    {featuredProduct.description}
-                                </p>
+            {/* Benefits Grid */}
+            <section className="px-6 -mt-10 relative z-20">
+                <div className="grid grid-cols-2 gap-4">
+                    {benefits.map((benefit, idx) => (
+                        <div
+                            key={idx}
+                            className="bg-white dark:bg-surface-dark p-6 rounded-[28px] shadow-soft border border-gray-100 dark:border-gray-800 flex flex-col items-center text-center space-y-2 group hover:border-primary/30 transition-all"
+                        >
+                            <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center text-primary mb-2 group-hover:scale-110 transition-transform">
+                                <span className="material-icons-round text-2xl">{benefit.icon}</span>
                             </div>
-                            <Link
-                                to={`/productos#${featuredProduct.shortName}`}
-                                className="bg-white hover:bg-primary hover:text-white text-primary w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg active:scale-90 transition-all transform group-hover:rotate-12"
-                            >
-                                <span className="material-icons-round text-2xl">add</span>
-                            </Link>
+                            <h3 className="font-display font-bold text-xs text-secondary dark:text-white uppercase tracking-wider">{benefit.title}</h3>
+                            <p className="text-[10px] text-gray-500 dark:text-gray-400 font-medium leading-tight">{benefit.desc}</p>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
+            {/* Featured Product Section */}
+            <section className="px-6 py-16">
+                <div className="flex items-center justify-between mb-8">
+                    <h2 className="font-display font-bold text-2xl text-secondary dark:text-white tracking-tight">Destacado</h2>
+                    <Link to="/productos" className="text-primary text-xs font-bold uppercase tracking-widest hover:underline flex items-center gap-1">
+                        Ver todos <span className="material-icons-round text-sm">chevron_right</span>
+                    </Link>
+                </div>
+
+                <div className="bg-secondary dark:bg-surface-dark rounded-[32px] overflow-hidden shadow-2xl relative border border-white/5 group">
+                    <div className="h-64 relative">
+                        <img
+                            alt={featuredProduct.name}
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                            src={featuredProduct.image}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-secondary via-transparent to-transparent"></div>
+                        <div className="absolute top-6 left-6">
+                            <span className="bg-primary text-white text-[10px] font-bold px-3 py-1.5 rounded-lg shadow-lg uppercase tracking-widest">Recomendado</span>
+                        </div>
+                    </div>
+
+                    <div className="p-8">
+                        <h3 className="font-display font-bold text-2xl text-white mb-3 tracking-tight">{featuredProduct.name}</h3>
+                        <p className="text-gray-400 text-sm mb-8 leading-relaxed font-medium">
+                            {featuredProduct.description}
+                        </p>
+
+                        <div className="flex items-center justify-between gap-4">
+                            <div className="flex -space-x-3">
+                                {[1, 2, 3].map(i => (
+                                    <div key={i} className="w-10 h-10 rounded-full border-2 border-secondary bg-gray-700 overflow-hidden ring-2 ring-primary/20">
+                                        <img src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="Farmer" className="w-full h-full object-cover grayscale" />
+                                    </div>
+                                ))}
+                                <div className="w-10 h-10 rounded-full border-2 border-secondary bg-primary flex items-center justify-center text-[10px] font-bold text-white">
+                                    +50
+                                </div>
+                            </div>
+                            <span className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Agricultores felices</span>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* CTA Agricultor */}
+            {/* Farmer CTA */}
             <section className="px-6 pb-12">
-                <div className="bg-primary/10 dark:bg-primary/20 rounded-3xl p-8 flex items-center gap-6 border border-primary/5">
-                    <div className="flex-1">
-                        <h4 className="font-display font-bold text-secondary dark:text-white text-xl leading-tight mb-2">¿Eres agricultor?</h4>
-                        <p className="text-sm text-gray-600 dark:text-gray-300 font-medium">Obtén una consulta gratuita para optimizar tu suelo y rendimiento.</p>
-                    </div>
+                <div className="bg-primary/5 dark:bg-primary/10 rounded-[32px] p-8 border border-primary/10 text-center relative overflow-hidden">
+                    <div className="absolute -left-10 -bottom-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl"></div>
+                    <span className="material-icons-round text-primary text-4xl mb-4">grass</span>
+                    <h3 className="font-display font-bold text-xl text-secondary dark:text-white mb-3">¿Eres Productor?</h3>
+                    <p className="text-gray-500 dark:text-gray-400 text-xs mb-8 leading-relaxed px-4 font-medium">
+                        Tenemos planes especiales por hectárea y asesoría personalizada en campo en la zona de Fresno.
+                    </p>
                     <a
-                        href="https://wa.me/57XXXXXXXXXX"
+                        href="https://wa.me/573142750383?text=Hola,%20soy%20productor%20y%20me%20interesa%20asesoría%20técnica."
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-6 py-4 bg-secondary dark:bg-white dark:text-secondary text-white rounded-2xl text-sm font-bold shadow-lg hover:brightness-110 active:scale-95 transition-all"
+                        className="btn-stitch-primary py-4 w-full"
                     >
-                        Contactar
+                        Inicia tu Transición Orgánica
                     </a>
                 </div>
             </section>

@@ -49,10 +49,7 @@ export default function About() {
                         <img
                             alt="Paisaje de cultivos en Fresno, Tolima"
                             className="absolute inset-0 w-full h-full object-cover"
-                            src="/images/brand/fresno_tolima.jpg"
-                            onError={(e) => {
-                                e.target.src = "https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"; // Fallback landscape
-                            }}
+                            src="/images/fresno-tolima.png"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8">
                             <span className="text-[10px] font-bold text-primary bg-white px-3 py-1 rounded-lg w-max mb-2 uppercase tracking-widest">RAÍCES</span>
@@ -99,10 +96,7 @@ export default function About() {
                             <img
                                 alt="Fundador"
                                 className="w-full h-full object-cover grayscale opacity-80"
-                                src="/images/brand/founder.jpg"
-                                onError={(e) => {
-                                    e.target.src = "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"; // Fallback man
-                                }}
+                                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
                             />
                         </div>
                         <div>
