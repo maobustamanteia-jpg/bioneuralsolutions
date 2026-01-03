@@ -6,6 +6,7 @@ export const products = [
         id: 1,
         name: "Microorganismos de Montaña",
         shortName: "MM",
+        image: "/images/brand/microorganisms_concept.png",
         description: "Consorcio de microorganismos benéficos recolectados de bosques nativos colombianos. Mejora la salud del suelo y aumenta la absorción de nutrientes por las plantas.",
         benefits: [
             "Aumenta la biodiversidad del suelo",
@@ -131,7 +132,7 @@ export const products = [
 ];
 
 export const categories = {
-    "bioestimulante": { name: "Bioestimulantes", icon: "🌱" },
+    "bioestimulante": { name: "Bioestimulantes", icon: "🌱", image: "/images/brand/soil_concept.png" },
     "nutrición": { name: "Nutrición Vegetal", icon: "💧" },
     "control-plagas": { name: "Control de Plagas", icon: "🛡️" },
     "fungicida": { name: "Fungicidas", icon: "🍄" },

@@ -1,355 +1,61 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@400;600&display=swap');
-
 @import "tailwindcss";
 
-/* BioNeural Solutions - Diseño Stitch */
+/* BioNeural Solutions - Diseño Stitch Pixel-Perfect */
 @theme {
-  /* Colores del diseño Stitch */
   --color-primary: #3A6332;
-  --color-primary-light: #4a7c42;
   --color-primary-dark: #2d4e27;
   --color-secondary: #4E3629;
   --color-accent: #00E5FF;
-  --color-background: #F9FBF8;
+  --color-background-light: #F9FBF8;
   --color-background-dark: #121A12;
-  --color-surface: #FFFFFF;
+  --color-surface-light: #FFFFFF;
   --color-surface-dark: #1E261E;
-  --color-gray-100: #f3f4f6;
-  --color-gray-200: #e5e7eb;
-  --color-gray-400: #9ca3af;
-  --color-gray-500: #6b7280;
-  --color-gray-600: #4b5563;
-  --color-green-100: #dcfce7;
-  --color-amber-100: #fef3c7;
-  --color-blue-100: #dbeafe;
-  --color-teal-100: #ccfbf1;
 
-  /* Fuentes del diseño Stitch */
-  --font-family-display: 'Montserrat', sans-serif;
-  --font-family-body: 'Open Sans', sans-serif;
+  --font-display: 'Montserrat', sans-serif;
+  --font-body: 'Open Sans', sans-serif;
+
+  --shadow-soft: 0 4px 20px -2px rgba(0, 0, 0, 0.1);
+  --shadow-glow: 0 0 15px rgba(58, 99, 50, 0.3);
+
+  --radius-xl: 20px;
+  --radius-2xl: 32px;
 }
 
 /* Estilos base */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
 body {
-  background-color: var(--color-background);
+  background-color: var(--color-background-light);
   color: var(--color-secondary);
-  font-family: var(--font-family-body);
-  line-height: 1.6;
+  font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-family-display);
-  font-weight: 600;
-  color: var(--color-secondary);
+.dark body {
+  background-color: var(--color-background-dark);
+  color: #e5e7eb;
 }
 
-/* Fondo de patrones tipo circuito */
+/* Patrón de circuitos */
 .circuit-bg {
   background-image: radial-gradient(var(--color-primary) 1px, transparent 1px);
   background-size: 20px 20px;
   opacity: 0.1;
 }
 
-/* Botones estilo Stitch */
-.btn-primary {
-  background-color: var(--color-primary);
-  color: white;
-  padding: 14px 28px;
-  border-radius: 12px;
-  font-family: var(--font-family-display);
-  font-weight: 600;
-  font-size: 14px;
-  transition: all 0.3s ease;
-  border: none;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  box-shadow: 0 4px 14px rgba(58, 99, 50, 0.25);
+.dark .circuit-bg {
+  background-image: radial-gradient(#66BB6A 1px, transparent 1px);
+  opacity: 0.05;
 }
 
-.btn-primary:hover {
-  background-color: var(--color-primary-dark);
-  transform: scale(1.02);
+/* Utilidades de Stitch */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
-.btn-primary:active {
-  transform: scale(0.98);
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-.btn-secondary {
-  background-color: white;
-  color: var(--color-secondary);
-  padding: 14px 28px;
-  border-radius: 12px;
-  font-family: var(--font-family-display);
-  font-weight: 600;
-  font-size: 14px;
-  border: 2px solid rgba(58, 99, 50, 0.2);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.btn-secondary:hover {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
-}
-
-.btn-secondary:active {
-  transform: scale(0.98);
-}
-
-.btn-contact {
-  background-color: var(--color-secondary);
-  color: white;
-  padding: 10px 20px;
-  border-radius: 10px;
-  font-family: var(--font-family-display);
-  font-weight: 600;
-  font-size: 13px;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.btn-contact:hover {
-  background-color: #3d2a1f;
-}
-
-/* Contenedor */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-/* Cards estilo Stitch */
-.card {
-  background: white;
-  border-radius: 20px;
-  padding: 24px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-  border: 1px solid var(--color-gray-100);
-  transition: all 0.3s ease;
-}
-
-.card:hover {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
-
-/* Card de beneficio */
-.benefit-card {
-  background: white;
-  padding: 20px;
-  border-radius: 16px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  border: 1px solid var(--color-gray-100);
-  transition: all 0.3s ease;
-}
-
-.benefit-card:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-}
-
-.benefit-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 12px;
-  font-size: 20px;
-}
-
-/* Secciones */
-.section {
-  padding: 48px 0;
-}
-
-.section-title {
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--color-secondary);
-  margin-bottom: 24px;
-}
-
-/* Header redondeado como en Stitch */
-.header-rounded {
-  background: white;
-  border-radius: 0 0 40px 40px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-  border-bottom: 1px solid var(--color-gray-100);
-  overflow: hidden;
-  position: relative;
-}
-
-/* Badge de categoría */
-.badge {
-  display: inline-block;
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.badge-new {
-  background-color: rgba(58, 99, 50, 0.9);
-  color: white;
-}
-
-/* CTA Section */
-.cta-section {
-  background-color: rgba(58, 99, 50, 0.1);
-  border-radius: 16px;
-  padding: 24px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-/* Product Card */
-.product-card {
-  position: relative;
-  border-radius: 24px;
-  overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  transition: all 0.5s ease;
-}
-
-.product-card:hover {
-  transform: scale(1.02);
-}
-
-.product-card img {
-  transition: transform 0.7s ease;
-}
-
-.product-card:hover img {
-  transform: scale(1.1);
-}
-
-/* Navegación inferior estilo Stitch */
-.bottom-nav {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: white;
-  border-top: 1px solid var(--color-gray-100);
-  padding: 12px 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 50;
-  border-radius: 16px 16px 0 0;
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.03);
-}
-
-.nav-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  color: var(--color-gray-400);
-  transition: color 0.3s ease;
-  cursor: pointer;
-  background: none;
-  border: none;
-  padding: 0;
-}
-
-.nav-item.active {
-  color: var(--color-primary);
-}
-
-.nav-item:hover {
-  color: var(--color-primary);
-}
-
-.nav-item span:last-child {
-  font-size: 10px;
-  font-weight: 500;
-}
-
-.nav-center-btn {
-  width: 56px;
-  height: 56px;
-  background-color: var(--color-primary);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  box-shadow: 0 4px 20px rgba(58, 99, 50, 0.35);
-  position: relative;
-  top: -20px;
-  border: 4px solid var(--color-background);
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.nav-center-btn:hover {
-  transform: scale(1.05);
-}
-
-.nav-center-btn:active {
-  transform: scale(0.95);
-}
-
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--color-background);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--color-gray-200);
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-primary);
-}
-
-/* Utility classes */
-.text-primary {
-  color: var(--color-primary);
-}
-
-.bg-primary {
-  background-color: var(--color-primary);
-}
-
-.text-secondary {
-  color: var(--color-secondary);
-}
-
-/* Animaciones */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -366,9 +72,60 @@ h6 {
   animation: fadeIn 0.6s ease-out forwards;
 }
 
-/* Focus styles for accessibility */
-button:focus-visible,
-a:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
+/* Botones estilo Stitch */
+.btn-stitch-primary {
+  background-color: var(--color-primary);
+  color: white;
+  font-family: var(--font-display);
+  font-weight: 600;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 14px rgba(58, 99, 50, 0.25);
+}
+
+.btn-stitch-primary:hover {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(58, 99, 50, 0.3);
+}
+
+.btn-stitch-secondary {
+  background-color: white;
+  color: var(--color-secondary);
+  border: 2px solid rgba(58, 99, 50, 0.2);
+  font-family: var(--font-display);
+  font-weight: 600;
+  border-radius: 12px;
+  transition: all 0.3s;
+}
+
+.btn-stitch-secondary:hover {
+  border-color: var(--color-primary);
+  background-color: rgba(58, 99, 50, 0.02);
+}
+
+.dark .btn-stitch-secondary {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: white;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Shell móvil */
+.mobile-shell {
+  max-width: 448px;
+  /* max-w-md */
+  margin: 0 auto;
+  position: relative;
+  min-height: 100vh;
+  background-color: var(--color-background-light);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  overflow-x: hidden;
+}
+
+.dark .mobile-shell {
+  background-color: var(--color-background-dark);
 }
