@@ -1,10 +1,10 @@
-import React from 'react';
 import AI_Assistant from '../components/AI_Assistant';
+import DiagnosisHistory from '../components/DiagnosisHistory';
 import { motion } from 'framer-motion';
 
 export default function Agronomo() {
     return (
-        <div className="animate-fade-in pb-24 px-6 pt-20">
+        <div className="animate-fade-in pb-24 px-6 pt-20 max-w-2xl mx-auto">
             <header className="mb-10 text-center">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
@@ -22,6 +22,8 @@ export default function Agronomo() {
             </header>
 
             <AI_Assistant />
+
+            <DiagnosisHistory />
 
             <section className="mt-12 bg-white dark:bg-surface-dark rounded-[32px] p-8 border border-gray-100 dark:border-gray-800 shadow-soft">
                 <h3 className="font-display font-bold text-secondary dark:text-white mb-4">¿Cómo funciona?</h3>

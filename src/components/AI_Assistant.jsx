@@ -22,21 +22,51 @@ export default function AI_Assistant() {
         setTimeout(() => {
             setAnalyzing(false);
 
-            // Dummy logic for Fresno/Arbeláez context
-            let reply = "";
             const lowerQuery = query.toLowerCase();
+            let matchedProduct = null;
+            let diagnosis = "";
 
-            if (lowerQuery.includes('café') || lowerQuery.includes('roya')) {
-                reply = "ANÁLISIS: Detectada posible Roya del Café (Hemileia vastatrix). SOLUCIÓN: Neuro-Café Booster + Caldo Viso-Sulk (Azufre). Eficacia proyectada: 92%.";
-            } else if (lowerQuery.includes('plátano') || lowerQuery.includes('sigatoka')) {
-                reply = "DIAGNÓSTICO: Posible Sigatoka Negra. RECOMIENDO: Plátano-Core Energy con refuerzo de Microorganismos de Montaña (MM).";
-            } else if (lowerQuery.includes('cítricos') || lowerQuery.includes('hormiga')) {
-                reply = "ALERTA: Actividad de Hormiga Arriera detectada. SOLUCIÓN: Bio-Barrera de Jabón Potásico + Neem. Aplicación perimetral inmediata.";
-            } else {
-                reply = `DATOS ANALIZADOS para "${query}". Recomiendo Suelo-Matrix Reconstructor para mejorar la asimilación de nutrientes y vigor general de la planta.`;
-            }
+            // Dynamic matching logic based on products.js
+            import('../data/products').then(({ products }) => {
+                // Check for diseases/plags mentions in casesOfUse or applications
+                for (const product of products) {
+                    const searchSpace = `${product.name} ${product.description} ${product.category} ${product.casesOfUse} ${product.applications.join(' ')}`.toLowerCase();
 
-            setResponse(reply);
+                    // Simple keyword matching for demo purposes
+                    const keywords = lowerQuery.split(/\s+/).filter(w => w.length > 3);
+                    const matchCount = keywords.reduce((acc, kw) => searchSpace.includes(kw) ? acc + 1 : acc, 0);
+
+                    if (matchCount > 0) {
+                        matchedProduct = product;
+                        break;
+                    }
+                }
+
+                if (matchedProduct) {
+                    diagnosis = `ANÁLISIS BIO-NEURAL: He identificado que tu cultivo presenta síntomas relacionados con ${lowerQuery}. Recomiendo nuestro producto ${matchedProduct.name} (${matchedProduct.shortName}). ${matchedProduct.casesOfUse}. Dosis sugerida: ${matchedProduct.usage}.`;
+                } else {
+                    diagnosis = `CONSULTA TÉCNICA: He analizado tu reporte sobre "${query}". Aunque no detecto una patología crítica inmediata en mi base de datos de Fresno/Tolima, te recomiendo aplicar Microorganismos de Montaña (MM) para fortalecer el vigor general. ¿Deseas hablar con un agrónomo humano?`;
+                }
+
+                const finalResponse = {
+                    text: diagnosis,
+                    product: matchedProduct,
+                    cta: "https://wa.me/573203062007?text=" + encodeURIComponent(`Hola, necesito asesoría técnica sobre ${query}. El Asistente me recomendó ${matchedProduct?.name || 'revisión general'}.`)
+                };
+
+                setResponse(finalResponse);
+
+                // Save to history (to be implemented)
+                const newEntry = {
+                    id: Date.now(),
+                    date: new Date().toLocaleString(),
+                    query,
+                    diagnosis: finalResponse.text,
+                    type: 'chat'
+                };
+                const history = JSON.parse(localStorage.getItem('diagnosis_history') || '[]');
+                localStorage.setItem('diagnosis_history', JSON.stringify([newEntry, ...history]));
+            });
         }, 2000);
     };
 
@@ -44,18 +74,38 @@ export default function AI_Assistant() {
         setShowCamera(false);
         setAnalyzing(true);
         setResponse(null);
+        setDiagnosisData(null);
         setQuery("Captura de imagen analizada...");
 
         // Simulate expert visual analysis
         setTimeout(() => {
             setAnalyzing(false);
-            setDiagnosisData({
-                disease: "Roya del Café (Nivel 2)",
+            const capturedDiagnosis = {
+                disease: "Roya del Café (Hemileia vastatrix)",
                 confidence: 96.8,
-                treatment: "Neuro-Café + Microorganismos MM Líquido",
-                zone: "Fresno/Arbeláez Sector B"
-            });
-            setResponse("DIAGNÓSTICO VISUAL COMPLETADO: Se detectan esporas activas de Hemileia vastatrix. Aplicación de choque con MM Líquido recomendada en las próximas 48 horas.");
+                treatment: "Neuro-Café + Caldo Sulfocálcico",
+                zone: "Sector Fresno/Arbeláez",
+                cta: "https://wa.me/573203062007?text=" + encodeURIComponent("Hola, mi escaneo AI detectó Roya del Café. Necesito el tratamiento indicado.")
+            };
+            setDiagnosisData(capturedDiagnosis);
+
+            const reply = {
+                text: "DIAGNÓSTICO VISUAL COMPLETADO: Se detectan pústulas activas compatibles con Hemileia vastatrix. Se recomienda aplicación inmediata de Caldo Sulfocálcico en mezcla con MM Líquido para control y recuperación foliar.",
+                cta: capturedDiagnosis.cta
+            };
+            setResponse(reply);
+
+            // Save to history
+            const newEntry = {
+                id: Date.now(),
+                date: new Date().toLocaleString(),
+                query: "Análisis Visual",
+                diagnosis: capturedDiagnosis.disease,
+                type: 'vision',
+                imageData
+            };
+            const history = JSON.parse(localStorage.getItem('diagnosis_history') || '[]');
+            localStorage.setItem('diagnosis_history', JSON.stringify([newEntry, ...history]));
         }, 3000);
     };
 
@@ -117,10 +167,21 @@ export default function AI_Assistant() {
                                     </div>
                                 </div>
                             )}
-                            <p className="text-emerald-400 font-mono text-xs leading-relaxed">
+                            <div className="text-emerald-400 font-mono text-xs leading-relaxed">
                                 <span className="text-primary mr-2"> {">"} </span>
-                                {response}
-                            </p>
+                                {response.text}
+                            </div>
+
+                            {response.cta && (
+                                <a
+                                    href={response.cta}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="block w-full py-3 bg-primary/20 hover:bg-primary/30 border border-primary/40 rounded-xl text-center text-[10px] text-primary font-bold uppercase tracking-widest transition-all"
+                                >
+                                    Hablar con Asesor Técnico
+                                </a>
+                            )}
                         </motion.div>
                     ) : (
                         <motion.div
