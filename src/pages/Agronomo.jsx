@@ -1,6 +1,5 @@
-import AI_Assistant from '../components/AI_Assistant';
-import DiagnosisHistory from '../components/DiagnosisHistory';
 import { motion } from 'framer-motion';
+import NeuralCore from '../components/NeuralCore';
 
 export default function Agronomo() {
     return (
@@ -9,12 +8,12 @@ export default function Agronomo() {
                 <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="inline-block p-4 bg-primary/10 rounded-full mb-4 border border-primary/20"
+                    className="flex justify-center mb-6"
                 >
-                    <span className="material-icons-round text-3xl text-primary">biotech</span>
+                    <NeuralCore size="lg" />
                 </motion.div>
-                <h2 className="font-display font-bold text-3xl text-primary dark:text-green-400 mb-2 tracking-tight">
-                    Agrónomo Digital
+                <h2 className="font-display font-extrabold text-4xl text-secondary dark:text-white mb-2 tracking-tighter">
+                    Agrónomo <span className="text-primary italic">Digital</span>
                 </h2>
                 <p className="text-sm text-gray-600 dark:text-gray-400 max-w-[280px] mx-auto leading-relaxed">
                     Diagnóstico instantáneo y asesoría técnica impulsada por inteligencia bio-biológica.

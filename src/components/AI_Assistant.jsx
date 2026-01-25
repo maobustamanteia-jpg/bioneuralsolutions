@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Send, Bot, AlertTriangle, Camera, Sparkles } from 'lucide-react';
+import { Send, Bot, AlertTriangle, Camera, Sparkles, Binary } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import AgronomistCamera from './AgronomistCamera';
+import NeuralCore from './NeuralCore';
 
 export default function AI_Assistant() {
     const [query, setQuery] = useState('');
@@ -133,13 +134,14 @@ export default function AI_Assistant() {
 
     return (
         <div className="glass-panel p-6 rounded-3xl neon-border max-w-md mx-auto w-full">
-            <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 rounded-full bg-cyan-tech/20 flex items-center justify-center border border-cyan-tech/50">
-                    <Bot className="text-cyan-tech animate-pulse" />
-                </div>
-                <div>
-                    <h2 className="text-xl font-bold text-white">Bio-Neural Core</h2>
-                    <p className="text-[10px] text-primary font-mono tracking-widest uppercase">Orchestrator v5.0.1 | ONLINE</p>
+            <div className="flex items-center gap-4 mb-6 relative">
+                <NeuralCore size="sm" isAnalyzing={analyzing} />
+                <div className="flex-1">
+                    <h2 className="text-xl font-bold text-white tracking-tight flex items-center gap-2">
+                        Bio-Neural Core
+                        {analyzing && <motion.span animate={{ opacity: [0, 1, 0] }} transition={{ duration: 1, repeat: Infinity }}><Binary size={14} className="text-accent" /></motion.span>}
+                    </h2>
+                    <p className="text-[10px] text-primary-light font-mono tracking-widest uppercase">Orchestrator v5.1.0 | <span className="text-accent">ONLINE</span></p>
                 </div>
             </div>
 
@@ -155,22 +157,21 @@ export default function AI_Assistant() {
                             exit={{ opacity: 0 }}
                             className="flex flex-col items-center justify-center h-40 text-primary font-mono text-xs"
                         >
-                            <div className="relative mb-4">
-                                <motion.div
-                                    animate={{ rotate: 360 }}
-                                    transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                                    className="w-12 h-12 border border-primary/20 rounded-full border-t-primary"
-                                />
-                                <Bot className="absolute inset-0 m-auto text-primary animate-pulse" size={16} />
+                            <div className="mb-6">
+                                <NeuralCore size="md" isAnalyzing={true} />
                             </div>
-                            <span className="tracking-[0.2em] uppercase">Sincronizando con Agentes...</span>
-                            <div className="w-full max-w-[150px] bg-white/5 h-[1px] mt-3 rounded-full overflow-hidden">
+                            <span className="tracking-[0.3em] uppercase font-bold text-accent">Procesando Bio-Data...</span>
+                            <div className="w-full max-w-[200px] bg-white/5 h-[2px] mt-6 rounded-full overflow-hidden border border-white/10">
                                 <motion.div
-                                    className="bg-primary h-full"
+                                    className="bg-gradient-to-r from-primary to-accent h-full"
                                     initial={{ width: "0%" }}
                                     animate={{ width: "100%" }}
-                                    transition={{ duration: 2 }}
+                                    transition={{ duration: 1.5, repeat: Infinity }}
                                 />
+                            </div>
+                            <div className="mt-4 flex flex-col gap-1 items-center opacity-40 font-mono text-[8px]">
+                                <span>SYNCING_MICROBIOTA_DATABASE...</span>
+                                <span>FRESNO_SECTOR_7_CONNECTED</span>
                             </div>
                         </motion.div>
                     ) : response ? (

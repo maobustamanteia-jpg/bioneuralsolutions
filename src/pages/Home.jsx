@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { products } from '../data/products';
 import ProductCard from '../components/ProductCard';
+import NeuralCore from '../components/NeuralCore';
 
 export default function Home() {
     // Tomamos el producto destacado (MM)
@@ -58,10 +59,20 @@ export default function Home() {
                     <div className="flex flex-col gap-4">
                         <Link
                             to="/agronomo"
-                            className="btn-stitch-primary py-4 shadow-glow flex items-center justify-center gap-2 group"
+                            className="btn-stitch-primary py-5 shadow-glow flex flex-col items-center justify-center gap-3 group relative overflow-hidden active:scale-95 transition-all"
                         >
-                            <span className="material-icons-round animate-pulse">psychology</span>
-                            <span>Diagnóstico Gratuito (IA)</span>
+                            <motion.div
+                                className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100"
+                                initial={false}
+                                transition={{ duration: 0.3 }}
+                            />
+                            <div className="flex items-center gap-3 z-10">
+                                <NeuralCore size="sm" isAnalyzing={false} />
+                                <div className="text-left">
+                                    <span className="block text-lg">Diagnóstico Gratuito (IA)</span>
+                                    <span className="block text-[8px] uppercase tracking-[0.2em] opacity-80">Prueba nuestro Agrónomo Digital</span>
+                                </div>
+                            </div>
                         </Link>
                         <Link
                             to="/productos"
