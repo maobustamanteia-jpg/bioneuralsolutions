@@ -28,7 +28,7 @@ export default function BottomNav() {
             <div className="relative -top-6">
                 <Link
                     to="/agronomo"
-                    className={`w-14 h-14 rounded-full shadow-lg flex items-center justify-center text-white active:scale-95 transition-all transform hover:scale-105 border-4 border-background-light dark:border-background-dark ${isActive('/agronomo') ? 'bg-primary-dark rotate-12' : 'bg-primary shadow-primary/40'}`}
+                    className={`w-14 h-14 rounded-full shadow-lg flex flex-col items-center justify-center text-white active:scale-95 transition-all transform hover:scale-105 border-4 border-background-light dark:border-background-dark ${isActive('/agronomo') ? 'bg-primary-dark rotate-12' : 'bg-primary shadow-primary/40'}`}
                 >
                     <span className="material-icons-round text-2xl">{isActive('/agronomo') ? 'biotech' : 'psychology'}</span>
                 </Link>

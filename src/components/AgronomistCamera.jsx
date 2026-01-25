@@ -12,20 +12,21 @@ export default function AgronomistCamera({ onCapture, onClose }) {
         if (file) {
             const reader = new FileReader();
             reader.onloadend = () => {
-                setCapturedImage(reader.result);
-                startScanning();
+                const result = reader.result;
+                setCapturedImage(result);
+                startScanning(result);
             };
             reader.readAsDataURL(file);
         }
     };
 
-    const startScanning = () => {
+    const startScanning = (img) => {
         setIsScanning(true);
         // Simulate scanning process
         setTimeout(() => {
             setIsScanning(false);
-            if (onCapture) onCapture(capturedImage);
-        }, 3500);
+            if (onCapture) onCapture(img || capturedImage);
+        }, 2500); // Faster scan for better UX
     };
 
     return (
@@ -68,7 +69,14 @@ export default function AgronomistCamera({ onCapture, onClose }) {
 
                         <div className="flex flex-col gap-4">
                             <button
-                                onClick={() => fileInputRef.current.click()}
+                                onClick={() => {
+                                    const input = document.createElement('input');
+                                    input.type = 'file';
+                                    input.accept = 'image/*';
+                                    input.capture = 'environment';
+                                    input.onchange = handleFileUpload;
+                                    input.click();
+                                }}
                                 className="bg-primary hover:bg-primary-dark text-white font-bold py-4 px-8 rounded-2xl transition-all flex items-center justify-center gap-3 shadow-glow"
                             >
                                 <Camera size={20} />
@@ -85,7 +93,6 @@ export default function AgronomistCamera({ onCapture, onClose }) {
                         <input
                             type="file"
                             accept="image/*"
-                            capture="environment"
                             className="hidden"
                             ref={fileInputRef}
                             onChange={handleFileUpload}
@@ -113,15 +120,25 @@ export default function AgronomistCamera({ onCapture, onClose }) {
 
                                     {/* UI Markers */}
                                     <div className="absolute inset-0 flex flex-col items-center justify-center">
-                                        <div className="w-48 h-48 border-2 border-cyan-400/50 rounded-lg relative">
-                                            <div className="absolute -top-1 -left-1 w-6 h-6 border-t-4 border-l-4 border-cyan-400" />
-                                            <div className="absolute -top-1 -right-1 w-6 h-6 border-t-4 border-r-4 border-cyan-400" />
-                                            <div className="absolute -bottom-1 -left-1 w-6 h-6 border-b-4 border-l-4 border-cyan-400" />
-                                            <div className="absolute -bottom-1 -right-1 w-6 h-6 border-b-4 border-r-4 border-cyan-400" />
+                                        <div className="w-64 h-64 border-2 border-cyan-400/30 rounded-3xl relative">
+                                            <div className="absolute -top-1 -left-1 w-8 h-8 border-t-4 border-l-4 border-cyan-400" />
+                                            <div className="absolute -top-1 -right-1 w-8 h-8 border-t-4 border-r-4 border-cyan-400" />
+                                            <div className="absolute -bottom-1 -left-1 w-8 h-8 border-b-4 border-l-4 border-cyan-400" />
+                                            <div className="absolute -bottom-1 -right-1 w-8 h-8 border-b-4 border-r-4 border-cyan-400" />
+
+                                            {/* pH Scale Reference for visual proof */}
+                                            <div className="absolute -right-10 top-1/2 -translate-y-1/2 flex flex-col gap-1">
+                                                {[7, 6, 5, 4, 3].map(n => (
+                                                    <div key={n} className={`w-2 h-6 rounded-full ${n > 6 ? 'bg-green-500' : n > 5 ? 'bg-yellow-400' : 'bg-red-500'} opacity-40`} />
+                                                ))}
+                                            </div>
                                         </div>
-                                        <div className="mt-8 bg-black/60 backdrop-blur-md py-3 px-6 rounded-full border border-cyan-400/30">
-                                            <p className="text-cyan-400 font-mono text-xs animate-pulse tracking-widest text-center">
-                                                ANALIZANDO PATRONES BIOLÓGICOS...
+                                        <div className="mt-8 bg-black/80 backdrop-blur-md py-4 px-8 rounded-2xl border border-cyan-400/40 shadow-[0_0_30px_rgba(34,211,238,0.2)]">
+                                            <p className="text-cyan-400 font-mono text-[10px] animate-pulse tracking-[0.3em] text-center font-bold">
+                                                BIO-NEURAL SCAN: MODO DUAL ACTIVO
+                                            </p>
+                                            <p className="text-white/60 font-mono text-[8px] text-center mt-1">
+                                                DETECTANDO PATRONES: FOLIAR / PH_STRIP
                                             </p>
                                         </div>
                                     </div>

@@ -2,14 +2,16 @@
 
 /* BioNeural Solutions - Diseño Stitch Pixel-Perfect */
 @theme {
-  --color-primary: #3A6332;
-  --color-primary-dark: #2d4e27;
-  --color-secondary: #4E3629;
+  --color-primary: #4CAF50;
+  /* Verde más vibrante BioNeural */
+  --color-primary-dark: #388E3C;
+  --color-secondary: #5D4037;
+  /* Marrón tierra profundo */
   --color-accent: #00E5FF;
-  --color-background-light: #F9FBF8;
-  --color-background-dark: #121A12;
+  --color-background-light: #F4F7F4;
+  --color-background-dark: #0D130D;
   --color-surface-light: #FFFFFF;
-  --color-surface-dark: #1E261E;
+  --color-surface-dark: #161B16;
 
   --font-display: 'Montserrat', sans-serif;
   --font-body: 'Open Sans', sans-serif;

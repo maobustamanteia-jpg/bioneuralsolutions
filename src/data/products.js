@@ -199,13 +199,55 @@ export const products = [
         casesOfUse: "Indispensable en el abonado de fondo de nuevos cultivos y en la recuperación de suelos fatigados por químicos.",
         usage: "2-3 kg por hectárea o 50g por árbol. Mezclar con la tierra del hoyo de siembra.",
         category: "Suelo"
+    },
+    {
+        id: 10,
+        name: "Kit de Rescate Fitosanitario",
+        shortName: "KRF",
+        image: "/images/kit-rescate.png",
+        description: "Solución completa para ataques agresivos de plagas y hongos. Combina protección física y biológica.",
+        benefits: [
+            "Control inmediato de la infestación",
+            "Fortalecimiento post-estrés",
+            "Ahorro del 15% vs productos individuales",
+            "Guía de aplicación incluida"
+        ],
+        applications: [
+            "Ataques severos de Roya o Broca",
+            "Presencia masiva de insectos",
+            "Recuperación post-cosecha"
+        ],
+        casesOfUse: "Recomendado por nuestra IA tras detectar enfermedades fúngicas avanzadas.",
+        usage: "Mezcla de Caldo Sulfocálcico + Jabón Potásico según guía adjunta.",
+        category: "Kits"
+    },
+    {
+        id: 11,
+        name: "Kit de Arranque Bio-Orgánico",
+        shortName: "KAB",
+        image: "/images/kit-arranque.png",
+        description: "Todo lo necesario para una siembra exitosa. Asegura el establecimiento de raíces y vida en el suelo.",
+        benefits: [
+            "Crecimiento 20% más rápido",
+            "Menor mortalidad de plántulas",
+            "Inoculación masiva de hongos benéficos"
+        ],
+        applications: [
+            "Nuevas siembras de Café o Frutales",
+            "Trasplante de semilleros",
+            "Revitalización de lotes viejos"
+        ],
+        casesOfUse: "Indispensable para nuevos productores en transición a lo orgánico.",
+        usage: "Aplicación al fondo del hoyo y riego foliar inicial.",
+        category: "Kits"
     }
 ];
 
 export const categories = {
     "Suelo": { name: "Acondicionadores de Suelo", icon: "🏔️", image: "/images/leonarditas.png" },
     "Nutrición": { name: "Nutrición Vegetal", icon: "💧", image: "/images/quelatos.png" },
-    "Protección": { name: "Protección de Cultivos", icon: "🛡️", image: "/images/jabon-potasico.png" }
+    "Protección": { name: "Protección de Cultivos", icon: "🛡️", image: "/images/jabon-potasico.png" },
+    "Kits": { name: "Soluciones Integrales (Kits)", icon: "📦", image: "/images/kit-recuperacion.png" }
 };
 
 export const companyInfo = {

@@ -18,17 +18,17 @@ export default function Home() {
     return (
         <div className="animate-fade-in pb-20">
             {/* Hero Section */}
-            <section className="relative h-[85vh] flex items-center justify-center overflow-hidden">
+            <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
                 {/* Background Image with Overlay */}
                 <div
                     className="absolute inset-0 z-0 scale-105 transition-transform duration-[10s] animate-slow-zoom"
                     style={{
-                        backgroundImage: "url('/images/hero-bg.png')",
+                        backgroundImage: "url('/images/bioneural-hero.png')",
                         backgroundSize: 'cover',
                         backgroundPosition: 'center'
                     }}
                 >
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-background dark:to-background-dark"></div>
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-background-light dark:to-background-dark"></div>
                 </div>
 
                 <div className="relative z-10 text-center px-6 max-w-md">
@@ -57,18 +57,18 @@ export default function Home() {
 
                     <div className="flex flex-col gap-4">
                         <Link
-                            to="/productos"
-                            className="btn-stitch-primary py-4 shadow-glow"
+                            to="/agronomo"
+                            className="btn-stitch-primary py-4 shadow-glow flex items-center justify-center gap-2 group"
                         >
-                            <span>Explorar Catálogo</span>
-                            <span className="material-icons-round text-sm">arrow_forward</span>
+                            <span className="material-icons-round animate-pulse">psychology</span>
+                            <span>Diagnóstico Gratuito (IA)</span>
                         </Link>
                         <Link
-                            to="/agronomo"
+                            to="/productos"
                             className="bg-white/10 backdrop-blur-md border border-white/20 text-white font-display font-bold py-4 rounded-2xl hover:bg-white/20 transition-all flex items-center justify-center gap-2"
                         >
-                            <span>Probar Agrónomo AI</span>
-                            <span className="material-icons-round text-sm">biotech</span>
+                            <span>Catálogo de Kits</span>
+                            <span className="material-icons-round text-sm">grid_view</span>
                         </Link>
                     </div>
                 </div>
@@ -92,10 +92,85 @@ export default function Home() {
                 </div>
             </section>
 
+            {/* Cómo Funciona Section */}
+            <section className="px-6 py-16 space-y-10">
+                <div className="text-center space-y-3">
+                    <h2 className="font-display font-bold text-2xl text-secondary dark:text-white tracking-tight">Tu Agrónomo en Línea</h2>
+                    <p className="text-gray-500 text-xs font-medium uppercase tracking-widest">3 Pasos para salvar tu cosecha</p>
+                </div>
+
+                <div className="space-y-8">
+                    <div className="flex items-start gap-6 group">
+                        <div className="w-12 h-12 rounded-2xl bg-primary text-white flex items-center justify-center font-bold text-lg shrink-0 shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform">1</div>
+                        <div>
+                            <h4 className="font-display font-bold text-secondary dark:text-white mb-1">Toma una Foto</h4>
+                            <p className="text-gray-500 dark:text-gray-400 text-sm">Captura la hoja o tallo afectado con tu celular en segundos.</p>
+                        </div>
+                    </div>
+                    <div className="flex items-start gap-6 group">
+                        <div className="w-12 h-12 rounded-2xl bg-secondary dark:bg-primary/20 text-white flex items-center justify-center font-bold text-lg shrink-0 shadow-lg group-hover:scale-110 transition-transform">2</div>
+                        <div>
+                            <h4 className="font-display font-bold text-secondary dark:text-white mb-1">Análisis Bio-Neural</h4>
+                            <p className="text-gray-500 dark:text-gray-400 text-sm">Nuestra IA procesa la imagen e identifica el problema fitosanitario.</p>
+                        </div>
+                    </div>
+                    <div className="flex items-start gap-6 group">
+                        <div className="w-12 h-12 rounded-2xl bg-primary text-white flex items-center justify-center font-bold text-lg shrink-0 shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform">3</div>
+                        <div>
+                            <h4 className="font-display font-bold text-secondary dark:text-white mb-1">Recibe tu Receta</h4>
+                            <p className="text-gray-500 dark:text-gray-400 text-sm">Obtén la recomendación exacta de productos para sanar tu cultivo.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <Link
+                    to="/agronomo"
+                    className="w-full bg-secondary dark:bg-surface-dark text-white font-display font-bold py-5 rounded-2xl flex items-center justify-center gap-3 hover:bg-black transition-all"
+                >
+                    <span>Probar Diagnóstico Ahora</span>
+                    <span className="material-icons-round">arrow_forward</span>
+                </Link>
+            </section>
+
+            {/* Featured Kits Section */}
+            <section className="px-6 py-10 bg-primary/5 dark:bg-primary/10 -mx-6 px-12">
+                <div className="flex items-center justify-between mb-8">
+                    <div>
+                        <h2 className="font-display font-bold text-2xl text-secondary dark:text-white tracking-tight">Soluciones en Kit</h2>
+                        <p className="text-gray-500 text-[10px] uppercase font-bold tracking-widest mt-1">Paquetes de alto impacto</p>
+                    </div>
+                    <Link to="/productos" className="text-primary text-xs font-bold uppercase tracking-widest hover:underline flex items-center gap-1">
+                        Ver todos <span className="material-icons-round text-sm">chevron_right</span>
+                    </Link>
+                </div>
+
+                <div className="flex overflow-x-auto gap-6 pb-6 scrollbar-hide">
+                    {products.filter(p => p.category === "Kits").map(kit => (
+                        <div key={kit.id} className="min-w-[280px] bg-white dark:bg-surface-dark rounded-3xl overflow-hidden shadow-xl border border-gray-100 dark:border-gray-800 flex flex-col">
+                            <div className="h-40 relative">
+                                <img src={kit.image} alt={kit.name} className="w-full h-full object-cover" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                <div className="absolute bottom-4 left-4">
+                                    <span className="text-white font-display font-bold text-sm tracking-tight">{kit.name}</span>
+                                </div>
+                            </div>
+                            <div className="p-5 flex-1 flex flex-col">
+                                <p className="text-gray-500 dark:text-gray-400 text-xs line-clamp-2 mb-4">
+                                    {kit.description}
+                                </p>
+                                <Link to="/productos" className="mt-auto text-primary text-[10px] font-bold uppercase tracking-widest flex items-center gap-1">
+                                    Más información <span className="material-icons-round text-[14px]">arrow_outward</span>
+                                </Link>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
             {/* Featured Product Section */}
             <section className="px-6 py-16">
                 <div className="flex items-center justify-between mb-8">
-                    <h2 className="font-display font-bold text-2xl text-secondary dark:text-white tracking-tight">Destacado</h2>
+                    <h2 className="font-display font-bold text-2xl text-secondary dark:text-white tracking-tight">Producto Base</h2>
                     <Link to="/productos" className="text-primary text-xs font-bold uppercase tracking-widest hover:underline flex items-center gap-1">
                         Ver todos <span className="material-icons-round text-sm">chevron_right</span>
                     </Link>

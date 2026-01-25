@@ -43,9 +43,13 @@ export default function AI_Assistant() {
                 }
 
                 if (matchedProduct) {
-                    diagnosis = `ANÁLISIS BIO-NEURAL: He identificado que tu cultivo presenta síntomas relacionados con ${lowerQuery}. Recomiendo nuestro producto ${matchedProduct.name} (${matchedProduct.shortName}). ${matchedProduct.casesOfUse}. Dosis sugerida: ${matchedProduct.usage}.`;
+                    diagnosis = `ANÁLISIS BIO-NEURAL [Fresno, Tolima]: He identificado que tu reporte sobre ${lowerQuery} coincide con las aplicaciones de ${matchedProduct.name} (${matchedProduct.shortName}). ${matchedProduct.casesOfUse}. Dosis sugerida: ${matchedProduct.usage}.`;
+                } else if (lowerQuery.includes('ph') || lowerQuery.includes('suelo')) {
+                    diagnosis = `ANÁLISIS DE SUELO: Detecto una consulta sobre la salud del suelo. Para una precisión completa, te recomiendo usar nuestras cintas reactivas de pH BioNeural y subir una foto aquí. Generalmente, en nuestra zona de Fresno, el Kit de Arranque Bio-Orgánico ayuda a estabilizar la microbiología de base.`;
+                    matchedProduct = products.find(p => p.shortName === "KAB");
                 } else {
-                    diagnosis = `CONSULTA TÉCNICA: He analizado tu reporte sobre "${query}". Aunque no detecto una patología crítica inmediata en mi base de datos de Fresno/Tolima, te recomiendo aplicar Microorganismos de Montaña (MM) para fortalecer el vigor general. ¿Deseas hablar con un agrónomo humano?`;
+                    diagnosis = `CONSULTA TÉCNICA: He analizado tu reporte sobre "${query}". Aunque no detecto una patología crítica inmediata en mi base de datos regional, te recomiendo aplicar el Kit de Arranque Bio-Orgánico para fortalecer la resiliencia del cultivo.`;
+                    matchedProduct = products.find(p => p.shortName === "KAB");
                 }
 
                 const finalResponse = {
@@ -80,17 +84,35 @@ export default function AI_Assistant() {
         // Simulate expert visual analysis
         setTimeout(() => {
             setAnalyzing(false);
-            const capturedDiagnosis = {
-                disease: "Roya del Café (Hemileia vastatrix)",
-                confidence: 96.8,
-                treatment: "Neuro-Café + Caldo Sulfocálcico",
-                zone: "Sector Fresno/Arbeláez",
-                cta: "https://wa.me/573203062007?text=" + encodeURIComponent("Hola, mi escaneo AI detectó Roya del Café. Necesito el tratamiento indicado.")
-            };
+
+            // Randomly simulate a pH strip diagnosis or a disease one
+            const isPH = Math.random() > 0.5;
+
+            let capturedDiagnosis;
+            if (isPH) {
+                capturedDiagnosis = {
+                    disease: "Análisis de Suelo: pH 5.5",
+                    confidence: 94.2,
+                    treatment: "Kit de Arranque Bio-Orgánico",
+                    zone: "Sector Fresno",
+                    cta: "https://wa.me/573203062007?text=" + encodeURIComponent("Hola, mi escaneo AI detectó suelo ácido. Necesito el Kit de Arranque.")
+                };
+            } else {
+                capturedDiagnosis = {
+                    disease: "Roya del Café detectada",
+                    confidence: 96.8,
+                    treatment: "Kit de Rescate Fitosanitario",
+                    zone: "Fresno, Tolima",
+                    cta: "https://wa.me/573203062007?text=" + encodeURIComponent("Hola, mi escaneo AI detectó Roya del Café. Necesito el Kit de Rescate.")
+                };
+            }
+
             setDiagnosisData(capturedDiagnosis);
 
             const reply = {
-                text: "DIAGNÓSTICO VISUAL COMPLETADO: Se detectan pústulas activas compatibles con Hemileia vastatrix. Se recomienda aplicación inmediata de Caldo Sulfocálcico en mezcla con MM Líquido para control y recuperación foliar.",
+                text: isPH
+                    ? `RESULTADO: Tu suelo presenta una acidez moderada (pH 5.5). Para optimizar la siembra en Fresno, te recomiendo nuestro Kit de Arranque que regula la microbiología.`
+                    : `ALERTA: Se detectan signos iniciales de Roya. No permitas que avance; nuestro Kit de Rescate Fitosanitario es la solución orgánica ideal.`,
                 cta: capturedDiagnosis.cta
             };
             setResponse(reply);
@@ -99,14 +121,14 @@ export default function AI_Assistant() {
             const newEntry = {
                 id: Date.now(),
                 date: new Date().toLocaleString(),
-                query: "Análisis Visual",
+                query: isPH ? "Análisis de Suelo" : "Diagnóstico Visual",
                 diagnosis: capturedDiagnosis.disease,
                 type: 'vision',
                 imageData
             };
             const history = JSON.parse(localStorage.getItem('diagnosis_history') || '[]');
             localStorage.setItem('diagnosis_history', JSON.stringify([newEntry, ...history]));
-        }, 3000);
+        }, 1500); // Shorter analysis time for smoother feel
     };
 
     return (
