@@ -63,15 +63,13 @@ export default function Home() {
                             <span>Explorar Catálogo</span>
                             <span className="material-icons-round text-sm">arrow_forward</span>
                         </Link>
-                        <a
-                            href="https://wa.me/573203062007"
-                            target="_blank"
-                            rel="noopener noreferrer"
+                        <Link
+                            to="/agronomo"
                             className="bg-white/10 backdrop-blur-md border border-white/20 text-white font-display font-bold py-4 rounded-2xl hover:bg-white/20 transition-all flex items-center justify-center gap-2"
                         >
-                            <span>Asesoría Técnica</span>
-                            <span className="material-icons-round text-sm">psychology</span>
-                        </a>
+                            <span>Probar Agrónomo AI</span>
+                            <span className="material-icons-round text-sm">biotech</span>
+                        </Link>
                     </div>
                 </div>
             </section>
@@ -148,14 +146,12 @@ export default function Home() {
                     <p className="text-gray-500 dark:text-gray-400 text-xs mb-8 leading-relaxed px-4 font-medium">
                         Tenemos planes especiales por hectárea y asesoría personalizada en campo en la zona de Fresno.
                     </p>
-                    <a
-                        href="https://wa.me/573203062007?text=Hola,%20soy%20productor%20y%20me%20interesa%20asesoría%20técnica."
-                        target="_blank"
-                        rel="noopener noreferrer"
+                    <Link
+                        to="/agronomo"
                         className="btn-stitch-primary py-4 w-full"
                     >
-                        Inicia tu Transición Orgánica
-                    </a>
+                        Probar Agrónomo Digital
+                    </Link>
                 </div>
             </section>
         </div>

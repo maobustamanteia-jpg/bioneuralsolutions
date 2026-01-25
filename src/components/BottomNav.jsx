@@ -26,14 +26,12 @@ export default function BottomNav() {
             </Link>
 
             <div className="relative -top-6">
-                <a
-                    href="https://wa.me/573203062007"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-14 h-14 bg-primary rounded-full shadow-lg shadow-primary/40 flex items-center justify-center text-white active:scale-95 transition-all transform hover:scale-105 border-4 border-background-light dark:border-background-dark"
+                <Link
+                    to="/agronomo"
+                    className={`w-14 h-14 rounded-full shadow-lg flex items-center justify-center text-white active:scale-95 transition-all transform hover:scale-105 border-4 border-background-light dark:border-background-dark ${isActive('/agronomo') ? 'bg-primary-dark rotate-12' : 'bg-primary shadow-primary/40'}`}
                 >
-                    <span className="material-icons-round text-2xl">chat</span>
-                </a>
+                    <span className="material-icons-round text-2xl">{isActive('/agronomo') ? 'biotech' : 'psychology'}</span>
+                </Link>
             </div>
 
             <Link to="/como-comprar" className={`flex flex-col items-center justify-center w-full transition-colors group ${isActive('/como-comprar') ? 'text-primary' : 'text-gray-400 dark:text-gray-500 hover:text-primary'}`}>

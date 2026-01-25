@@ -11,6 +11,7 @@ const Products = lazy(() => import('./pages/Products'));
 const About = lazy(() => import('./pages/About'));
 const HowToBuy = lazy(() => import('./pages/HowToBuy'));
 const Contact = lazy(() => import('./pages/Contact'));
+const Agronomo = lazy(() => import('./pages/Agronomo'));
 
 const LoadingSpinner = () => (
   <div className="flex items-center justify-center min-h-[60vh]">
@@ -42,6 +43,7 @@ function AppContent() {
                 <Route path="/quienes-somos" element={<About />} />
                 <Route path="/como-comprar" element={<HowToBuy />} />
                 <Route path="/contacto" element={<Contact />} />
+                <Route path="/agronomo" element={<Agronomo />} />
               </Routes>
             </motion.div>
           </Suspense>
