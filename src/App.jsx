@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { AnimatePresence, motion } from 'framer-motion';
 import Header from './components/Header';
 import BottomNav from './components/BottomNav';
+import SplashScreen from './components/SplashScreen';
 
 // Lazy loading components
 const Home = lazy(() => import('./pages/Home'));
@@ -54,8 +55,20 @@ function AppContent() {
 }
 
 function App() {
+  const [showSplash, setShowSplash] = React.useState(true);
+
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowSplash(false);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <Router>
+      <AnimatePresence>
+        {showSplash && <SplashScreen key="splash" />}
+      </AnimatePresence>
       <div className="min-h-screen bg-gray-100 dark:bg-[#0a0f0a] flex items-center justify-center py-0 sm:py-8 lg:py-12">
         <AppContent />
       </div>

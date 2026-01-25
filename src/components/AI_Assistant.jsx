@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import { Send, Bot, AlertTriangle } from 'lucide-react';
+import { Send, Bot, AlertTriangle, Camera, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import AgronomistCamera from './AgronomistCamera';
 
 export default function AI_Assistant() {
     const [query, setQuery] = useState('');
     const [response, setResponse] = useState(null);
     const [analyzing, setAnalyzing] = useState(false);
+    const [showCamera, setShowCamera] = useState(false);
+    const [diagnosisData, setDiagnosisData] = useState(null);
 
     const handleAnalyze = (e) => {
         e.preventDefault();
@@ -13,23 +16,47 @@ export default function AI_Assistant() {
 
         setAnalyzing(true);
         setResponse(null);
+        setDiagnosisData(null);
 
         // Simulate AI processing
         setTimeout(() => {
             setAnalyzing(false);
 
-            // Dummy logic for Fresno context
+            // Dummy logic for Fresno/Arbeláez context
             let reply = "";
-            if (query.toLowerCase().includes('café') || query.toLowerCase().includes('broca')) {
-                reply = "ANÁLISIS: Detectada posible infestación en cultivo de Café. SOLUCIÓN RECOMENDADA: Neuro-Café Booster combinado con control biológico. Eficacia proyectada: 94%.";
-            } else if (query.toLowerCase().includes('amarillo') || query.toLowerCase().includes('hoja')) {
-                reply = "DIAGNÓSTICO: Deficiencia de Nitrógeno o posible Sigatoka. RECOMIENDO: Plátano-Core Energy para refuerzo foliar inmediato.";
+            const lowerQuery = query.toLowerCase();
+
+            if (lowerQuery.includes('café') || lowerQuery.includes('roya')) {
+                reply = "ANÁLISIS: Detectada posible Roya del Café (Hemileia vastatrix). SOLUCIÓN: Neuro-Café Booster + Caldo Viso-Sulk (Azufre). Eficacia proyectada: 92%.";
+            } else if (lowerQuery.includes('plátano') || lowerQuery.includes('sigatoka')) {
+                reply = "DIAGNÓSTICO: Posible Sigatoka Negra. RECOMIENDO: Plátano-Core Energy con refuerzo de Microorganismos de Montaña (MM).";
+            } else if (lowerQuery.includes('cítricos') || lowerQuery.includes('hormiga')) {
+                reply = "ALERTA: Actividad de Hormiga Arriera detectada. SOLUCIÓN: Bio-Barrera de Jabón Potásico + Neem. Aplicación perimetral inmediata.";
             } else {
-                reply = `DATOS INSUFICIENTES para "${query}". Recomiendo análisis de suelo completo con Suelo-Matrix Reconstructor para descartar pH ácido.`;
+                reply = `DATOS ANALIZADOS para "${query}". Recomiendo Suelo-Matrix Reconstructor para mejorar la asimilación de nutrientes y vigor general de la planta.`;
             }
 
             setResponse(reply);
         }, 2000);
+    };
+
+    const handleCameraCapture = (imageData) => {
+        setShowCamera(false);
+        setAnalyzing(true);
+        setResponse(null);
+        setQuery("Captura de imagen analizada...");
+
+        // Simulate expert visual analysis
+        setTimeout(() => {
+            setAnalyzing(false);
+            setDiagnosisData({
+                disease: "Roya del Café (Nivel 2)",
+                confidence: 96.8,
+                treatment: "Neuro-Café + Microorganismos MM Líquido",
+                zone: "Fresno/Arbeláez Sector B"
+            });
+            setResponse("DIAGNÓSTICO VISUAL COMPLETADO: Se detectan esporas activas de Hemileia vastatrix. Aplicación de choque con MM Líquido recomendada en las próximas 48 horas.");
+        }, 3000);
     };
 
     return (
@@ -39,26 +66,35 @@ export default function AI_Assistant() {
                     <Bot className="text-cyan-tech animate-pulse" />
                 </div>
                 <div>
-                    <h2 className="text-xl font-bold">Bio-Neural Core</h2>
-                    <p className="text-xs text-gray-400 font-mono">v4.5.2 | ONLINE</p>
+                    <h2 className="text-xl font-bold text-white">Bio-Neural Core</h2>
+                    <p className="text-[10px] text-primary font-mono tracking-widest uppercase">Orchestrator v5.0.1 | ONLINE</p>
                 </div>
             </div>
 
-            <div className="bg-black/40 rounded-xl p-4 min-h-[150px] mb-4 border border-white/5 relative overflow-hidden">
+            <div className={`bg-black/40 rounded-xl p-4 min-h-[160px] mb-4 border border-white/5 relative overflow-hidden transition-all duration-500 ${diagnosisData ? 'ring-1 ring-primary/30' : ''}`}>
                 <div className="absolute inset-0 bg-[url('https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif')] opacity-5 bg-cover pointer-events-none mix-blend-screen" />
 
-                <AnimatePresence>
+                <AnimatePresence mode="wait">
                     {analyzing ? (
                         <motion.div
+                            key="analyzing"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            className="flex flex-col items-center justify-center h-full text-cyan-tech font-mono text-sm"
+                            className="flex flex-col items-center justify-center h-40 text-primary font-mono text-xs"
                         >
-                            <span className="animate-pulse">PROCESANDO DATOS BIOLÓGICOS...</span>
-                            <div className="w-full bg-gray-800 h-1 mt-2 rounded-full overflow-hidden">
+                            <div className="relative mb-4">
                                 <motion.div
-                                    className="bg-cyan-tech h-full"
+                                    animate={{ rotate: 360 }}
+                                    transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                                    className="w-12 h-12 border border-primary/20 rounded-full border-t-primary"
+                                />
+                                <Bot className="absolute inset-0 m-auto text-primary animate-pulse" size={16} />
+                            </div>
+                            <span className="tracking-[0.2em] uppercase">Sincronizando con Agentes...</span>
+                            <div className="w-full max-w-[150px] bg-white/5 h-[1px] mt-3 rounded-full overflow-hidden">
+                                <motion.div
+                                    className="bg-primary h-full"
                                     initial={{ width: "0%" }}
                                     animate={{ width: "100%" }}
                                     transition={{ duration: 2 }}
@@ -66,34 +102,75 @@ export default function AI_Assistant() {
                             </div>
                         </motion.div>
                     ) : response ? (
-                        <motion.p
+                        <motion.div
+                            key="response"
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="text-emerald-400 font-mono text-sm leading-relaxed"
+                            className="space-y-4"
                         >
-                            {">"} {response}
-                        </motion.p>
+                            {diagnosisData && (
+                                <div className="bg-primary/10 border border-primary/20 rounded-lg p-3 flex items-center gap-3">
+                                    <Sparkles className="text-primary" size={16} />
+                                    <div>
+                                        <p className="text-[10px] text-primary font-bold uppercase tracking-wider">Resultado de Visión AI</p>
+                                        <p className="text-xs text-white font-medium">{diagnosisData.disease} - Confianza: {diagnosisData.confidence}%</p>
+                                    </div>
+                                </div>
+                            )}
+                            <p className="text-emerald-400 font-mono text-xs leading-relaxed">
+                                <span className="text-primary mr-2"> {">"} </span>
+                                {response}
+                            </p>
+                        </motion.div>
                     ) : (
-                        <p className="text-gray-500 font-mono text-xs">Esperando input del operador agrícola...</p>
+                        <motion.div
+                            key="idle"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            className="flex flex-col items-center justify-center h-40 opacity-40"
+                        >
+                            <Bot className="mb-2 text-primary" size={24} />
+                            <p className="text-gray-400 font-mono text-[10px] tracking-widest uppercase">Esperando entrada del productor...</p>
+                        </motion.div>
                     )}
                 </AnimatePresence>
             </div>
 
-            <form onSubmit={handleAnalyze} className="relative">
+            <form onSubmit={handleAnalyze} className="relative group">
                 <input
                     type="text"
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
-                    placeholder="Describe el problema (ej: Café con broca)..."
-                    className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-4 pr-12 text-white placeholder-gray-500 focus:outline-none focus:border-neon-green/50 transition-colors font-mono text-sm"
+                    placeholder="Describe el síntoma o usa la cámara..."
+                    className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 pl-4 pr-24 text-white placeholder-gray-500 focus:outline-none focus:border-primary/50 transition-all font-mono text-xs focus:bg-white/10"
                 />
-                <button
-                    type="submit"
-                    className="absolute right-2 top-2 bottom-2 w-10 bg-neon-green/10 rounded-lg flex items-center justify-center text-neon-green hover:bg-neon-green/20 transition-colors"
-                >
-                    <Send size={18} />
-                </button>
+                <div className="absolute right-2 top-2 bottom-2 flex gap-1">
+                    <button
+                        type="button"
+                        onClick={() => setShowCamera(true)}
+                        className="w-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary hover:bg-primary/20 transition-all border border-primary/20 group-hover:shadow-[0_0_15px_rgba(58,99,50,0.3)]"
+                        title="Abrir Agrónomo Digital"
+                    >
+                        <Camera size={18} />
+                    </button>
+                    <button
+                        type="submit"
+                        disabled={!query || analyzing}
+                        className="w-10 bg-primary rounded-xl flex items-center justify-center text-white disabled:opacity-20 disabled:grayscale hover:bg-primary-dark transition-all shadow-glow"
+                    >
+                        <Send size={18} />
+                    </button>
+                </div>
             </form>
+
+            <AnimatePresence>
+                {showCamera && (
+                    <AgronomistCamera
+                        onCapture={handleCameraCapture}
+                        onClose={() => setShowCamera(false)}
+                    />
+                )}
+            </AnimatePresence>
         </div>
     );
 }
