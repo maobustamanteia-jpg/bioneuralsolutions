@@ -1,6 +1,15 @@
 import React, { useState, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Camera, X, Upload, Zap, CheckCircle, AlertCircle } from 'lucide-react';
+import { AnimatePresence } from 'framer-motion';
+import { Camera, X, Upload, Zap, AlertCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
+
+// Static data for the scanning animation to avoid Math.random() during render
+const DATA_STREAM_ITEMS = [
+    'RAW_DATA_CHH_k8f7g2h9j :: CONFIDENCE_0.9421',
+    'RAW_DATA_CHH_m3n5p8q2w :: CONFIDENCE_0.9637',
+    'RAW_DATA_CHH_x4c6v1b9n :: CONFIDENCE_0.8892',
+    'RAW_DATA_CHH_t7r3e5y0u :: CONFIDENCE_0.9154',
+];
 
 export default function AgronomistCamera({ onCapture, onClose }) {
     const [capturedImage, setCapturedImage] = useState(null);
@@ -145,13 +154,13 @@ export default function AgronomistCamera({ onCapture, onClose }) {
 
                                     {/* Data Stream Simulation */}
                                     <div className="absolute bottom-6 left-6 right-6 font-mono text-[8px] text-cyan-400/60 flex flex-col gap-1 overflow-hidden h-20">
-                                        {Array.from({ length: 4 }).map((_, i) => (
+                                        {DATA_STREAM_ITEMS.map((item, i) => (
                                             <motion.p
                                                 key={i}
                                                 animate={{ opacity: [0, 1, 0], x: [0, 10, 0] }}
                                                 transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.3 }}
                                             >
-                                                RAW_DATA_CHH_{Math.random().toString(36).substr(2, 9)} :: CONFIDENCE_{(Math.random() * 0.2 + 0.8).toFixed(4)}
+                                                {item}
                                             </motion.p>
                                         ))}
                                     </div>

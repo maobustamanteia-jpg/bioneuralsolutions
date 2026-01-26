@@ -1,6 +1,20 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+// Generate particles outside component to ensure purity
+const generateParticles = () => {
+    return [...Array(20)].map(() => ({
+        initialX: Math.random() * 100 + "%",
+        initialY: Math.random() * 100 + "%",
+        initialOpacity: Math.random(),
+        animateY: Math.random() * 100 + "%",
+        duration: Math.random() * 5 + 3,
+    }));
+};
+
+// Pre-generate static particles
+const STATIC_PARTICLES = generateParticles();
+
 export default function SplashScreen() {
     return (
         <motion.div
@@ -11,21 +25,21 @@ export default function SplashScreen() {
         >
             {/* Background Neural Particles Simulation (Simplified) */}
             <div className="absolute inset-0 opacity-20 pointer-events-none">
-                {[...Array(20)].map((_, i) => (
+                {STATIC_PARTICLES.map((particle, i) => (
                     <motion.div
                         key={i}
                         className="absolute w-1 h-1 bg-primary rounded-full"
                         initial={{
-                            x: Math.random() * 100 + "%",
-                            y: Math.random() * 100 + "%",
-                            opacity: Math.random()
+                            x: particle.initialX,
+                            y: particle.initialY,
+                            opacity: particle.initialOpacity
                         }}
                         animate={{
-                            y: [null, Math.random() * 100 + "%"],
+                            y: [null, particle.animateY],
                             opacity: [0.2, 0.8, 0.2]
                         }}
                         transition={{
-                            duration: Math.random() * 5 + 3,
+                            duration: particle.duration,
                             repeat: Infinity,
                             ease: "linear"
                         }}

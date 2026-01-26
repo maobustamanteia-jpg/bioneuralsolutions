@@ -1,13 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-const navItems = [
-    { path: '/', label: 'Inicio', icon: 'home' },
-    { path: '/productos', label: 'Productos', icon: 'spa' }, // Use 'spa' for products/nature
-    { path: '/como-comprar', label: 'Guía', icon: 'help_outline', isCenter: false },
-    { path: '/contacto', label: 'Contacto', icon: 'contact_support' }
-];
-
 export default function BottomNav() {
     const location = useLocation();
 

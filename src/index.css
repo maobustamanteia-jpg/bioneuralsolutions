@@ -3,10 +3,9 @@
 /* BioNeural Solutions - Diseño Stitch Pixel-Perfect */
 @theme {
   --color-primary: #4CAF50;
-  /* Verde más vibrante BioNeural */
   --color-primary-dark: #388E3C;
+  --color-primary-light: #81C784;
   --color-secondary: #5D4037;
-  /* Marrón tierra profundo */
   --color-accent: #00E5FF;
   --color-background-light: #F4F7F4;
   --color-background-dark: #0D130D;
@@ -71,8 +70,31 @@ body {
   }
 }
 
+@keyframes slowZoom {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.1);
+  }
+}
+
+.animate-slow-zoom {
+  animation: slowZoom 20s ease-in-out infinite alternate;
+}
+
 .animate-fade-in {
   animation: fadeIn 0.6s ease-out forwards;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 /* Botones estilo Stitch */
@@ -131,4 +153,21 @@ body {
 
 .dark .mobile-shell {
   background-color: var(--color-background-dark);
+}
+
+/* Logo refinements */
+.logo-blend {
+  mix-blend-mode: multiply;
+  filter: contrast(110%) brightness(105%);
+}
+
+.dark .logo-blend {
+  mix-blend-mode: screen;
+  filter: brightness(1.2);
+}
+
+.logo-container {
+  background: radial-gradient(circle, rgba(76, 175, 80, 0.1) 0%, transparent 70%);
+  padding: 1rem;
+  border-radius: 50%;
 }

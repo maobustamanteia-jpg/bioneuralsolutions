@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { products } from '../data/products';
 import ProductCard from '../components/ProductCard';
 import NeuralCore from '../components/NeuralCore';
+import RegionalAlerts from '../components/RegionalAlerts';
 
 export default function Home() {
     // Tomamos el producto destacado (MM)
@@ -39,11 +40,11 @@ export default function Home() {
                         transition={{ duration: 0.8 }}
                         className="mb-8"
                     >
-                        <div className="relative inline-block">
-                            <div className="absolute inset-0 bg-primary blur-3xl opacity-30 animate-pulse"></div>
+                        <div className="relative inline-block logo-container">
+                            <div className="absolute inset-0 bg-primary blur-3xl opacity-20 animate-pulse"></div>
                             <img
                                 alt="BioNeural Logo"
-                                className="w-40 h-40 object-contain relative z-10 drop-shadow-2xl"
+                                className="w-56 h-auto object-contain relative z-10 logo-blend"
                                 src="/logo.png"
                             />
                         </div>
@@ -87,6 +88,7 @@ export default function Home() {
 
             {/* Benefits Grid */}
             <section className="px-6 -mt-10 relative z-20">
+                <RegionalAlerts />
                 <div className="grid grid-cols-2 gap-4">
                     {benefits.map((benefit, idx) => (
                         <div

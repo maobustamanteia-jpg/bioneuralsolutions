@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import { History, Trash2, ExternalLink, Leaf, Camera } from 'lucide-react';
 
 export default function DiagnosisHistory() {

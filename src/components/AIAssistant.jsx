@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Send, Bot, AlertTriangle, Camera, Sparkles, Binary } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import AgronomistCamera from './AgronomistCamera';
 import NeuralCore from './NeuralCore';
 
-export default function AI_Assistant() {
+export default function AIAssistant() {
     const [query, setQuery] = useState('');
     const [response, setResponse] = useState(null);
     const [analyzing, setAnalyzing] = useState(false);

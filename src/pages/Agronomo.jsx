@@ -1,9 +1,14 @@
-import { motion } from 'framer-motion';
+import React from 'react';
 import NeuralCore from '../components/NeuralCore';
+import AIAssistant from '../components/AIAssistant';
+import DiagnosisHistory from '../components/DiagnosisHistory';
+import FertilizerCalculator from '../components/FertilizerCalculator';
+import RegionalAlerts from '../components/RegionalAlerts';
 
 export default function Agronomo() {
     return (
         <div className="animate-fade-in pb-24 px-6 pt-20 max-w-2xl mx-auto">
+            <RegionalAlerts />
             <header className="mb-10 text-center">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
@@ -20,7 +25,9 @@ export default function Agronomo() {
                 </p>
             </header>
 
-            <AI_Assistant />
+            <AIAssistant />
+
+            <FertilizerCalculator />
 
             <DiagnosisHistory />
 

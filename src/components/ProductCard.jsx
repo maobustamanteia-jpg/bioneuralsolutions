@@ -1,7 +1,6 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 
-export default function ProductCard({ item, index }) {
+export default function ProductCard({ item }) {
     // Definimos un icono por defecto basado en la categoría o nombre
     const getIcon = () => {
         if (item.category === "Suelo") return "terrain";
