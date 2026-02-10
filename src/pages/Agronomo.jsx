@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import NeuralCore from '../components/NeuralCore';
 import AIAssistant from '../components/AIAssistant';
 import DiagnosisHistory from '../components/DiagnosisHistory';

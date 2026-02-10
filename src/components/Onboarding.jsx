@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Sprout, Layout, Bell, MapPin, ChevronRight, Check } from 'lucide-react';
 import NeuralCore from './NeuralCore';
 

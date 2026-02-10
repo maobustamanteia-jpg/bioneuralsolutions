@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Calculator, Box, Droplets, Leaf, Info, ShoppingCart } from 'lucide-react';
 import { products } from '../data/products';
 

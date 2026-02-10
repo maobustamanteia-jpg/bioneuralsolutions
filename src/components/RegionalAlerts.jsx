@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { AlertTriangle, MapPin, Bell, Shield, ArrowRight, X } from 'lucide-react';
 
 export default function RegionalAlerts() {
