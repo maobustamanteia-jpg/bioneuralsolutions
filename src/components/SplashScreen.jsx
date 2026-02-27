@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 
 // Generate particles outside component to ensure purity
 const generateParticles = () => {
@@ -17,7 +17,7 @@ const STATIC_PARTICLES = generateParticles();
 
 export default function SplashScreen() {
     return (
-        <motion.div
+        <Motion.div
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
@@ -26,7 +26,7 @@ export default function SplashScreen() {
             {/* Background Neural Particles Simulation (Simplified) */}
             <div className="absolute inset-0 opacity-20 pointer-events-none">
                 {STATIC_PARTICLES.map((particle, i) => (
-                    <motion.div
+                    <Motion.div
                         key={i}
                         className="absolute w-1 h-1 bg-primary rounded-full"
                         initial={{
@@ -48,7 +48,7 @@ export default function SplashScreen() {
             </div>
 
             <div className="relative z-10 flex flex-col items-center">
-                <motion.div
+                <Motion.div
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 1, ease: "backOut" }}
@@ -60,9 +60,9 @@ export default function SplashScreen() {
                         alt="BioNeural Logo"
                         className="w-32 h-32 object-contain relative z-10 drop-shadow-[0_0_20px_rgba(58,99,50,0.5)]"
                     />
-                </motion.div>
+                </Motion.div>
 
-                <motion.div
+                <Motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5, duration: 0.8 }}
@@ -78,11 +78,11 @@ export default function SplashScreen() {
                         </p>
                         <span className="w-24 h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent"></span>
                     </div>
-                </motion.div>
+                </Motion.div>
 
                 {/* Progress Indicator */}
                 <div className="mt-12 w-48 h-1 bg-white/5 rounded-full overflow-hidden relative">
-                    <motion.div
+                    <Motion.div
                         className="absolute inset-y-0 left-0 bg-primary"
                         initial={{ width: "0%" }}
                         animate={{ width: "100%" }}
@@ -91,14 +91,14 @@ export default function SplashScreen() {
                 </div>
             </div>
 
-            <motion.div
+            <Motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 2, duration: 0.5 }}
                 className="absolute bottom-12 text-gray-500 font-mono text-[8px] tracking-widest uppercase"
             >
                 v1.0.4 | Fresno & Arbeláez
-            </motion.div>
-        </motion.div>
+            </Motion.div>
+        </Motion.div>
     );
 }

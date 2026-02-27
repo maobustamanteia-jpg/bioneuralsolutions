@@ -1,6 +1,6 @@
 import React from 'react';
 import { Home, Grid, Cpu, Activity } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 
 const NavItem = ({ icon: Icon, label, active, onClick }) => (
     <button
@@ -11,7 +11,7 @@ const NavItem = ({ icon: Icon, label, active, onClick }) => (
         type="button"
     >
         {active && (
-            <motion.div
+            <Motion.div
                 layoutId="active-glow"
                 className="absolute inset-0 bg-[--color-neon-green]/10 rounded-xl blur-md"
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}

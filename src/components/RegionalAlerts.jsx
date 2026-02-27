@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import {motion as Motion, AnimatePresence } from 'framer-motion';
 import { AlertTriangle, MapPin, Bell, Shield, ArrowRight, X } from 'lucide-react';
 
 export default function RegionalAlerts() {
@@ -53,7 +53,7 @@ export default function RegionalAlerts() {
 
     return (
         <AnimatePresence>
-            <motion.div
+            <Motion.div
                 initial={{ opacity: 0, y: -20, scale: 0.95 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
@@ -115,7 +115,7 @@ export default function RegionalAlerts() {
                     </span>
                     <span className="text-[8px] font-black text-white/40 uppercase tracking-[0.2em]">EN VIVO</span>
                 </div>
-            </motion.div>
+            </Motion.div>
         </AnimatePresence>
     );
 }

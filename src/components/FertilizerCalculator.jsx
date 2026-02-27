@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import {motion as Motion, AnimatePresence } from 'framer-motion';
 import { Calculator, Box, Droplets, Leaf, Info, ShoppingCart } from 'lucide-react';
 import { products } from '../data/products';
 
@@ -99,7 +99,7 @@ export default function FertilizerCalculator() {
                         {Object.entries(results).map(([shortName, liters]) => {
                             const prod = getProductInfo(shortName.toUpperCase());
                             return (
-                                <motion.div
+                                <Motion.div
                                     layout
                                     key={shortName}
                                     className="flex items-center justify-between p-3 bg-white dark:bg-black/20 rounded-xl border border-gray-50 dark:border-white/5"
@@ -116,7 +116,7 @@ export default function FertilizerCalculator() {
                                         <span className="text-sm font-black text-primary">{liters.toFixed(1)} L</span>
                                         <p className="text-[8px] text-gray-400 uppercase font-bold">Total Necesario</p>
                                     </div>
-                                </motion.div>
+                                </Motion.div>
                             );
                         })}
                     </div>

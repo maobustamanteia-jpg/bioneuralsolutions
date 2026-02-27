@@ -1,6 +1,6 @@
 import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion as Motion } from 'framer-motion';
 import Header from './components/Header';
 import BottomNav from './components/BottomNav';
 import SplashScreen from './components/SplashScreen';
@@ -31,7 +31,7 @@ function AppContent() {
       <main id="main-content" role="main" className="relative z-10 pt-4">
         <AnimatePresence mode="wait">
           <Suspense fallback={<LoadingSpinner />}>
-            <motion.div
+            <Motion.div
               key={location.pathname}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -46,7 +46,7 @@ function AppContent() {
                 <Route path="/contacto" element={<Contact />} />
                 <Route path="/agronomo" element={<Agronomo />} />
               </Routes>
-            </motion.div>
+            </Motion.div>
           </Suspense>
         </AnimatePresence>
       </main>

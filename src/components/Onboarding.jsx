@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import {motion as Motion, AnimatePresence } from 'framer-motion';
 import { Sprout, Layout, Bell, MapPin, ChevronRight, Check } from 'lucide-react';
 import NeuralCore from './NeuralCore';
 
@@ -86,13 +86,13 @@ export default function Onboarding({ onComplete }) {
         <div className="fixed inset-0 z-[100] bg-background-dark flex items-center justify-center p-6 sm:p-0">
             <div className="absolute inset-0 circuit-bg opacity-10"></div>
 
-            <motion.div
+            <Motion.div
                 initial={{ opacity: 0, scale: 0.9, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 className="relative w-full max-w-md bg-surface-dark/80 backdrop-blur-xl rounded-[40px] border border-white/10 p-8 shadow-2xl overflow-hidden"
             >
                 <div className="absolute top-0 left-0 w-full h-1 bg-white/5">
-                    <motion.div
+                    <Motion.div
                         className="h-full bg-primary shadow-glow"
                         initial={{ width: "0%" }}
                         animate={{ width: `${((step + 1) / steps.length) * 100}%` }}
@@ -100,7 +100,7 @@ export default function Onboarding({ onComplete }) {
                 </div>
 
                 <AnimatePresence mode="wait">
-                    <motion.div
+                    <Motion.div
                         key={step}
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
@@ -198,7 +198,7 @@ export default function Onboarding({ onComplete }) {
                                 <ChevronRight className="relative z-10 group-hover:translate-x-1 transition-transform" />
                             </button>
                         )}
-                    </motion.div>
+                    </Motion.div>
                 </AnimatePresence>
 
                 <div className="flex justify-center gap-2 mt-4 pb-2">
@@ -209,7 +209,7 @@ export default function Onboarding({ onComplete }) {
                         />
                     ))}
                 </div>
-            </motion.div>
+            </Motion.div>
         </div>
     );
 }

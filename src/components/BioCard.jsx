@@ -1,10 +1,10 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 import { Zap, Sprout } from 'lucide-react';
 
 export default function BioCard({ product }) {
     return (
-        <motion.div
+        <Motion.div
             whileHover={{ scale: 1.02 }}
             className="glass-panel rounded-2xl overflow-hidden relative group"
         >
@@ -48,6 +48,6 @@ export default function BioCard({ product }) {
                     </button>
                 </div>
             </div>
-        </motion.div>
+        </Motion.div>
     );
 }

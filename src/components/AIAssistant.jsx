@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Send, Bot, AlertTriangle, Camera, Sparkles, Binary } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import {motion as Motion, AnimatePresence } from 'framer-motion';
 import AgronomistCamera from './AgronomistCamera';
 import NeuralCore from './NeuralCore';
 
@@ -139,7 +139,7 @@ export default function AIAssistant() {
                 <div className="flex-1">
                     <h2 className="text-xl font-bold text-white tracking-tight flex items-center gap-2">
                         Bio-Neural Core
-                        {analyzing && <motion.span animate={{ opacity: [0, 1, 0] }} transition={{ duration: 1, repeat: Infinity }}><Binary size={14} className="text-accent" /></motion.span>}
+                        {analyzing && <Motion.span animate={{ opacity: [0, 1, 0] }} transition={{ duration: 1, repeat: Infinity }}><Binary size={14} className="text-accent" /></Motion.span>}
                     </h2>
                     <p className="text-[10px] text-primary-light font-mono tracking-widest uppercase">Orchestrator v5.1.0 | <span className="text-accent">ONLINE</span></p>
                 </div>
@@ -150,7 +150,7 @@ export default function AIAssistant() {
 
                 <AnimatePresence mode="wait">
                     {analyzing ? (
-                        <motion.div
+                        <Motion.div
                             key="analyzing"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
@@ -162,7 +162,7 @@ export default function AIAssistant() {
                             </div>
                             <span className="tracking-[0.3em] uppercase font-bold text-accent">Procesando Bio-Data...</span>
                             <div className="w-full max-w-[200px] bg-white/5 h-[2px] mt-6 rounded-full overflow-hidden border border-white/10">
-                                <motion.div
+                                <Motion.div
                                     className="bg-gradient-to-r from-primary to-accent h-full"
                                     initial={{ width: "0%" }}
                                     animate={{ width: "100%" }}
@@ -173,9 +173,9 @@ export default function AIAssistant() {
                                 <span>SYNCING_MICROBIOTA_DATABASE...</span>
                                 <span>FRESNO_SECTOR_7_CONNECTED</span>
                             </div>
-                        </motion.div>
+                        </Motion.div>
                     ) : response ? (
-                        <motion.div
+                        <Motion.div
                             key="response"
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -205,9 +205,9 @@ export default function AIAssistant() {
                                     Hablar con Asesor Técnico
                                 </a>
                             )}
-                        </motion.div>
+                        </Motion.div>
                     ) : (
-                        <motion.div
+                        <Motion.div
                             key="idle"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
@@ -215,7 +215,7 @@ export default function AIAssistant() {
                         >
                             <Bot className="mb-2 text-primary" size={24} />
                             <p className="text-gray-400 font-mono text-[10px] tracking-widest uppercase">Esperando entrada del productor...</p>
-                        </motion.div>
+                        </Motion.div>
                     )}
                 </AnimatePresence>
             </div>

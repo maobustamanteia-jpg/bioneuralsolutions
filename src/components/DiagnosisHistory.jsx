@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import {motion as Motion, AnimatePresence } from 'framer-motion';
 import { History, Trash2, ExternalLink, Leaf, Camera } from 'lucide-react';
 
 export default function DiagnosisHistory() {
@@ -45,7 +45,7 @@ export default function DiagnosisHistory() {
             <div className="space-y-4">
                 <AnimatePresence>
                     {history.map((item) => (
-                        <motion.div
+                        <Motion.div
                             key={item.id}
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
@@ -87,7 +87,7 @@ export default function DiagnosisHistory() {
                                     )}
                                 </div>
                             </div>
-                        </motion.div>
+                        </Motion.div>
                     ))}
                 </AnimatePresence>
             </div>

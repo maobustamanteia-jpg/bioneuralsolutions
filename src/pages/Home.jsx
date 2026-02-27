@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { products } from '../data/products';
 import ProductCard from '../components/ProductCard';
@@ -34,7 +34,7 @@ export default function Home() {
                 </div>
 
                 <div className="relative z-10 text-center px-6 max-w-md">
-                    <motion.div
+                    <Motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.8 }}
@@ -48,7 +48,7 @@ export default function Home() {
                                 src="/logo.png"
                             />
                         </div>
-                    </motion.div>
+                    </Motion.div>
 
                     <h1 className="font-display font-bold text-4xl text-white mb-4 leading-tight tracking-tight drop-shadow-lg">
                         Inteligencia <span className="text-primary italic">Bio-Orgánica</span>
@@ -62,7 +62,7 @@ export default function Home() {
                             to="/agronomo"
                             className="btn-stitch-primary py-5 shadow-glow flex flex-col items-center justify-center gap-3 group relative overflow-hidden active:scale-95 transition-all"
                         >
-                            <motion.div
+                            <Motion.div
                                 className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100"
                                 initial={false}
                                 transition={{ duration: 0.3 }}

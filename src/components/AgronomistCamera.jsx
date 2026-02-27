@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { Camera, X, Upload, Zap, AlertCircle } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 
 // Static data for the scanning animation to avoid Math.random() during render
 const DATA_STREAM_ITEMS = [
@@ -39,7 +39,7 @@ export default function AgronomistCamera({ onCapture, onClose }) {
     };
 
     return (
-        <motion.div
+        <Motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
@@ -114,14 +114,14 @@ export default function AgronomistCamera({ onCapture, onClose }) {
                         {/* Scanning Overlay */}
                         <AnimatePresence>
                             {isScanning && (
-                                <motion.div
+                                <Motion.div
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
                                     exit={{ opacity: 0 }}
                                     className="absolute inset-0 bg-black/20"
                                 >
                                     {/* Moving Scan Line */}
-                                    <motion.div
+                                    <Motion.div
                                         className="absolute left-0 right-0 h-1 bg-cyan-400 shadow-[0_0_20px_rgba(34,211,238,0.8)] z-20"
                                         animate={{ top: ["0%", "100%", "0%"] }}
                                         transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
@@ -155,16 +155,16 @@ export default function AgronomistCamera({ onCapture, onClose }) {
                                     {/* Data Stream Simulation */}
                                     <div className="absolute bottom-6 left-6 right-6 font-mono text-[8px] text-cyan-400/60 flex flex-col gap-1 overflow-hidden h-20">
                                         {DATA_STREAM_ITEMS.map((item, i) => (
-                                            <motion.p
+                                            <Motion.p
                                                 key={i}
                                                 animate={{ opacity: [0, 1, 0], x: [0, 10, 0] }}
                                                 transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.3 }}
                                             >
                                                 {item}
-                                            </motion.p>
+                                            </Motion.p>
                                         ))}
                                     </div>
-                                </motion.div>
+                                </Motion.div>
                             )}
                         </AnimatePresence>
                     </div>
@@ -183,6 +183,6 @@ export default function AgronomistCamera({ onCapture, onClose }) {
                     </div>
                 </div>
             </div>
-        </motion.div>
+        </Motion.div>
     );
 }

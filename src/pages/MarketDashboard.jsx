@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 import { TrendingUp, DollarSign, Activity } from 'lucide-react';
 
 const StatCard = ({ label, value, trend, positive }) => (
@@ -18,14 +18,14 @@ const StatCard = ({ label, value, trend, positive }) => (
 export default function MarketDashboard() {
     return (
         <div className="pb-24 pt-24 px-4 max-w-7xl mx-auto">
-            <motion.div
+            <Motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 className="mb-8"
             >
                 <h2 className="text-3xl font-bold font-mono px-2 border-l-4 border-cyan-tech">MARKET_PULSE</h2>
                 <p className="text-gray-400 text-sm mt-2 font-mono">Tiempo Real: Fresno, Tolima</p>
-            </motion.div>
+            </Motion.div>
 
             <div className="grid grid-cols-2 gap-4 mb-8">
                 <StatCard label="Precio Café (Carga)" value="$1,850,000" trend="+2.4%" positive={true} />

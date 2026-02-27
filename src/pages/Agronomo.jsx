@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 import NeuralCore from '../components/NeuralCore';
 import AIAssistant from '../components/AIAssistant';
 import DiagnosisHistory from '../components/DiagnosisHistory';
@@ -11,13 +11,13 @@ export default function Agronomo() {
         <div className="animate-fade-in pb-24 px-6 pt-20 max-w-2xl mx-auto">
             <RegionalAlerts />
             <header className="mb-10 text-center">
-                <motion.div
+                <Motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     className="flex justify-center mb-6"
                 >
                     <NeuralCore size="lg" />
-                </motion.div>
+                </Motion.div>
                 <h2 className="font-display font-extrabold text-4xl text-secondary dark:text-white mb-2 tracking-tighter">
                     Agrónomo <span className="text-primary italic">Digital</span>
                 </h2>
