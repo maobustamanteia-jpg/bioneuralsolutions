@@ -15,9 +15,11 @@ const Contact = lazy(() => import('./pages/Contact'));
 const Agronomo = lazy(() => import('./pages/Agronomo'));
 const SulfomaxLanding = lazy(() => import('./pages/landing-pages/Sulfomax'));
 const ProductLandingPage = lazy(() => import('./pages/ProductLandingPage'));
+
+// Loading spinner con nueva identidad
 const LoadingSpinner = () => (
-  <div className="flex items-center justify-center min-h-[60vh]">
-    <div className="w-12 h-12 border-4 border-[--color-primary]/20 border-t-[--color-primary] rounded-full animate-spin"></div>
+  <div className="flex items-center justify-center min-h-[60vh] bg-background-light">
+    <div className="w-12 h-12 border-4 border-forest/20 border-t-gold rounded-full animate-spin"></div>
   </div>
 );
 
@@ -26,10 +28,10 @@ function AppContent() {
   const location = useLocation();
 
   return (
-    <div className="mobile-shell relative min-h-screen">
+    <div className="relative min-h-screen">
       <Header />
 
-      <main id="main-content" role="main" className="relative z-10 pt-4">
+      <main id="main-content" role="main" className="relative z-10">
         <AnimatePresence mode="wait">
           <Suspense fallback={<LoadingSpinner />}>
             <Motion.div
@@ -55,7 +57,6 @@ function AppContent() {
       </main>
 
       <BottomNav />
-      {/* El Footer y Nav están integrados en el componente Header o por separado según Stitch */}
     </div>
   );
 }
@@ -90,7 +91,9 @@ function App() {
           />
         )}
       </AnimatePresence>
-      <div className="min-h-screen bg-gray-100 dark:bg-[#0a0f0a] flex items-center justify-center py-0 sm:py-8 lg:py-12">
+      
+      {/* Contenedor principal con nueva identidad */}
+      <div className="min-h-screen bg-background-light dark:bg-forest-dark">
         <AppContent />
       </div>
     </Router>
