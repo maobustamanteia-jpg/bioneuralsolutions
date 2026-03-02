@@ -1,247 +1,503 @@
 import React from 'react';
-import { motion as Motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { products } from '../data/products';
-import ProductCard from '../components/ProductCard';
-import NeuralCore from '../components/NeuralCore';
-import RegionalAlerts from '../components/RegionalAlerts';
+import { 
+  Leaf, ShieldCheck, Zap, Droplets, 
+  Camera, Brain, FileText, ArrowRight,
+  ChevronRight, Users, MapPin
+} from 'lucide-react';
+import { products, companyInfo } from '../data/products';
+import { BenefitCard, BenefitCardGrid } from '../components/ui';
+
+/**
+ * Home Premium - BioNeural Solutions
+ * Nueva identidad: Verde Bosque + Dorado Premium
+ * "Biotecnología nacida en los Andes. Formulada para el campo colombiano."
+ */
 
 export default function Home() {
-    // Tomamos el producto destacado (MM)
-    const featuredProduct = products.find(p => p.shortName === "MM") || products[0];
+  // Producto destacado: Sulphomax
+  const featuredProduct = products.find(p => p.shortName === "CS") || products[3];
+  
+  // Productos de la línea MAX (Kits)
+  const kitProducts = products.filter(p => p.category === "Kits");
 
-    const benefits = [
-        { icon: "eco", title: "100% Orgánico", desc: "Sin químicos sintéticos" },
-        { icon: "science", title: "Bio-Tecnología", desc: "Sabiduría ancestral" },
-        { icon: "terrain", title: "Suelo Vivo", desc: "Regeneración profunda" },
-        { icon: "auto_awesome", title: "Alto Rendimiento", desc: "Cultivos vigorosos" }
-    ];
+  return (
+    <div className="min-h-screen">
+      {/* ============================================
+          HERO PREMIUM - Verde Bosque con energía
+          ============================================ */}
+      <section className="relative min-h-[80vh] flex items-center overflow-hidden bg-forest">
+        {/* Fondo con efectos */}
+        <div className="absolute inset-0">
+          {/* Gradiente base */}
+          <div className="absolute inset-0 bg-gradient-to-br from-forest via-forest to-forest-dark" />
+          
+          {/* Efectos de energía */}
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gold/10 rounded-full blur-[150px] animate-pulse-soft" />
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-bio-green/10 rounded-full blur-[100px] animate-pulse-soft" style={{ animationDelay: '2s' }} />
+          
+          {/* Patrón técnico */}
+          <div className="absolute inset-0 opacity-5" style={{
+            backgroundImage: 'radial-gradient(circle, rgba(212, 175, 55, 0.5) 1px, transparent 1px)',
+            backgroundSize: '40px 40px'
+          }} />
+        </div>
 
-    return (
-        <div className="animate-fade-in pb-20">
-            {/* Hero Section */}
-            <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
-                {/* Background Image with Overlay */}
-                <div
-                    className="absolute inset-0 z-0 scale-105 transition-transform duration-[10s] animate-slow-zoom"
-                    style={{
-                        backgroundImage: "url('/images/bioneural-hero.png')",
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center'
-                    }}
+        {/* Contenido */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 py-16 sm:py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            
+            {/* Columna izquierda: Info */}
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-center lg:text-left"
+            >
+              {/* Badge superior */}
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6 border border-gold/30">
+                <span className="text-gold text-xs font-bold uppercase tracking-wider">
+                  Biotecnología Agrícola Premium
+                </span>
+              </div>
+
+              {/* Título principal */}
+              <h1 className="font-display font-black text-4xl sm:text-5xl lg:text-6xl text-white mb-4 tracking-tight">
+                Biotecnología
+                <span className="text-gold block">nacida en los Andes</span>
+              </h1>
+
+              {/* Subtítulo */}
+              <p className="text-white/80 text-lg sm:text-xl mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                Bioinsumos bioracionales para el control de hongos, ácaros y nutrición vegetal. 
+                Formulados con precisión científica en Fresno, Tolima.
+              </p>
+
+              {/* CTAs */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <Link
+                  to="/agronomo"
+                  className="group bg-gold hover:bg-gold-dark text-forest font-display font-bold px-8 py-4 rounded-xl shadow-gold-glow hover:shadow-lg transition-all hover:-translate-y-1 flex items-center justify-center gap-2"
                 >
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-background-light dark:to-background-dark"></div>
-                </div>
-
-                <div className="relative z-10 text-center px-6 max-w-md">
-                    <Motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.8 }}
-                        className="mb-8"
-                    >
-                        <div className="relative inline-block logo-container">
-                            <div className="absolute inset-0 bg-primary blur-3xl opacity-20 animate-pulse"></div>
-                            <img
-                                alt="BioNeural Logo"
-                                className="w-56 h-auto object-contain relative z-10 logo-blend"
-                                src="/logo.png"
-                            />
-                        </div>
-                    </Motion.div>
-
-                    <h1 className="font-display font-bold text-4xl text-white mb-4 leading-tight tracking-tight drop-shadow-lg">
-                        Inteligencia <span className="text-primary italic">Bio-Orgánica</span>
-                    </h1>
-                    <p className="text-gray-200 text-sm mb-10 font-medium leading-relaxed drop-shadow-md">
-                        Transformamos la salud del suelo con microorganismos de montaña y nutrición avanzada.
-                    </p>
-
-                    <div className="flex flex-col gap-4">
-                        <Link
-                            to="/agronomo"
-                            className="btn-stitch-primary py-5 shadow-glow flex flex-col items-center justify-center gap-3 group relative overflow-hidden active:scale-95 transition-all"
-                        >
-                            <Motion.div
-                                className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100"
-                                initial={false}
-                                transition={{ duration: 0.3 }}
-                            />
-                            <div className="flex items-center gap-3 z-10">
-                                <NeuralCore size="sm" isAnalyzing={false} />
-                                <div className="text-left">
-                                    <span className="block text-lg">Diagnóstico Gratuito (IA)</span>
-                                    <span className="block text-[8px] uppercase tracking-[0.2em] opacity-80">Prueba nuestro Agrónomo Digital</span>
-                                </div>
-                            </div>
-                        </Link>
-                        <Link
-                            to="/productos"
-                            className="bg-white/10 backdrop-blur-md border border-white/20 text-white font-display font-bold py-4 rounded-2xl hover:bg-white/20 transition-all flex items-center justify-center gap-2"
-                        >
-                            <span>Catálogo de Kits</span>
-                            <span className="material-icons-round text-sm">grid_view</span>
-                        </Link>
-                    </div>
-                </div>
-            </section>
-
-            {/* Benefits Grid */}
-            <section className="px-6 -mt-10 relative z-20">
-                <RegionalAlerts />
-                <div className="grid grid-cols-2 gap-4">
-                    {benefits.map((benefit, idx) => (
-                        <div
-                            key={idx}
-                            className="bg-white dark:bg-surface-dark p-6 rounded-[28px] shadow-soft border border-gray-100 dark:border-gray-800 flex flex-col items-center text-center space-y-2 group hover:border-primary/30 transition-all"
-                        >
-                            <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center text-primary mb-2 group-hover:scale-110 transition-transform">
-                                <span className="material-icons-round text-2xl">{benefit.icon}</span>
-                            </div>
-                            <h3 className="font-display font-bold text-xs text-secondary dark:text-white uppercase tracking-wider">{benefit.title}</h3>
-                            <p className="text-[10px] text-gray-500 dark:text-gray-400 font-medium leading-tight">{benefit.desc}</p>
-                        </div>
-                    ))}
-                </div>
-            </section>
-
-            {/* Cómo Funciona Section */}
-            <section className="px-6 py-16 space-y-10">
-                <div className="text-center space-y-3">
-                    <h2 className="font-display font-bold text-2xl text-secondary dark:text-white tracking-tight">Tu Agrónomo en Línea</h2>
-                    <p className="text-gray-500 text-xs font-medium uppercase tracking-widest">3 Pasos para salvar tu cosecha</p>
-                </div>
-
-                <div className="space-y-8">
-                    <div className="flex items-start gap-6 group">
-                        <div className="w-12 h-12 rounded-2xl bg-primary text-white flex items-center justify-center font-bold text-lg shrink-0 shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform">1</div>
-                        <div>
-                            <h4 className="font-display font-bold text-secondary dark:text-white mb-1">Toma una Foto</h4>
-                            <p className="text-gray-500 dark:text-gray-400 text-sm">Captura la hoja o tallo afectado con tu celular en segundos.</p>
-                        </div>
-                    </div>
-                    <div className="flex items-start gap-6 group">
-                        <div className="w-12 h-12 rounded-2xl bg-secondary dark:bg-primary/20 text-white flex items-center justify-center font-bold text-lg shrink-0 shadow-lg group-hover:scale-110 transition-transform">2</div>
-                        <div>
-                            <h4 className="font-display font-bold text-secondary dark:text-white mb-1">Análisis Bio-Neural</h4>
-                            <p className="text-gray-500 dark:text-gray-400 text-sm">Nuestra IA procesa la imagen e identifica el problema fitosanitario.</p>
-                        </div>
-                    </div>
-                    <div className="flex items-start gap-6 group">
-                        <div className="w-12 h-12 rounded-2xl bg-primary text-white flex items-center justify-center font-bold text-lg shrink-0 shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform">3</div>
-                        <div>
-                            <h4 className="font-display font-bold text-secondary dark:text-white mb-1">Recibe tu Receta</h4>
-                            <p className="text-gray-500 dark:text-gray-400 text-sm">Obtén la recomendación exacta de productos para sanar tu cultivo.</p>
-                        </div>
-                    </div>
-                </div>
+                  <Brain size={20} />
+                  <span>Diagnóstico IA Gratuito</span>
+                </Link>
 
                 <Link
-                    to="/agronomo"
-                    className="w-full bg-secondary dark:bg-surface-dark text-white font-display font-bold py-5 rounded-2xl flex items-center justify-center gap-3 hover:bg-black transition-all"
+                  to="/productos"
+                  className="group bg-transparent border-2 border-white/30 text-white font-display font-semibold px-8 py-4 rounded-xl hover:bg-white/10 hover:border-gold hover:text-gold transition-all flex items-center justify-center gap-2"
                 >
-                    <span>Probar Diagnóstico Ahora</span>
-                    <span className="material-icons-round">arrow_forward</span>
+                  <span>Ver Productos</span>
+                  <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
-            </section>
+              </div>
 
-            {/* Featured Kits Section */}
-            <section className="px-6 py-10 bg-primary/5 dark:bg-primary/10 -mx-6 px-12">
-                <div className="flex items-center justify-between mb-8">
-                    <div>
-                        <h2 className="font-display font-bold text-2xl text-secondary dark:text-white tracking-tight">Soluciones en Kit</h2>
-                        <p className="text-gray-500 text-[10px] uppercase font-bold tracking-widest mt-1">Paquetes de alto impacto</p>
-                    </div>
-                    <Link to="/productos" className="text-primary text-xs font-bold uppercase tracking-widest hover:underline flex items-center gap-1">
-                        Ver todos <span className="material-icons-round text-sm">chevron_right</span>
-                    </Link>
+              {/* Stats */}
+              <div className="flex flex-wrap justify-center lg:justify-start gap-8 mt-10">
+                <div className="text-center">
+                  <div className="text-gold font-display font-bold text-3xl">50+</div>
+                  <div className="text-white/60 text-xs uppercase tracking-wider">Agricultores</div>
                 </div>
-
-                <div className="flex overflow-x-auto gap-6 pb-6 scrollbar-hide">
-                    {products.filter(p => p.category === "Kits").map(kit => (
-                        <div key={kit.id} className="min-w-[280px] bg-white dark:bg-surface-dark rounded-3xl overflow-hidden shadow-xl border border-gray-100 dark:border-gray-800 flex flex-col">
-                            <div className="h-40 relative">
-                                <img src={kit.image} alt={kit.name} className="w-full h-full object-cover" />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                                <div className="absolute bottom-4 left-4">
-                                    <span className="text-white font-display font-bold text-sm tracking-tight">{kit.name}</span>
-                                </div>
-                            </div>
-                            <div className="p-5 flex-1 flex flex-col">
-                                <p className="text-gray-500 dark:text-gray-400 text-xs line-clamp-2 mb-4">
-                                    {kit.description}
-                                </p>
-                                <Link to="/productos" className="mt-auto text-primary text-[10px] font-bold uppercase tracking-widest flex items-center gap-1">
-                                    Más información <span className="material-icons-round text-[14px]">arrow_outward</span>
-                                </Link>
-                            </div>
-                        </div>
-                    ))}
+                <div className="text-center">
+                  <div className="text-gold font-display font-bold text-3xl">10+</div>
+                  <div className="text-white/60 text-xs uppercase tracking-wider">Productos</div>
                 </div>
-            </section>
-
-            {/* Featured Product Section */}
-            <section className="px-6 py-16">
-                <div className="flex items-center justify-between mb-8">
-                    <h2 className="font-display font-bold text-2xl text-secondary dark:text-white tracking-tight">Producto Base</h2>
-                    <Link to="/productos" className="text-primary text-xs font-bold uppercase tracking-widest hover:underline flex items-center gap-1">
-                        Ver todos <span className="material-icons-round text-sm">chevron_right</span>
-                    </Link>
+                <div className="text-center">
+                  <div className="text-gold font-display font-bold text-3xl">100%</div>
+                  <div className="text-white/60 text-xs uppercase tracking-wider">Orgánico</div>
                 </div>
+              </div>
+            </motion.div>
 
-                <div className="bg-secondary dark:bg-surface-dark rounded-[32px] overflow-hidden shadow-2xl relative border border-white/5 group">
-                    <div className="h-64 relative">
-                        <img
-                            alt={featuredProduct.name}
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                            src={featuredProduct.image}
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-secondary via-transparent to-transparent"></div>
-                        <div className="absolute top-6 left-6">
-                            <span className="bg-primary text-white text-[10px] font-bold px-3 py-1.5 rounded-lg shadow-lg uppercase tracking-widest">Recomendado</span>
-                        </div>
-                    </div>
-
-                    <div className="p-8">
-                        <h3 className="font-display font-bold text-2xl text-white mb-3 tracking-tight">{featuredProduct.name}</h3>
-                        <p className="text-gray-400 text-sm mb-8 leading-relaxed font-medium">
-                            {featuredProduct.description}
-                        </p>
-
-                        <div className="flex items-center justify-between gap-4">
-                            <div className="flex -space-x-3">
-                                {[1, 2, 3].map(i => (
-                                    <div key={i} className="w-10 h-10 rounded-full border-2 border-secondary bg-gray-700 overflow-hidden ring-2 ring-primary/20">
-                                        <img src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="Farmer" className="w-full h-full object-cover grayscale" />
-                                    </div>
-                                ))}
-                                <div className="w-10 h-10 rounded-full border-2 border-secondary bg-primary flex items-center justify-center text-[10px] font-bold text-white">
-                                    +50
-                                </div>
-                            </div>
-                            <span className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Agricultores felices</span>
-                        </div>
-                    </div>
+            {/* Columna derecha: Logo/Imagen */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="hidden lg:flex justify-center"
+            >
+              <div className="relative">
+                {/* Glow */}
+                <div className="absolute inset-0 bg-gold/20 rounded-full blur-3xl scale-150 animate-pulse-soft" />
+                
+                {/* Logo container */}
+                <div className="relative bg-white/5 backdrop-blur-sm rounded-3xl p-12 border border-white/10">
+                  <img 
+                    src="/logo.png" 
+                    alt="BioNeural Solutions"
+                    className="w-64 h-64 object-contain drop-shadow-2xl"
+                  />
                 </div>
-            </section>
-
-            {/* Farmer CTA */}
-            <section className="px-6 pb-12">
-                <div className="bg-primary/5 dark:bg-primary/10 rounded-[32px] p-8 border border-primary/10 text-center relative overflow-hidden">
-                    <div className="absolute -left-10 -bottom-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl"></div>
-                    <span className="material-icons-round text-primary text-4xl mb-4">grass</span>
-                    <h3 className="font-display font-bold text-xl text-secondary dark:text-white mb-3">¿Eres Productor?</h3>
-                    <p className="text-gray-500 dark:text-gray-400 text-xs mb-8 leading-relaxed px-4 font-medium">
-                        Tenemos planes especiales por hectárea y asesoría personalizada en campo en la zona de Fresno.
-                    </p>
-                    <Link
-                        to="/agronomo"
-                        className="btn-stitch-primary py-4 w-full"
-                    >
-                        Probar Agrónomo Digital
-                    </Link>
-                </div>
-            </section>
+              </div>
+            </motion.div>
+          </div>
         </div>
-    );
+
+        {/* Onda decorativa inferior */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background-light to-transparent" />
+      </section>
+
+      {/* ============================================
+          BENEFICIOS PREMIUM - Tarjetas Doradas
+          ============================================ */}
+      <section className="py-16 sm:py-20 px-4">
+        <div className="max-w-7xl mx-auto">
+          {/* Título */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="font-display font-bold text-3xl sm:text-4xl text-forest dark:text-white mb-4">
+              ¿Por qué elegirnos?
+            </h2>
+            <p className="text-gray-600 dark:text-white/70 max-w-2xl mx-auto">
+              Biotecnología que funciona. Sin químicos sintéticos. Con respaldo científico.
+            </p>
+          </motion.div>
+
+          {/* Tarjetas de beneficios */}
+          <BenefitCardGrid columns={4}>
+            <BenefitCard
+              icon={Leaf}
+              title="100% Orgánico"
+              description="Sin residuos en cosecha. Aprobado para agricultura ecológica y mercados premium."
+              variant="gold"
+            />
+            <BenefitCard
+              icon={Zap}
+              title="Acción Rápida"
+              description="Resultados visibles en 24-48 horas. Control de plagas por contacto."
+              variant="outline"
+            />
+            <BenefitCard
+              icon={ShieldCheck}
+              title="Sin Resistencia"
+              description="Mecanismo físico, no químico. Las plagas no generan resistencia."
+              variant="gold"
+            />
+            <BenefitCard
+              icon={Droplets}
+              title="Nutrición Integral"
+              description="No solo protege, alimenta. Calcio y azufre para cultivos más fuertes."
+              variant="outline"
+            />
+          </BenefitCardGrid>
+        </div>
+      </section>
+
+      {/* ============================================
+          CÓMO FUNCIONA - Agrónomo IA
+          ============================================ */}
+      <section className="py-16 sm:py-24 bg-background-light dark:bg-forest-dark px-4">
+        <div className="max-w-4xl mx-auto">
+          {/* Título */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="font-display font-bold text-3xl sm:text-4xl text-forest dark:text-white mb-4">
+              Tu Agrónomo Digital
+            </h2>
+            <p className="text-gold text-sm uppercase tracking-widest font-semibold">
+              3 Pasos para salvar tu cosecha
+            </p>
+          </motion.div>
+
+          {/* Pasos */}
+          <div className="space-y-8">
+            {[
+              { icon: Camera, title: "Toma una Foto", desc: "Captura la hoja o tallo afectado con tu celular.", step: 1 },
+              { icon: Brain, title: "Análisis Bio-Neural", desc: "Nuestra IA identifica el problema fitosanitario en segundos.", step: 2 },
+              { icon: FileText, title: "Recibe tu Receta", desc: "Obtén la recomendación exacta de productos BioNeural.", step: 3 },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.15 }}
+                className="flex items-start gap-6 group"
+              >
+                {/* Número */}
+                <div className="w-14 h-14 rounded-2xl bg-forest text-white flex items-center justify-center font-bold text-xl shrink-0 shadow-lg shadow-forest/30 group-hover:scale-110 transition-transform">
+                  {item.step}
+                </div>
+                
+                {/* Contenido */}
+                <div className="flex-1 pt-2">
+                  <h3 className="font-display font-bold text-xl text-forest dark:text-white mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-600 dark:text-white/70">
+                    {item.desc}
+                  </p>
+                </div>
+
+                {/* Icono */}
+                <item.icon size={32} className="text-gold opacity-30 group-hover:opacity-100 transition-opacity" />
+              </motion.div>
+            ))}
+          </div>
+
+          {/* CTA */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-12"
+          >
+            <Link
+              to="/agronomo"
+              className="w-full bg-forest hover:bg-forest-dark text-white font-display font-bold py-5 rounded-2xl flex items-center justify-center gap-3 transition-all shadow-lg shadow-forest/30 hover:shadow-forest-glow"
+            >
+              <Brain size={24} />
+              <span>Probar Diagnóstico Ahora</span>
+              <ArrowRight size={20} />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ============================================
+          PRODUCTOS DESTACADOS
+          ============================================ */}
+      <section className="py-16 sm:py-24 px-4">
+        <div className="max-w-7xl mx-auto">
+          {/* Header */}
+          <div className="flex items-center justify-between mb-10">
+            <div>
+              <h2 className="font-display font-bold text-3xl text-forest dark:text-white mb-2">
+                Nuestros Productos
+              </h2>
+              <p className="text-gray-500 text-sm uppercase tracking-widest">
+                Línea Premium BioNeural
+              </p>
+            </div>
+            <Link 
+              to="/productos" 
+              className="hidden sm:flex items-center gap-2 text-gold hover:text-gold-dark font-bold text-sm uppercase tracking-wide transition-colors"
+            >
+              Ver todos <ChevronRight size={18} />
+            </Link>
+          </div>
+
+          {/* Grid de productos */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {products.slice(0, 6).map((product, index) => (
+              <motion.div
+                key={product.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="group"
+              >
+                <Link 
+                  to={`/producto/${product.shortName.toLowerCase()}`}
+                  className="block bg-white dark:bg-forest rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all border border-gray-100 dark:border-white/10 hover:border-gold/50"
+                >
+                  {/* Imagen */}
+                  <div className="h-48 bg-gradient-to-br from-gray-50 to-white dark:from-forest dark:to-forest-dark overflow-hidden relative">
+                    {product.image ? (
+                      <img 
+                        src={product.image} 
+                        alt={product.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center">
+                        <Leaf size={48} className="text-gold/30" />
+                      </div>
+                    )}
+                    
+                    {/* Badge de categoría */}
+                    <div className="absolute top-4 left-4">
+                      <span className="bg-gold/90 text-forest text-[10px] font-bold px-3 py-1.5 rounded-lg uppercase tracking-wide">
+                        {product.category}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Info */}
+                  <div className="p-5">
+                    <h3 className="font-display font-bold text-lg text-forest dark:text-white mb-2 group-hover:text-gold transition-colors">
+                      {product.name}
+                    </h3>
+                    <p className="text-gray-500 dark:text-white/60 text-sm line-clamp-2 mb-4">
+                      {product.description}
+                    </p>
+                    
+                    {/* CTA */}
+                    <div className="flex items-center gap-2 text-gold text-sm font-semibold">
+                      <span>Ver detalles</span>
+                      <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* CTA Móvil */}
+          <div className="sm:hidden mt-8">
+            <Link 
+              to="/productos" 
+              className="w-full bg-gold text-forest font-display font-bold py-4 rounded-xl flex items-center justify-center gap-2"
+            >
+              Ver Catálogo Completo <ChevronRight size={18} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================
+          PRODUCTO DESTACADO - Sulphomax
+          ============================================ */}
+      <section className="py-16 sm:py-24 px-4 bg-forest">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            
+            {/* Info */}
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="text-white"
+            >
+              <span className="text-gold text-sm uppercase tracking-widest font-semibold mb-4 block">
+                Producto Estrella
+              </span>
+              
+              <h2 className="font-display font-bold text-4xl sm:text-5xl mb-4">
+                <span className="text-gold">SULPHOMAX</span>
+                <span className="block text-white/90">Caldo Sulfocálcico Premium</span>
+              </h2>
+              
+              <p className="text-white/80 text-lg mb-6 leading-relaxed">
+                Control natural de ácaros y hongos. Activa las defensas de la planta sin generar resistencia. 
+                100% permitido en agricultura orgánica.
+              </p>
+
+              {/* Beneficios clave */}
+              <div className="space-y-3 mb-8">
+                {[
+                  "Controla +50 enfermedades fúngicas",
+                  "Mata ácaros por contacto (sin resistencia)",
+                  "Activa fitoalexinas naturalmente",
+                  "Sin residuos en cosecha"
+                ].map((benefit, idx) => (
+                  <div key={idx} className="flex items-center gap-3">
+                    <div className="w-6 h-6 rounded-full bg-gold flex items-center justify-center">
+                      <svg className="w-3 h-3 text-forest" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <span className="text-white/90 text-sm">{benefit}</span>
+                  </div>
+                ))}
+              </div>
+
+              <Link
+                to="/sulfomax"
+                className="inline-flex items-center gap-2 bg-gold hover:bg-gold-dark text-forest font-display font-bold px-8 py-4 rounded-xl transition-all shadow-gold-glow"
+              >
+                <span>Ver Sulphomax</span>
+                <ArrowRight size={18} />
+              </Link>
+            </motion.div>
+
+            {/* Imagen placeholder */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="flex justify-center"
+            >
+              <div className="relative">
+                {/* Glow */}
+                <div className="absolute inset-0 bg-gold/30 rounded-3xl blur-3xl scale-110" />
+                
+                {/* Card */}
+                <div className="relative bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-gold/30">
+                  {featuredProduct?.image ? (
+                    <img 
+                      src={featuredProduct.image} 
+                      alt="Sulphomax"
+                      className="w-48 h-64 object-contain mx-auto drop-shadow-2xl"
+                    />
+                  ) : (
+                    <div className="w-48 h-64 flex items-center justify-center">
+                      <div className="text-center">
+                        <ShieldCheck size={64} className="mx-auto text-gold mb-4" />
+                        <span className="text-gold font-display font-bold text-xl">SULPHOMAX</span>
+                        <span className="block text-white/60 text-sm mt-2">20 Litros</span>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================
+          CTA FINAL - Contacto
+          ============================================ */}
+      <section className="py-16 sm:py-24 px-4 bg-background-light dark:bg-forest-dark">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <Users className="w-16 h-16 text-gold mx-auto mb-6" />
+            
+            <h2 className="font-display font-bold text-3xl sm:text-4xl text-forest dark:text-white mb-4">
+              ¿Eres Productor Agrícola?
+            </h2>
+            
+            <p className="text-gray-600 dark:text-white/70 text-lg mb-8 max-w-2xl mx-auto">
+              Tenemos planes especiales por hectárea y asesoría personalizada en campo. 
+              Conectamos biotecnología con las necesidades reales del agricultor colombiano.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                to="/contacto"
+                className="bg-gold hover:bg-gold-dark text-forest font-display font-bold px-8 py-4 rounded-xl transition-all shadow-gold-glow"
+              >
+                Solicitar Cotización
+              </Link>
+              <a
+                href={`https://wa.me/573203062007?text=Hola,%20quiero%20información%20sobre%20productos%20BioNeural`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-forest hover:bg-forest-dark text-white font-display font-semibold px-8 py-4 rounded-xl transition-all border border-forest"
+              >
+                WhatsApp
+              </a>
+            </div>
+
+            {/* Info de contacto */}
+            <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm text-gray-500 dark:text-white/60">
+              <div className="flex items-center gap-2">
+                <MapPin size={16} className="text-gold" />
+                <span>Fresno, Tolima, Colombia</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-gold">📞</span>
+                <span>{companyInfo.phone}</span>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+    </div>
+  );
 }

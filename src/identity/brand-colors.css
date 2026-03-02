@@ -1,0 +1,129 @@
+/* src/identity/brand-colors.css */
+
+/*
+  BIONEURAL SOLUTIONS - NUEVA IDENTIDAD PREMIUM
+  "Biotecnología nacida en los Andes. Formulada para el campo colombiano."
+  
+  Paleta: Verde Bosque (#004B30) + Dorado Premium (#D4AF37)
+*/
+
+:root {
+  /* ============================================
+     COLORES PRINCIPALES
+     ============================================ */
+
+  /* Verde Bosque - Color Principal de Marca */
+  --brand-forest: #004B30;
+  --brand-forest-dark: #003D27;
+  --brand-forest-light: #2EA55E;
+  --brand-forest-50: #E8F5EE;
+  --brand-forest-100: #C6E7D4;
+  --brand-forest-200: #8FD4AC;
+
+  /* Dorado Premium - Color de Acento */
+  --brand-gold: #D4AF37;
+  --brand-gold-dark: #B8860B;
+  --brand-gold-light: #F2D641;
+  --brand-gold-50: #FFFDF0;
+  --brand-gold-100: #FEF7D0;
+
+  /* Verde Bio - Color de Soporte */
+  --brand-bio: #7CB342;
+  --brand-bio-light: #A5D66D;
+  --brand-bio-dark: #558B2F;
+
+  /* ============================================
+     COLORES DE FONDO
+     ============================================ */
+  --bg-light: #F8F9FA;          /* Crema claro - fondos principales */
+  --bg-white: #FFFFFF;          /* Blanco puro - tarjetas */
+  --bg-dark: #0A0F0D;           /* Negro verdoso - modo oscuro */
+  --bg-card: #FFFFFF;           /* Fondo de tarjetas */
+  --bg-hero: #004B30;           /* Fondo hero */
+
+  /* ============================================
+     COLORES DE TEXTO
+     ============================================ */
+  --text-primary: #1A1A2A;      /* Carbón - texto principal */
+  --text-secondary: #6B7280;    /* Gris - texto secundario */
+  --text-muted: #9CA3AF;        /* Gris claro - texto terciario */
+  --text-inverse: #FFFFFF;      /* Blanco - sobre fondos oscuros */
+  --text-accent: #D4AF37;       /* Dorado - títulos destacados */
+
+  /* ============================================
+     ESTADOS Y SEMÁNTICOS
+     ============================================ */
+  --success: #7CB342;
+  --warning: #F9C21A;
+  --error: #DC2626;
+  --info: #3B82F6;
+
+  /* ============================================
+     SOMBRAS
+     ============================================ */
+  --shadow-card: 0 4px 20px rgba(0, 75, 48, 0.08);
+  --shadow-card-hover: 0 8px 30px rgba(0, 75, 48, 0.15);
+  --shadow-gold-glow: 0 0 30px rgba(212, 175, 55, 0.4);
+  --shadow-forest-glow: 0 0 40px rgba(0, 75, 48, 0.3);
+
+  /* ============================================
+     GRADIENTES
+     ============================================ */
+  --gradient-hero: linear-gradient(180deg, #004B30 0%, #003D27 50%, #0D1A12 100%);
+  --gradient-gold: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
+  --gradient-card: linear-gradient(135deg, #FFFFFF 0%, #F8F9FA 100%);
+
+  /* ============================================
+     BORDES
+     ============================================ */
+  --border-light: rgba(0, 75, 48, 0.1);
+  --border-gold: rgba(212, 175, 55, 0.5);
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+}
+
+/* ============================================
+   CLASES DE UTILIDAD
+   ============================================ */
+
+.bg-brand-forest { background-color: var(--brand-forest); }
+.bg-brand-gold { background-color: var(--brand-gold); }
+.bg-brand-bio { background-color: var(--brand-bio); }
+
+.text-brand-forest { color: var(--brand-forest); }
+.text-brand-gold { color: var(--brand-gold); }
+.text-brand-bio { color: var(--brand-bio); }
+
+.border-brand-forest { border-color: var(--brand-forest); }
+.border-brand-gold { border-color: var(--brand-gold); }
+
+/* ============================================
+   MODO OSCURO
+   ============================================ */
+
+.dark {
+  --bg-light: #0A0F0D;
+  --bg-white: #0D1A12;
+  --bg-card: #1A2A20;
+  --text-primary: #FFFFFF;
+  --text-secondary: #9CA3AF;
+}
+
+/* ============================================
+   NOTA DE ACCESIBILIDAD
+   ============================================ */
+
+/*
+  IMPORTANTE: La combinación Dorado (#D4AF37) sobre Verde Bosque (#004B30)
+  tiene un contraste de 3.3:1, que NO pasa WCAG AA para texto pequeño.
+  
+  REGLA: Usar dorado SOLO para:
+  - Títulos grandes (>18pt o 14pt bold)
+  - Iconos
+  - Acentos decorativos
+  
+  Para texto de cuerpo sobre Verde Bosque, usar BLANCO (#FFFFFF)
+  que tiene contraste 11:1 - Pasa AAA.
+*/

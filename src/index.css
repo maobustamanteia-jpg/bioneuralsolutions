@@ -1,69 +1,124 @@
 @import "tailwindcss";
 
-/* BioNeural Solutions - Diseño Stitch Pixel-Perfect */
+/* ============================================
+   BIONEURAL SOLUTIONS - NUEVA IDENTIDAD PREMIUM
+   Verde Bosque + Dorado Premium
+   "Biotecnología nacida en los Andes"
+   ============================================ */
+
 @theme {
-  --color-primary: #4CAF50;
-  --color-primary-dark: #388E3C;
-  --color-primary-light: #81C784;
-  --color-secondary: #5D4037;
-  --color-accent: #00E5FF;
-  --color-background-light: #F4F7F4;
-  --color-background-dark: #0D130D;
+  /* ============================================
+     PALETA DE COLORES PREMIUM
+     ============================================ */
+
+  /* Colores Principales */
+  --color-primary: #004B30;           /* Verde Bosque */
+  --color-primary-dark: #003D27;      /* Verde Bosque Oscuro */
+  --color-primary-light: #7CB342;     /* Verde Bio */
+  --color-primary-50: #E8F5EE;
+  --color-primary-100: #C6E7D4;
+  --color-primary-200: #8FD4AC;
+
+  /* Dorado Premium */
+  --color-accent: #D4AF37;            /* Dorado Principal */
+  --color-accent-dark: #B8860B;       /* Bronce */
+  --color-accent-light: #F2D641;      /* Dorado Claro */
+
+  /* Fondos */
+  --color-background-light: #F8F9FA;  /* Crema claro */
+  --color-background-dark: #0A0F0D;   /* Negro verdoso */
   --color-surface-light: #FFFFFF;
-  --color-surface-dark: #161B16;
+  --color-surface-dark: #0D1A12;
 
+  /* Textos */
+  --color-text-primary: #1A1A2A;      /* Carbón - texto principal */
+  --color-text-secondary: #6B7280;    /* Gris - texto secundario */
+  --color-text-muted: #9CA3AF;        /* Gris claro */
+  --color-text-inverse: #FFFFFF;      /* Blanco sobre oscuro */
+
+  /* ============================================
+     TIPOGRAFÍA
+     ============================================ */
   --font-display: 'Montserrat', sans-serif;
-  --font-body: 'Open Sans', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 
-  --shadow-soft: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
-  --shadow-glow: 0 0 20px rgba(76, 175, 80, 0.4);
-  --shadow-neon: 0 0 15px rgba(0, 229, 255, 0.5);
+  /* Pesos tipográficos */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
 
-  --radius-xl: 20px;
-  --radius-2xl: 32px;
+  /* ============================================
+     SOMBRAS PREMIUM
+     ============================================ */
+  --shadow-soft: 0 10px 30px -5px rgba(0, 75, 48, 0.08);
+  --shadow-card: 0 4px 20px rgba(0, 75, 48, 0.08);
+  --shadow-card-hover: 0 8px 30px rgba(0, 75, 48, 0.15);
+  --shadow-gold-glow: 0 0 30px rgba(212, 175, 55, 0.4);
+  --shadow-forest-glow: 0 0 40px rgba(0, 75, 48, 0.3);
+  --shadow-hero: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+  /* ============================================
+     BORDES Y RADIOS
+     ============================================ */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-2xl: 40px;
+  --radius-full: 9999px;
+
+  /* ============================================
+     ESPACIADO
+     ============================================ */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
 }
 
-/* Estilos base */
+/* ============================================
+   ESTILOS BASE
+   ============================================ */
+
 body {
   background-color: var(--color-background-light);
-  color: var(--color-secondary);
+  color: var(--color-text-primary);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .dark body {
   background-color: var(--color-background-dark);
-  color: #e5e7eb;
+  color: var(--color-text-inverse);
 }
 
-/* Patrón de circuitos */
-.circuit-bg {
-  background-image: radial-gradient(var(--color-primary) 1px, transparent 1px);
-  background-size: 20px 20px;
-  opacity: 0.1;
-}
-
-.dark .circuit-bg {
-  background-image: radial-gradient(#66BB6A 1px, transparent 1px);
-  opacity: 0.05;
-}
-
-/* Utilidades de Stitch */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
+/* ============================================
+   ANIMACIONES PREMIUM
+   ============================================ */
 
 @keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateY(10px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
   to {
     opacity: 1;
     transform: translateY(0);
@@ -71,13 +126,28 @@ body {
 }
 
 @keyframes slowZoom {
-  from {
-    transform: scale(1);
-  }
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}
 
-  to {
-    transform: scale(1.1);
-  }
+@keyframes goldShimmer {
+  0%, 100% { background-position: -200% center; }
+  50% { background-position: 200% center; }
+}
+
+@keyframes floatUp {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulseSoft {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+@keyframes energyPulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.05); }
 }
 
 .animate-slow-zoom {
@@ -86,6 +156,41 @@ body {
 
 .animate-fade-in {
   animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-gold-shimmer {
+  background: linear-gradient(90deg, #D4AF37 0%, #F2D641 50%, #D4AF37 100%);
+  background-size: 200% auto;
+  animation: goldShimmer 3s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: floatUp 4s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulseSoft 3s ease-in-out infinite;
+}
+
+.animate-energy-pulse {
+  animation: energyPulse 4s ease-in-out infinite;
+}
+
+/* ============================================
+   UTILIDADES
+   ============================================ */
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .scrollbar-hide::-webkit-scrollbar {
@@ -97,57 +202,72 @@ body {
   scrollbar-width: none;
 }
 
-/* Botones estilo Stitch */
-.btn-stitch-primary {
-  background-color: var(--color-primary);
-  color: white;
+/* ============================================
+   BOTONES PREMIUM
+   ============================================ */
+
+.btn-premium-primary {
+  background-color: var(--color-accent);
+  color: var(--color-primary-dark);
   font-family: var(--font-display);
-  font-weight: 600;
-  border-radius: 12px;
+  font-weight: 700;
+  border-radius: var(--radius-md);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  box-shadow: 0 4px 14px rgba(58, 99, 50, 0.25);
+  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.3);
 }
 
-.btn-stitch-primary:hover {
-  background-color: var(--color-primary-dark);
+.btn-premium-primary:hover {
+  background-color: var(--color-accent-dark);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(58, 99, 50, 0.3);
+  box-shadow: var(--shadow-gold-glow);
 }
 
-.btn-stitch-secondary {
-  background-color: white;
-  color: var(--color-secondary);
-  border: 2px solid rgba(58, 99, 50, 0.2);
+.btn-premium-secondary {
+  background-color: transparent;
+  color: var(--color-text-inverse);
+  border: 2px solid rgba(255, 255, 255, 0.3);
   font-family: var(--font-display);
   font-weight: 600;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   transition: all 0.3s;
 }
 
-.btn-stitch-secondary:hover {
-  border-color: var(--color-primary);
-  background-color: rgba(58, 99, 50, 0.02);
+.btn-premium-secondary:hover {
+  border-color: var(--color-accent);
+  background-color: rgba(212, 175, 55, 0.1);
 }
 
-.dark .btn-stitch-secondary {
-  background-color: rgba(255, 255, 255, 0.05);
-  color: white;
-  border-color: rgba(255, 255, 255, 0.1);
+.btn-forest {
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+  font-family: var(--font-display);
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 14px rgba(0, 75, 48, 0.25);
 }
 
-/* Shell móvil */
+.btn-forest:hover {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-forest-glow);
+}
+
+/* ============================================
+   SHELL MÓVIL
+   ============================================ */
+
 .mobile-shell {
   max-width: 448px;
-  /* max-w-md */
   margin: 0 auto;
   position: relative;
   min-height: 100vh;
   background-color: var(--color-background-light);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  box-shadow: var(--shadow-hero);
   overflow-x: hidden;
 }
 
@@ -155,7 +275,10 @@ body {
   background-color: var(--color-background-dark);
 }
 
-/* Logo refinements */
+/* ============================================
+   LOGO REFINAMENTS
+   ============================================ */
+
 .logo-blend {
   mix-blend-mode: multiply;
   filter: contrast(110%) brightness(105%);
@@ -167,7 +290,86 @@ body {
 }
 
 .logo-container {
-  background: radial-gradient(circle, rgba(76, 175, 80, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(0, 75, 48, 0.1) 0%, transparent 70%);
   padding: 1rem;
   border-radius: 50%;
+}
+
+/* ============================================
+   TARJETAS PREMIUM
+   ============================================ */
+
+.card-premium {
+  background-color: var(--color-surface-light);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 75, 48, 0.05);
+}
+
+.card-premium:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--color-accent);
+}
+
+.card-gold {
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
+  color: var(--color-primary-dark);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-gold-glow);
+}
+
+/* ============================================
+   PATRONES DE FONDO
+   ============================================ */
+
+.circuit-bg {
+  background-image: radial-gradient(var(--color-primary) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.1;
+}
+
+.dark .circuit-bg {
+  background-image: radial-gradient(#7CB342 1px, transparent 1px);
+  opacity: 0.05;
+}
+
+.hero-gradient {
+  background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-primary-dark) 50%, var(--color-surface-dark) 100%);
+}
+
+/* ============================================
+   EFECTOS DE ENERGÍA/BRILLO
+   ============================================ */
+
+.energy-glow {
+  position: relative;
+}
+
+.energy-glow::before {
+  content: '';
+  position: absolute;
+  inset: -20%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, transparent 60%);
+  animation: energyPulse 4s ease-in-out infinite;
+  z-index: -1;
+}
+
+/* ============================================
+   ACCESIBILIDAD - CONTRASTE PREMIUM
+   ============================================ */
+
+/* Nota: Dorado sobre Verde Bosque solo para títulos grandes (>18pt Bold) */
+/* Para texto pequeño, usar Blanco sobre Verde Bosque */
+
+.text-gold-title {
+  color: var(--color-accent);
+  font-weight: 700;
+  font-size: 1.125rem; /* Mínimo 18pt para WCAG AA */
+}
+
+.text-white-body {
+  color: var(--color-text-inverse);
+  /* Contraste 11:1 sobre Verde Bosque - Pasa AAA */
 }

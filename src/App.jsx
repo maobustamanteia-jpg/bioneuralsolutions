@@ -13,7 +13,8 @@ const About = lazy(() => import('./pages/About'));
 const HowToBuy = lazy(() => import('./pages/HowToBuy'));
 const Contact = lazy(() => import('./pages/Contact'));
 const Agronomo = lazy(() => import('./pages/Agronomo'));
-
+const SulfomaxLanding = lazy(() => import('./pages/landing-pages/Sulfomax'));
+const ProductLandingPage = lazy(() => import('./pages/ProductLandingPage'));
 const LoadingSpinner = () => (
   <div className="flex items-center justify-center min-h-[60vh]">
     <div className="w-12 h-12 border-4 border-[--color-primary]/20 border-t-[--color-primary] rounded-full animate-spin"></div>
@@ -45,6 +46,8 @@ function AppContent() {
                 <Route path="/como-comprar" element={<HowToBuy />} />
                 <Route path="/contacto" element={<Contact />} />
                 <Route path="/agronomo" element={<Agronomo />} />
+                <Route path="/sulfomax" element={<SulfomaxLanding />} />
+                <Route path="/producto/:slug" element={<ProductLandingPage />} />
               </Routes>
             </Motion.div>
           </Suspense>
