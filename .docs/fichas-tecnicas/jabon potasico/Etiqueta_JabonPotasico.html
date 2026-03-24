@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Etiqueta - Jabón Potásico (19x20cm)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap');
+
+        :root {
+            /* Tema Distintivo Jabón Potásico: Verde Esmeralda Bioneural / Slate */
+            --label-primary: #3BA74C;
+            --label-accent: #233D5E;
+            --label-bg: #FFFFFF;
+
+            /* Identidad Bioneural */
+            --bio-blue: #233D5E;
+            --text-dark: #1e293b;
+            --text-muted: #475569;
+        }
+
+        body {
+            margin: 0;
+            padding: 2rem;
+            background-color: #e2e8f0;
+            display: flex;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+        }
+
+        /* 19x20cm Canvas */
+        .etiqueta-canvas {
+            width: 19cm;
+            height: 20cm;
+            background-color: var(--label-bg);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            position: relative;
+            box-sizing: border-box;
+            border: 1px solid #cbd5e1;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+        }
+
+        /* Header / Branding (Top) */
+        .header {
+            background-color: var(--label-bg);
+            color: var(--text-dark);
+            padding: 1.2cm 1.5cm;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 0.6cm solid var(--label-primary);
+        }
+
+        .title-group {
+            max-width: 65%;
+        }
+
+        .product-name {
+            font-size: 3rem;
+            font-weight: 900;
+            margin: 0;
+            line-height: 1;
+            text-transform: uppercase;
+            color: var(--label-primary);
+        }
+
+        .category {
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 0.4rem;
+            color: var(--label-accent);
+        }
+
+        .brand-logo {
+            text-align: right;
+            font-size: 1.6rem;
+            font-weight: 800;
+            line-height: 1.1;
+        }
+
+        .brand-logo span {
+            color: var(--label-primary);
+        }
+
+        /* Middle Content Grid */
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding: 1cm 1.5cm;
+            gap: 1.5cm;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .section-title {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--label-primary);
+            text-transform: uppercase;
+            border-bottom: 2px solid var(--label-primary);
+            padding-bottom: 0.3rem;
+            margin-bottom: 0.8rem;
+            margin-top: 0;
+        }
+
+        .text-block {
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .list {
+            padding-left: 1.2rem;
+            margin: 0 0 1rem 0;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .list li {
+            margin-bottom: 0.4rem;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .table th {
+            background-color: var(--label-primary);
+            color: white;
+            padding: 0.4rem;
+            text-align: left;
+        }
+
+        .table td {
+            padding: 0.4rem;
+            border-bottom: 1px solid #ccc;
+            font-weight: 600;
+        }
+
+        /* Footer / QR */
+        .footer {
+            padding: 1cm 1.5cm;
+            background-color: var(--label-bg);
+            border-top: 2px solid var(--label-primary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .legal {
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: #b91c1c;
+            /* Red danger */
+            max-width: 60%;
+            line-height: 1.4;
+        }
+
+        .qr-box {
+            width: 3.5cm;
+            height: 3.5cm;
+            border: 3px solid var(--label-primary);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #f8fafc;
+            border-radius: 8px;
+            color: var(--label-primary);
+            font-weight: 800;
+            text-align: center;
+        }
+
+        .qr-box span {
+            font-size: 0.6rem;
+            margin-top: 0.2rem;
+            font-weight: 600;
+            color: var(--label-accent);
+        }
+
+        @media print {
+            @page {
+                size: 19cm 20cm;
+                margin: 0;
+            }
+
+            body {
+                background: transparent;
+                padding: 0;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .etiqueta-canvas {
+                box-shadow: none;
+                border: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="etiqueta-canvas">
+
+        <!-- Header -->
+        <div class="header">
+            <div class="title-group">
+                <h1 class="product-name">Jabón Potásico</h1>
+                <div class="category">Insecticida Orgánico de Contacto<br />Agente Lavador Foliar</div>
+            </div>
+            <div class="brand-logo">
+                BioNeural<br /><span>Solutions</span>
+            </div>
+        </div>
+
+        <!-- Content Base -->
+        <div class="content">
+            <!-- Left Side -->
+            <div class="column">
+                <h2 class="section-title">Insecticida Ecológico</h2>
+                <p class="text-block">
+                    Bio-tensioactivo agrícola completamente natural obtenido de la saponificación purificada. Actúa
+                    disolviendo la capa de quitina externa y el exoesqueleto de insectos de cuerpo blando,
+                    controlándolos de manera eficaz sin dejar residuos tóxicos.
+                </p>
+
+                <h2 class="section-title">Mecanismos de Acción</h2>
+                <ul class="list">
+                    <li>Deterioro por contacto del exoesqueleto de áfidos, trips, mosca blanca y escamas.</li>
+                    <li>Sinergia perfecta: Aumenta la eficiencia de absorción de otros activos (Humicos, extractos) si
+                        se aplica en mezcla.</li>
+                    <li>Excelente lavador de fumagina (hollín/melaza de insectos).</li>
+                    <li>Biodegradable. 0% Fitotoxicidad a la dosis recomendada.</li>
+                </ul>
+            </div>
+
+            <!-- Right Side -->
+            <div class="column">
+                <h2 class="section-title">Composición Básica</h2>
+                <table class="table">
+                    <tr>
+                        <th>Elemento Formulado</th>
+                        <th>Garantía</th>
+                    </tr>
+                    <tr>
+                        <td>Sales de Ácidos Grasos</td>
+                        <td>Saponificados</td>
+                    </tr>
+                    <tr>
+                        <td>Potasio Soluble (K2O)</td>
+                        <td>Aditivo Vital</td>
+                    </tr>
+                </table>
+
+                <h2 class="section-title">Recomendaciones Aplicación</h2>
+                <p class="text-block">
+                    <strong>Aplicación al Follaje (Mezcla y Solitario)</strong><br />
+                    Dosis general recomendada: 5 a 10 cc por Litro de agua.<br />
+                    <em>Asegurar una cobertura profunda del follaje para impactar directamente las plagas expuestas.
+                        Ideal aplicarlo en alta humedad relativa.</em>
+                </p>
+
+                <div style="margin-top: auto; font-size: 0.8rem; font-weight: 800;">
+                    Presentaciones Comerciales: 1L, Galón, Caneca 20L
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer / Envoltura -->
+        <div class="footer">
+            <div class="legal">
+                USO EXCLUSIVO CIENTÍFICO Y AGRÍCOLA.<br />
+                MANTÉNGASE LEJOS DEL ALCANCE DE LOS NIÑOS O ALIMENTOS.<br /><br />
+                <span style="color:var(--text-muted); font-size:0.7rem;">bioneuralsolutions.com.co | Fabricación
+                    Certificada</span>
+            </div>
+            <!-- SECCIÓN DEL QR -->
+            <div class="qr-box">
+                [ ESPACIO QR ]
+                <br />3 x 3 CM
+                <span>Escanear para Ficha T.</span>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

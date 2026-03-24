@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Etiqueta SULPHOMAX - Bidón 20L - Diseño Final</title>
+    <style>
+        @page {
+            size: 180mm 200mm;
+            margin: 0;
+        }
+        body {
+            font-family: 'Montserrat', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            width: 180mm;
+            height: 200mm;
+            box-sizing: border-box;
+            background-color: #004d40; /* Verde Oscuro BioNeural */
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Sangrado visual (3mm) */
+        .bleed-guide {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border: 3mm solid #fdd835; /* Amarillo de advertencia/corte */
+            pointer-events: none;
+            z-index: 999;
+            opacity: 0.3;
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 10mm;
+            box-sizing: border-box;
+        }
+
+        /* HEADER */
+        header {
+            text-align: center;
+            margin-bottom: 5mm;
+            border-bottom: 2px solid #fdd835;
+            padding-bottom: 5mm;
+        }
+        .company-name {
+            font-size: 14pt;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #e0f2f1;
+        }
+        .company-desc {
+             font-size: 9pt;
+             color: #b2dfdb;
+             font-style: italic;
+             margin-bottom: 2mm;
+        }
+        .product-name {
+            font-size: 52pt;
+            font-weight: 900;
+            margin: 0;
+            color: #fdd835; /* Amarillo Azufre */
+            text-shadow: 2px 2px 0px #000;
+            line-height: 1;
+            letter-spacing: -2px;
+        }
+        .slogan {
+            font-size: 14pt;
+            font-weight: 700;
+            color: #ffffff;
+            margin-top: 2mm;
+            text-transform: uppercase;
+        }
+
+        /* BODY */
+        .main-content {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 5mm;
+            align-content: start;
+        }
+
+        .benefits-section {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 5mm;
+            border-radius: 4px;
+            border: 1px solid #fdd835;
+        }
+        .section-title {
+            text-align: center;
+            font-weight: 900;
+            color: #fdd835;
+            text-transform: uppercase;
+            font-size: 12pt;
+            margin-bottom: 3mm;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            padding-bottom: 1mm;
+        }
+
+        /* Placeholders visuales para los "Iconos/Imagen" del usuario */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3mm;
+        }
+        .benefit-box {
+            background: rgba(0,0,0,0.3);
+            padding: 3mm;
+            text-align: center;
+            border-radius: 4px;
+        }
+        .benefit-icon {
+            font-size: 24pt;
+            display: block;
+            margin-bottom: 1mm;
+        }
+        .benefit-label {
+            font-size: 10pt;
+            font-weight: bold;
+            line-height: 1.1;
+        }
+
+        .technical-data {
+            font-size: 9pt;
+            color: #e0f2f1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5mm;
+            margin-top: 5mm;
+        }
+
+        .tech-block h4 {
+            color: #80cbc4;
+            margin: 0 0 1mm 0;
+            text-transform: uppercase;
+            font-size: 8pt;
+        }
+
+        .dose-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .dose-list li {
+            margin-bottom: 1mm;
+            border-bottom: 1px dashed rgba(255,255,255,0.2);
+            padding-bottom: 1mm;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* FOOTER */
+        footer {
+            margin-top: auto;
+            border-top: 2px solid #fdd835;
+            padding-top: 3mm;
+            text-align: center;
+            font-size: 8pt;
+        }
+        .warning {
+            background-color: #ff6f00;
+            color: white;
+            font-weight: bold;
+            padding: 1mm 3mm;
+            display: inline-block;
+            border-radius: 3px;
+            margin-bottom: 2mm;
+        }
+        .footer-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .net-content {
+            font-size: 24pt;
+            font-weight: 900;
+            color: #fff;
+            background: #000;
+            padding: 2mm 4mm;
+            border-radius: 4px;
+            border: 2px solid #fff;
+        }
+        .artisan-badge {
+            position: absolute;
+            top: 5mm;
+            right: 5mm;
+            background: #d84315;
+            color: white;
+            padding: 2mm 4mm;
+            border-radius: 20px;
+            font-size: 8pt;
+            font-weight: bold;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+            transform: rotate(15deg);
+            z-index: 100;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="bleed-guide"></div>
+    <div class="artisan-badge">BIOINSUMO ARTESANAL</div>
+
+    <div class="container">
+        <header>
+            <div class="company-name">BioNeural Solutions</div>
+            <div class="company-desc">Biotecnología Agrícola y Regeneración de Suelos</div>
+            <h1 class="product-name">SULPHOMAX™</h1>
+            <div class="slogan">BIORACIONAL INTEGRAL. ESCUDO Y NUTRICION PREMIUM.</div>
+        </header>
+
+        <div class="main-content">
+            <!-- Sección Central Visual (Donde iría la imagen del usuario) -->
+            <div class="benefits-section">
+                <div class="section-title">CUADRO DE BENEFICIOS CLAVE</div>
+                <div class="benefits-grid">
+                    <div class="benefit-box">
+                        <span class="benefit-icon">🛡️</span>
+                        <span class="benefit-label">ESCUDO<br>PROTECTOR</span>
+                    </div>
+                    <div class="benefit-box">
+                        <span class="benefit-icon">🌿</span>
+                        <span class="benefit-label">NUTRICIÓN<br>PREMIUM</span>
+                    </div>
+                    <div class="benefit-box">
+                        <span class="benefit-icon">⚡</span>
+                        <span class="benefit-label">ACCIÓN<br>RÁPIDA</span>
+                    </div>
+                    <div class="benefit-box">
+                        <span class="benefit-icon">🍄</span>
+                        <span class="benefit-label">CONTROL<br>FUNGICIDA</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="technical-data">
+                <div class="tech-block">
+                    <h4>Ingredientes</h4>
+                    <p>Polisulfuro de Calcio, Azufre Elemental, Cal Viva, Agua de Manantial.</p>
+                    
+                    <h4>Modo de Uso</h4>
+                    <p>1. Agite vigorosamente.<br>2. Aplique en horas frescas.<br>3. Cubra bien la hoja.</p>
+                </div>
+
+                <div class="tech-block">
+                    <h4>Dosis Sugerida (x Bomba 20L)</h4>
+                    <ul class="dose-list">
+                        <li><span>Preventivo</span> <strong>30-50 cc</strong></li>
+                        <li><span>Curativo</span> <strong>80-100 cc</strong></li>
+                        <li><span>Lavado</span> <strong>200 cc</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="warning">⚠️ PRECAUCIÓN: NO APLICAR > 28°C</div>
+            <div class="footer-row">
+                <div style="text-align: left;">
+                    <strong>LOTE:</strong> _______ <strong>VENCE:</strong> _______<br>
+                    Hecho en Fresno, Tolima<br>
+                    WhatsApp: +57 [TU NÚMERO]
+                </div>
+                <div class="net-content">20 L</div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

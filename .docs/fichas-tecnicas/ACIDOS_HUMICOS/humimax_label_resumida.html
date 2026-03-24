@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HUMIMAX - Etiqueta Resumida</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-blanco: #ffffff;
+            --marron-principal: #8D6E63; /* Marrón tierra suave */
+            --marron-oscuro: #4E342E;   /* Marrón terracota/oscuro para alto contraste */
+            --texto-oscuro: #3E2723;
+            --gris-texto: #555555;
+            --naranja-alerta: #FF9800; /* Naranja para precaución de lavado/aplicación */
+            --font-principal: 'Montserrat', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 2rem;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: var(--font-principal);
+        }
+
+        /* Contenedor principal estilo "Etiqueta Frontal Cuadrada/Rectangular" */
+        .etiqueta-resumida {
+            width: 800px;
+            height: 900px;
+            background-color: var(--bg-blanco);
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+        }
+
+        /* Fondos Curvos Laterales */
+        .forma-marron-der {
+            position: absolute;
+            right: -100px;
+            top: 15%;
+            width: 500px;
+            height: 800px;
+            background-color: var(--marron-oscuro);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        /* Contenido Principal (Texto alineado a la izquierda) */
+        .contenido-izquierdo {
+            width: 55%;
+            padding: 3rem 2rem 2rem 3rem;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- Encabezado --- */
+        .encabezado {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .logo-placeholder {
+            width: 50px;
+            height: 50px;
+            background-color: var(--marron-principal);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .encabezado-textos {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tipo-producto {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--texto-oscuro);
+            line-height: 1.2;
+        }
+
+        .sub-tipo {
+            font-size: 1.1rem;
+            color: var(--marron-oscuro);
+            font-weight: 700;
+        }
+
+        /* --- Nombre Principal --- */
+        .titulo-producto {
+            font-size: 4.5rem;
+            font-weight: 900;
+            color: var(--marron-oscuro);
+            line-height: 0.9;
+            margin: 0 0 1rem 0;
+            text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- Subtítulo / Ingrediente --- */
+        .ingrediente-activo {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--texto-oscuro);
+            margin-bottom: 2rem;
+        }
+
+        /* --- Pastillas (Dosis y Beneficios) --- */
+        .pastilla-marron {
+            background-color: var(--marron-principal);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            width: fit-content;
+        }
+
+        .pastilla-marron .titulo-pastilla {
+            display: block;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.3rem;
+        }
+
+        .pastilla-marron .valor-pastilla {
+            display: block;
+            font-size: 1.4rem;
+            font-weight: 800;
+        }
+
+        .pastilla-titulo-lista {
+            background-color: var(--marron-principal);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            display: inline-block;
+            font-size: 1.1rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        /* --- Lista de Beneficios --- */
+        .lista-control {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 2rem 0;
+        }
+
+        .lista-control li {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--texto-oscuro);
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .visto-bueno {
+            background-color: var(--marron-principal);
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        /* --- Pie / Info Fabricante --- */
+        .footer-info {
+            margin-top: auto;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .footer-textos {
+            color: var(--texto-oscuro);
+            line-height: 1.4;
+        }
+
+        .footer-textos .elaborado-por {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .footer-textos .nombre-marca {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--marron-oscuro);
+        }
+
+        .footer-textos .descripcion {
+            font-size: 0.9rem;
+            color: var(--gris-texto);
+        }
+
+        .contacto {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-top: 0.5rem;
+        }
+
+        .icono-whatsapp {
+            background-color: #25D366;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        /* --- Naranja de Precaución --- */
+        .alerta-uso {
+            background-color: rgba(255, 152, 0, 0.1);
+            border-left: 4px solid var(--naranja-alerta);
+            padding: 0.8rem;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--texto-oscuro);
+            font-weight: 600;
+        }
+
+        /* --- Imágenes / Burbujas Derecha --- */
+        .contenedor-imagenes {
+            width: 45%;
+            position: relative;
+            z-index: 20;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: flex-end;
+        }
+
+        .copy-derecha {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--texto-oscuro);
+            line-height: 1.3;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: right;
+        }
+
+        .burbuja-imagen {
+            border-radius: 50%;
+            border: 6px solid var(--marron-principal);
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: transparent;
+        }
+
+        .img-grande {
+            width: 550px;
+            height: 550px;
+            right: -80px;
+            top: 200px;
+            border-width: 8px;
+            /* Placeholder: Tierra fértil, raíces gruesas, regeneración */
+            background-image: url('https://images.unsplash.com/photo-1574943320219-553eb213f72d?q=80&w=800&auto=format&fit=crop'); 
+        }
+
+        .img-secundaria {
+            width: 250px;
+            height: 250px;
+            right: 320px;
+            top: 90px;
+            border-width: 6px;
+            /* Placeholder: Una plántula saliendo de tierra negra rica */
+            background-image: url('https://images.unsplash.com/photo-1599940824399-b87987ceb72a?q=80&w=400&auto=format&fit=crop');
+        }
+
+        .qr-pequeno {
+            width: 130px;
+            height: 130px;
+            right: 30px;
+            bottom: 30px;
+            border-width: 4px;
+            background-color: white;
+            color: var(--marron-oscuro);
+            font-weight: 800;
+            font-size: 1.2rem;
+            text-align: center;
+            background-image: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="etiqueta-resumida">
+        <!-- Fondos decorativos -->
+        <div class="forma-marron-der"></div>
+
+        <!-- ================= LADO IZQUIERDO (Textos y Datos) ================= -->
+        <div class="contenido-izquierdo">
+
+            <div class="encabezado">
+                <div class="logo-placeholder">Bio</div>
+                <div class="encabezado-textos">
+                    <span class="tipo-producto">Mejorador y Regenerador</span>
+                    <span class="sub-tipo">Enmienda Orgánica Líquida</span>
+                </div>
+            </div>
+
+            <h1 class="titulo-producto">HUMI<br>MAX</h1>
+
+            <div class="ingrediente-activo">
+                Con Ácidos Húmicos y Fúlvicos
+            </div>
+
+            <!-- Pastilla de Dosis -->
+            <div class="pastilla-marron">
+                <span class="titulo-pastilla">DOSIS SUGERIDA:</span>
+                <span class="valor-pastilla">1 - 2 LITROS / HECTÁREA</span>
+            </div>
+
+            <!-- Alerta -->
+            <div class="alerta-uso">
+                <span style="font-size: 1.2rem;">⚠️</span> Aplicación directa al suelo (Drench) o mediante sistemas de fertirriego.
+            </div>
+
+            <!-- Lista de Beneficios -->
+            <div class="pastilla-titulo-lista">BENEFICIOS PRINCIPALES:</div>
+
+            <ul class="lista-control">
+                <li><div class="visto-bueno">✓</div> DESBLOQUEA NUTRIENTES</li>
+                <li><div class="visto-bueno">✓</div> MEJORA LA ESTRUCTURA DEL SUELO</li>
+                <li><div class="visto-bueno">✓</div> ESTIMULA DESARROLLO RADICULAR</li>
+            </ul>
+
+            <!-- Información Footer -->
+            <div class="footer-info">
+                <div class="logo-placeholder" style="width: 40px; height: 40px; font-size: 1rem; background-color: #4CAF50;">BNS</div>
+                <div class="footer-textos">
+                    <div class="elaborado-por">ELABORADO POR:</div>
+                    <div class="nombre-marca">BIONEURAL SOLUTIONS</div>
+                    <div class="descripcion">
+                        Biotecnología Agrícola y<br>Regeneración de Suelos.
+                    </div>
+                    <div class="contacto">
+                        <div class="icono-whatsapp">W</div> CEL: 321 365 7236
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ================= LADO DERECHO (Imágenes y Copy) ================= -->
+        <div class="contenedor-imagenes">
+
+            <div class="copy-derecha">
+                Fertilidad Biológica.<br>
+                <span style="color: var(--naranja-alerta);">Retiene Humedad y Nutrientes</span>
+            </div>
+
+            <div class="burbuja-imagen img-grande">[IMAGEN PRINCIPAL]</div>
+            <div class="burbuja-imagen img-secundaria">[IMAGEN 2]</div>
+
+            <div class="burbuja-imagen qr-pequeno">QR<br>AQUÍ</div>
+        </div>
+    </div>
+
+</body>
+</html>

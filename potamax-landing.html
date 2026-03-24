@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POTAMAX | BioNeural Solutions - Jabón Potásico con Nanotecnología de Titanio</title>
+    <meta name="description" content="POTAMAX - Jabón Potásico Agrícola con Nanotecnología de Titanio. Solución avanzada para protección integral de cultivos.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #003366;
+            --primary-dark: #002244;
+            --accent: #D4AF37;
+            --accent-light: #E8C84A;
+            --bio-green: #7CB342;
+            --bio-green-light: #9CCC65;
+            --bg-light: #F0F6FA;
+            --bg-cream: #E8EFF5;
+            --text-dark: #1A1A1A;
+            --text-light: #666666;
+            --white: #FFFFFF;
+            --golden-border: rgba(212,175,55,0.4);
+            --golden-shadow: rgba(212,175,55,0.25);
+            --font-title: 'Montserrat', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-title);
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--primary);
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+        }
+
+        h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+            font-weight: 600;
+        }
+
+        p {
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            font-family: var(--font-title);
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            color: var(--primary);
+            box-shadow: 0 4px 20px var(--golden-shadow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 30px var(--golden-shadow);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 50%, #001833 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at 20% 80%, rgba(124,179,66,0.15) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(212,175,55,0.1) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        #particle-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-text {
+            color: var(--white);
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(212,175,55,0.2);
+            border: 1px solid var(--golden-border);
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .hero h1 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .hero-cta {
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        .hero-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeInScale 1s ease-out 0.3s both;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+            filter: drop-shadow(0 20px 60px rgba(0,0,0,0.4));
+        }
+
+        .hero-glow {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(212,175,55,0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        /* Introduction Section */
+        .intro {
+            background: var(--bg-cream);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .intro::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(124,179,66,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .intro-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .intro-text h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        .intro-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .intro-features {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .intro-feature {
+            display: flex;
+            align-items: center;
+gap: 1rem;
+        }
+
+        .intro-feature-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 12px;
+            flex-shrink: 0;
+        }
+
+        .intro-feature-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--accent);
+        }
+
+        .intro-visual {
+            position: relative;
+        }
+
+        .intro-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 3rem;
+            border: 1px solid var(--golden-border);
+            box-shadow: 0 20px 60px rgba(0,51,102,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .intro-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--bio-green));
+        }
+
+        .intro-card-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--bio-green) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .intro-card-icon svg {
+            width: 40px;
+            height: 40px;
+            stroke: var(--white);
+        }
+
+        .intro-card h3 {
+            margin-bottom: 1rem;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            background: var(--bg-light);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-header h2 {
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .benefit-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(0,51,102,0.1);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(212,175,55,0.05) 0%, transparent 100%);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--golden-border);
+            box-shadow: 0 20px 40px var(--golden-shadow);
+        }
+
+        .benefit-card:hover::before {
+            opacity: 1;
+        }
+
+        .benefit-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .benefit-icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: var(--accent);
+        }
+
+        .benefit-card h3 {
+            margin-bottom: 0.75rem;
+            position: relative;
+            z-index: 1;
+            color: var(--primary);
+        }
+
+        .benefit-card p {
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .benefit-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: var(--bio-green);
+            color: var(--white);
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 20px;
+            margin-top: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Usage Section */
+        .usage {
+            background: var(--bg-cream);
+        }
+
+        .usage-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .accordion-item {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(0,51,102,0.1);
+            transition: var(--transition);
+        }
+
+        .accordion-item:hover {
+            border-color: var(--golden-border);
+        }
+
+        .accordion-header {
+            width: 100%;
+            padding: 1.5rem 2rem;
+            background: transparent;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            font-family: var(--font-title);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-align: left;
+        }
+
+        .accordion-header:hover {
+            background: rgba(0,51,102,0.02);
+        }
+
+        .accordion-icon {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .accordion-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--accent);
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+        }
+
+        .accordion-body {
+            padding: 0 2rem 2rem;
+        }
+
+        .dosage-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .dosage-table th, .dosage-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(0,51,102,0.1);
+        }
+
+        .dosage-table th {
+            background: rgba(0,51,102,0.05);
+            font-family: var(--font-title);
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .dosage-table td {
+            color: var(--text-light);
+        }
+
+        .dosage-highlight {
+            color: var(--bio-green);
+            font-weight: 600;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--bg-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(212,175,55,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .cta-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .cta-text h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-text p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-features {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .cta-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .cta-feature svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--bio-green);
+            flex-shrink: 0;
+        }
+
+        .cta-feature span {
+            color: var(--text-dark);
+        }
+
+        .contact-form {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 2.5rem;
+            border: 1px solid var(--golden-border);
+            box-shadow: 0 20px 60px var(--golden-shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-family: var(--font-title);
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid rgba(0,51,102,0.1);
+            border-radius: 12px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: var(--transition);
+            background: var(--bg-light);
+        }
+
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(212,175,55,0.1);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            width: 100%;
+        }
+
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 30px rgba(37,211,102,0.4);
+            z-index: 1000;
+            transition: var(--transition);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 40px rgba(37,211,102,0.5);
+        }
+
+        .whatsapp-float svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--white);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary);
+            padding: 3rem 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .footer-logo span {
+            font-family: var(--font-title);
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--white);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-copy {
+            width: 100%;
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.5);
+            font-size: 0.875rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1.1);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+        .reveal-delay-5 { transition-delay: 0.5s; }
+        .reveal-delay-6 { transition-delay: 0.6s; }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-image {
+                order: -1;
+            }
+
+            .hero-image img {
+                max-height: 50vh;
+            }
+
+            .intro-content {
+                grid-template-columns: 1fr;
+            }
+
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cta-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 60px 0;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 55px;
+                height: 55px;
+            }
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+
+            #particle-canvas {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <canvas id="particle-canvas"></canvas>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <span class="hero-badge">Nanotecnologia de Titanio</span>
+                    <h1>POTAMAX<br><span>La Revolucion en Proteccion de Cultivos</span></h1>
+                    <p class="hero-subtitle">Jabon Potasico Agricola con Nanotecnologia de Titanio. Solucion avanzada que combina el poder del jabon potasico con nanotecnologia de titanio para proteccion integral de cultivos.</p>
+                    <div class="hero-cta">
+                        <a href="#contacto" class="btn btn-primary">Descubre Mas</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-glow"></div>
+                    <img src="images/potamax_bottle.png" alt="POTAMAX - Jabon Potasico con Nanotecnologia de Titanio" loading="eager">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="intro section">
+        <div class="container">
+            <div class="intro-content">
+                <div class="intro-text reveal">
+                    <h2>Que es POTAMAX?</h2>
+                    <p>POTAMAX es una solucion agricola de vanguardia que revoluciona la proteccion de cultivos. Su formula exclusiva combina jabon potasico de alta pureza con revolucionaria nanotecnologia de titanio.</p>
+                    <p>Este producto unique ofrece quadruple accion: bloqueo solar, control de plagas por asfixia, limpieza de fumagina y maxima eficiencia como coadyuvante de otros agroquimicos.</p>
+                    <div class="intro-features">
+                        <div class="intro-feature">
+                            <div class="intro-feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="5"/>
+                                    <line x1="12" y1="1" x2="12" y2="3"/>
+                                    <line x1="12" y1="21" x2="12" y2="23"/>
+                                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                                    <line x1="1" y1="12" x2="3" y2="12"/>
+                                    <line x1="21" y1="12" x2="23" y2="12"/>
+                                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                                </svg>
+                            </div>
+                            <span>Bloqueador Solar con Bioestimulacion</span>
+                        </div>
+                        <div class="intro-feature">
+                            <div class="intro-feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                </svg>
+                            </div>
+                            <span>Control de Plagas por Asfixia</span>
+                        </div>
+                        <div class="intro-feature">
+                            <div class="intro-feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                                </svg>
+                            </div>
+                            <span>Poder Limpiador de Fumagina</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="intro-visual reveal reveal-delay-2">
+                    <div class="intro-card">
+                        <div class="intro-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                                <polyline points="2 17 12 22 22 17"/>
+                                <polyline points="2 12 12 17 22 12"/>
+                            </svg>
+                        </div>
+                        <h3>Tecnologia de Titanio Nanometrico</h3>
+                        <p>El titanio en escala nanometrica forma una capa protectora sobre las hojas, reflejando la radiacion UV excesiva mientras permite la fotosintesis optima. Una innovacion que cambia las reglas del juego en agricultura.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits section">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Beneficios que Transforman tu Cultivo</h2>
+                <p>Descubre por que POTAMAX es la eleccion preferida de agricultores profesionales</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card reveal reveal-delay-1">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"/>
+                            <line x1="12" y1="1" x2="12" y2="3"/>
+                            <line x1="12" y1="21" x2="12" y2="23"/>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                            <line x1="1" y1="12" x2="3" y2="12"/>
+                            <line x1="21" y1="12" x2="23" y2="12"/>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                        </svg>
+                    </div>
+                    <h3>Bloqueador Solar y Bioestimillante</h3>
+                    <p>El titanio recubre la hoja protegiendola de la radiacion solar extrema, mientras estimula la fotosintesis para un crecimiento optimo.</p>
+                    <span class="benefit-tag">Proteccion UV</span>
+                </div>
+                <div class="benefit-card reveal reveal-delay-2">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            <path d="M9 12l2 2 4-4"/>
+                        </svg>
+                    </div>
+                    <h3>Asfixia sin Resistencia</h3>
+                    <p>Elimina insectos por contacto fisico (asfixia) al ablandar el exoesqueleto y bloquear los espiraculos. Sin resistencia genetica.</p>
+                    <span class="benefit-tag">Control Natural</span>
+                </div>
+                <div class="benefit-card reveal reveal-delay-3">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                            <path d="M3 12h18"/>
+                        </svg>
+                    </div>
+                    <h3>Poder Limpiador</h3>
+                    <p>Lava la "fumagina" (el hongo negro que dejan plagas como la mosca blanca), permitiendo que los estomas se destapen.</p>
+                    <span class="benefit-tag">Limpieza Total</span>
+                </div>
+                <div class="benefit-card reveal reveal-delay-4">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                            <polyline points="2 17 12 22 22 17"/>
+                            <polyline points="2 12 12 17 22 12"/>
+                        </svg>
+                    </div>
+                    <h3>Coadyuvante de Elite</h3>
+                    <p>Ayuda a que otros agroquimicos se peguen y esparzan mejor por la hoja, maximizando la eficacia de tus tratamientos.</p>
+                    <span class="benefit-tag">Maxima Eficiencia</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Usage Section -->
+    <section class="usage section">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Modo de Uso</h2>
+                <p>Instrucciones detalladas para aplicaciones optimas</p>
+            </div>
+            <div class="usage-content">
+                <div class="accordion">
+                    <div class="accordion-item reveal">
+                        <button class="accordion-header">
+                            <span>Dosis Recomendadas</span>
+                            <div class="accordion-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="6 9 12 15 18 9"/>
+                                </svg>
+                            </div>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <table class="dosage-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Cultivo</th>
+                                            <th>Dosis</th>
+                                            <th>Frecuencia</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Citricos</td>
+                                            <td class="dosage-highlight">200-300 cc/200L</td>
+                                            <td>Cada 7-15 dias</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hortalizas</td>
+                                            <td class="dosage-highlight">150-250 cc/200L</td>
+                                            <td>Cada 7-10 dias</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Fresas</td>
+                                            <td class="dosage-highlight">150-200 cc/200L</td>
+                                            <td>Cada 7 dias</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Cafe</td>
+                                            <td class="dosage-highlight">200-300 cc/200L</td>
+                                            <td>Cada 15 dias</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Frijol</td>
+                                            <td class="dosage-highlight">150-250 cc/200L</td>
+                                            <td>Cada 10 dias</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item reveal reveal-delay-1">
+                        <button class="accordion-header">
+                            <span>Metodo de Aplicacion</span>
+                            <div class="accordion-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="6 9 12 15 18 9"/>
+                                </svg>
+                            </div>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p><strong>Aplicacion Foliar:</strong> Rociar uniformemente sobre toda la superficie de las hojas, incluyendo el enves.</p>
+                                <br>
+                                <p><strong>Mejor momento:</strong> Aplicar en horas de la manana o al atardecer para evitar evaporacion rapida y maximizar absorcion.</p>
+                                <br>
+                                <p><strong>Compatible:</strong> Se mezcla con la mayoria de fungicidas, insecticidas y fertilizantes foliares.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item reveal reveal-delay-2">
+                        <button class="accordion-header">
+                            <span>Recomendaciones Tecnicas</span>
+                            <div class="accordion-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="6 9 12 15 18 9"/>
+                                </svg>
+                            </div>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <ul style="margin-left:1.5rem; color:var(--text-light)">
+                                    <li style="margin-bottom:0.5rem">No aplicar en horas de maxima radiacion solar directa</li>
+                                    <li style="margin-bottom:0.5rem">Temperatura ideal de aplicacion: 15-28C</li>
+                                    <li style="margin-bottom:0.5rem">Intervalo de seguridad: 0 dias antes de cosecha (periodo de carencia)</li>
+                                    <li style="margin-bottom:0.5rem">Almacenar en lugar fresco, ventilado y protegido de la luz solar directa</li>
+                                    <li style="margin-bottom:0.5rem">No mezclar con productos de reaccion acida (pH < 5)</li>
+                                    <li style="margin-bottom:0.5rem">Agitar bien antes de usar</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section section" id="contacto">
+        <div class="container">
+            <div class="cta-content">
+                <div class="cta-text reveal">
+                    <h2>Transforma tu Agricultura con POTAMAX</h2>
+                    <p>Unete a los agricultores que ya estan protegiendo sus cultivos con la revolucionaria nanotecnologia de titanio.</p>
+                    <div class="cta-features">
+                        <div class="cta-feature">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                            <span>Asesoria tecnica personalizada</span>
+                        </div>
+                        <div class="cta-feature">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                            <span>Envios a todo el pais</span>
+                        </div>
+                        <div class="cta-feature">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                            <span>Garantia de calidad BioNeural</span>
+                        </div>
+                        <div class="cta-feature">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                            <span>Soporte post-venta especializado</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form reveal reveal-delay-2">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nombre Completo</label>
+                            <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Correo Electronico</label>
+                            <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefono</label>
+                            <input type="tel" id="phone" name="phone" placeholder="Tu numero">
+                        </div>
+                        <div class="form-group">
+                            <label for="interest">Producto de Interes</label>
+                            <select id="interest" name="interest">
+                                <option value="potamax">POTAMAX</option>
+                                <option value="sulphomax">SULPHOMAX</option>
+                                <option value="nutriquel">NUTRIQUEL</option>
+                                <option value="humicos">Acidos Humicos</option>
+                                <option value="otros">Otros Productos</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensaje</label>
+                            <textarea id="message" name="message" placeholder="En que podemos ayudarte?"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary form-submit">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/573000000000" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span>BioNeural Solutions</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Politica de Privacidad</a>
+                    <a href="#">Terminos y Condiciones</a>
+                    <a href="#">Contacto</a>
+                </div>
+            </div>
+            <p class="footer-copy">2026 BioNeural Solutions. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Particle System
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 3 + 1;
+                this.speedX = (Math.random() - 0.5) * 0.5;
+                this.speedY = (Math.random() - 0.5) * 0.5;
+                this.opacity = Math.random() * 0.5 + 0.1;
+                // Gold and green particles for nanotechnology theme
+                this.color = Math.random() > 0.5 ? '#D4AF37' : '#7CB342';
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+                    this.reset();
+                }
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.globalAlpha = this.opacity;
+                ctx.fill();
+                ctx.globalAlpha = 1;
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            const particleCount = Math.min(50, Math.floor(window.innerWidth / 20));
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+
+        // Initialize particles only if user hasn't requested reduced motion
+        if (!window.matchMedia('(prefers-reduced-motion:reduce)').matches) {
+            resizeCanvas();
+            initParticles();
+            animateParticles();
+        }
+
+        window.addEventListener('resize', () => {
+            if (!window.matchMedia('(prefers-reduced-motion:reduce)').matches) {
+                resizeCanvas();
+                initParticles();
+            }
+        });
+
+        // Scroll Reveal
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            revealElements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) {
+                    el.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // Accordion
+        document.querySelectorAll('.accordion-item').forEach(item => {
+            item.querySelector('.accordion-header').addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Form Submit
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('.form-submit');
+            btn.textContent = 'Mensaje Enviado!';
+            btn.style.background = 'linear-gradient(135deg, #7CB342 0%, #558B2F 100%)';
+            this.reset();
+            setTimeout(() => {
+                btn.textContent = 'Enviar Mensaje';
+                btn.style.background = '';
+            }, 3000);
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', function(e) {
+                e.preventDefault();
+                const t = document.querySelector(this.getAttribute('href'));
+                if (t) {
+                    t.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

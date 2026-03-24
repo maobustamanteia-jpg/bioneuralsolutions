@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etiqueta PotaMax* - Vista Previa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Montserrat', sans-serif; background-color: #f3f4f6; padding: 20px; display: flex; justify-content: center; }
+        .text-shadow-sm { text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.2); }
+        .text-shadow-md { text-shadow: 2px 3px 4px rgba(0, 0, 0, 0.25); }
+    </style>
+</head>
+<body>
+
+    <!-- CONTENEDOR DE LA ETIQUETA (Simulando 1 Litro Frontal) -->
+    <div class="relative w-full max-w-[450px] bg-white rounded-[2rem] shadow-2xl overflow-hidden border-2 border-green-100 flex flex-col justify-between" style="min-height: 850px;">
+
+        <!-- SECCIÓN SUPERIOR -->
+        <div class="flex flex-col items-center pt-10 px-6">
+            
+            <!-- Logo Hoja Circular Verde -->
+            <div class="w-24 h-24 bg-green-600 rounded-full flex items-center justify-center shadow-lg border-4 border-white transform -translate-y-2">
+                <svg class="w-14 h-14 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 2a8 8 0 00-6.32 12.9l-2.4 2.4a1 1 0 101.42 1.42l2.4-2.4A8 8 0 1010 2zM6 10a4 4 0 118 0 4 4 0 01-8 0z" clip-rule="evenodd" />
+                    <!-- Hoja simplificada -->
+                    <path d="M10 4s-4 3-4 7c0 2 1.5 3 4 5 2.5-2 4-3 4-5 0-4-4-7-4-7z"/>
+                </svg>
+            </div>
+
+            <!-- Título Principal -->
+            <h1 class="text-[3.5rem] leading-none font-black text-green-800 tracking-tighter text-shadow-md mt-4">
+                PotaMax<span class="text-green-500">*</span>
+            </h1>
+
+            <!-- Subtítulos -->
+            <h2 class="text-3xl font-extrabold text-green-700 tracking-wide mt-2">JABÓN POTÁSICO</h2>
+            <p class="text-[1.1rem] font-bold text-gray-800 mt-3 bg-gray-100 px-4 py-1 rounded-full border border-gray-300">Producto de control Bio-racional</p>
+            <p class="text-lg font-black text-lime-600 mt-2">Con Dióxido de Titanio (TiO2)</p>
+
+            <div class="w-full h-1 bg-gradient-to-r from-green-300 via-green-600 to-green-300 rounded-full my-6 opacity-60"></div>
+
+            <!-- Beneficios (Checkmarks) -->
+            <div class="w-full space-y-3 px-2">
+                <div class="flex items-start gap-3">
+                    <svg class="w-7 h-7 text-lime-500 shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                    <p class="text-[1.05rem] font-bold text-gray-700 leading-tight">Agente surfactante natural.</p>
+                </div>
+                <div class="flex items-start gap-3">
+                    <svg class="w-7 h-7 text-lime-500 shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                    <p class="text-[1.05rem] font-bold text-gray-700 leading-tight">Fertilizante foliar con alto contenido de potasio.</p>
+                </div>
+            </div>
+
+            <!-- Línea separadora -->
+            <hr class="w-full border-gray-200 my-5">
+
+            <!-- Plagas Objetivo -->
+            <div class="w-full space-y-4 px-2">
+                <!-- Insectos de cuerpo blando -->
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                        <p class="text-base font-bold text-gray-800">Insectos de cuerpo blando.</p>
+                    </div>
+                    <!-- Círculo Imagen -->
+                    <div class="w-12 h-12 rounded-full border-2 border-green-500 bg-gray-200 shadow-inner flex items-center justify-center text-xs text-gray-500 font-bold overflow-hidden">Foto</div>
+                </div>
+
+                <!-- Mosca Blanca / Trips -->
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                        <p class="text-base font-bold text-gray-800">Mosca blanca - trips.</p>
+                    </div>
+                    <div class="w-12 h-12 rounded-full border-2 border-green-500 bg-gray-200 shadow-inner flex items-center justify-center text-xs text-gray-500 font-bold overflow-hidden">Foto</div>
+                </div>
+
+                <!-- Cochinillas -->
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                        <p class="text-base font-bold text-gray-800">Insectos de cuerpo ceroso.</p>
+                    </div>
+                    <div class="w-12 h-12 rounded-full border-2 border-green-500 bg-gray-200 shadow-inner flex items-center justify-center text-xs text-gray-500 font-bold overflow-hidden">Foto</div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- SECCIÓN INFERIOR -->
+        <div class="mt-6">
+            <!-- Botón Dosis -->
+            <div class="mx-6 mb-8">
+                <div class="bg-gradient-to-b from-green-500 to-green-700 text-white text-center py-4 rounded-xl shadow-[0_4px_14px_0_rgba(22,163,74,0.39)] border border-green-400">
+                    <p class="text-[1.3rem] font-black tracking-widest text-shadow-sm">DOSIS SUGERIDA:</p>
+                    <p class="text-[1.4rem] font-extrabold mt-1 tracking-wider">120-200 CC / 20 L</p>
+                </div>
+            </div>
+
+            <!-- Footer (Contacto / Marca) -->
+            <div class="bg-gray-800 w-full py-4 px-6 text-center text-white rounded-b-[1.8rem]">
+                <div class="flex justify-center items-center gap-2 mb-2">
+                    <!-- Icono WhatsApp -->
+                    <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                    <span class="text-green-400 font-bold">CONTACTO TÉCNICO</span>
+                </div>
+                <p class="font-extrabold text-lg">Ángel Moreno</p>
+                <p class="text-sm text-gray-300">Asistencia Agronómica: 310 123 4567</p>
+                <p class="text-xs text-gray-400 mt-2 font-semibold">BIONEURAL SOLUTIONS S.A.S</p>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

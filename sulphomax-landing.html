@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SULPHOMAX | BioNeural Solutions - Protección Premium de Cultivos</title>
+    <meta name="description" content="SULPHOMAX - Bioracional Integral. Escudo y Nutrición Premium. Control de ácaros y más de 50 enfermedades fúngicas.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #004B30; --primary-dark: #003322; --accent: #D4AF37; --accent-light: #E8C84A; --bio-green: #7CB342; --bio-green-light: #9CCC65; --bg-light: #F9FCF0; --bg-cream: #F5FAE8; --text-dark: #1A1A1A; --text-light: #666666; --white: #FFFFFF; --golden-border: rgba(212,175,55,0.4); --golden-shadow: rgba(212,175,55,0.25); --font-title: 'Montserrat', sans-serif; --font-body: 'Inter', sans-serif; --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-body); background: var(--bg-light); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .section { padding: 100px 0; }
+        .text-center { text-align: center; }
+        h1, h2, h3, h4 { font-family: var(--font-title); font-weight: 700; line-height: 1.2; color: var(--primary); }
+        h1 { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; }
+        h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 1rem; }
+        h3 { font-size: clamp(1.25rem, 2.5vw, 1.5rem); font-weight: 600; }
+        p { color: var(--text-light); font-size: 1rem; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 1rem 2rem; font-family: var(--font-title); font-size: 1rem; font-weight: 600; text-decoration: none; border: none; border-radius: 50px; cursor: pointer; transition: var(--transition); }
+        .btn-primary { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%); color: var(--primary); box-shadow: 0 4px 20px var(--golden-shadow); }
+        .btn-primary:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 8px 30px var(--golden-shadow); }
+        .hero { position: relative; min-height: 100vh; display: flex; align-items: center; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 50%, #00291C 100%); overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 20% 80%, rgba(124,179,66,0.15) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(212,175,55,0.1) 0%, transparent 40%); pointer-events: none; }
+        #particle-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+        .hero-content { position: relative; z-index: 10; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+        .hero-text { color: var(--white); }
+        .hero-badge { display: inline-block; padding: 0.5rem 1rem; background: rgba(212,175,55,0.2); border: 1px solid var(--golden-border); border-radius: 50px; font-size: 0.875rem; font-weight: 500; color: var(--accent); margin-bottom: 1.5rem; animation: fadeInDown 0.8s ease-out; }
+        .hero h1 { color: var(--white); margin-bottom: 1.5rem; animation: fadeInUp 0.8s ease-out 0.2s both; }
+        .hero h1 span { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero-subtitle { font-size: 1.25rem; color: rgba(255,255,255,0.85); margin-bottom: 2rem; animation: fadeInUp 0.8s ease-out 0.4s both; }
+        .hero-cta { animation: fadeInUp 0.8s ease-out 0.6s both; }
+        .hero-image { position: relative; display: flex; justify-content: center; align-items: center; animation: fadeInScale 1s ease-out 0.3s both; }
+        .hero-image img { max-width: 100%; max-height: 70vh; object-fit: contain; filter: drop-shadow(0 20px 60px rgba(0,0,0,0.4)); }
+        .hero-glow { position: absolute; width: 400px; height: 400px; background: radial-gradient(circle, rgba(212,175,55,0.3) 0%, transparent 70%); border-radius: 50%; animation: pulse 4s ease-in-out infinite; }
+        .intro { background: var(--bg-cream); position: relative; overflow: hidden; }
+        .intro::before { content: ''; position: absolute; top: -50%; right: -20%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(124,179,66,0.1) 0%, transparent 70%); border-radius: 50%; }
+        .intro-content { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .intro-text h2 { margin-bottom: 1.5rem; }
+        .intro-text p { margin-bottom: 1.5rem; font-size: 1.1rem; }
+        .intro-features { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+        .intro-feature { display: flex; align-items: center; gap: 1rem; }
+        .intro-feature-icon { width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); border-radius: 12px; flex-shrink: 0; }
+        .intro-feature-icon svg { width: 24px; height: 24px; stroke: var(--accent); }
+        .intro-visual { position: relative; }
+        .intro-card { background: var(--white); border-radius: 24px; padding: 3rem; border: 1px solid var(--golden-border); box-shadow: 0 20px 60px rgba(0,75,48,0.1); position: relative; overflow: hidden; }
+        .intro-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--accent), var(--bio-green)); }
+        .intro-card-icon { width: 80px; height: 80px; background: linear-gradient(135deg, var(--primary) 0%, var(--bio-green) 100%); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; }
+        .intro-card-icon svg { width: 40px; height: 40px; stroke: var(--white); }
+        .intro-card h3 { margin-bottom: 1rem; }
+        .benefits { background: var(--bg-light); }
+        .section-header { text-align: center; max-width: 700px; margin: 0 auto 4rem; }
+        .section-header h2 { margin-bottom: 1rem; }
+        .section-header p { font-size: 1.1rem; }
+        .benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .benefit-card { background: var(--white); border-radius: 20px; padding: 2rem; border: 1px solid rgba(0,75,48,0.1); transition: var(--transition); position: relative; overflow: hidden; }
+        .benefit-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(212,175,55,0.05) 0%, transparent 100%); opacity: 0; transition: var(--transition); }
+        .benefit-card:hover { transform: translateY(-8px); border-color: var(--golden-border); box-shadow: 0 20px 40px var(--golden-shadow); }
+        .benefit-card:hover::before { opacity: 1; }
+        .benefit-icon { width: 70px; height: 70px; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; position: relative; z-index: 1; }
+        .benefit-icon svg { width: 32px; height: 32px; stroke: var(--accent); }
+        .benefit-card h3 { margin-bottom: 0.75rem; position: relative; z-index: 1; }
+        .benefit-card p { font-size: 0.95rem; position: relative; z-index: 1; }
+        .benefit-tag { display: inline-block; padding: 0.25rem 0.75rem; background: var(--bio-green); color: var(--white); font-size: 0.75rem; font-weight: 600; border-radius: 20px; margin-top: 1rem; position: relative; z-index: 1; }
+        .composition { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); position: relative; overflow: hidden; }
+        .composition::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 10% 90%, rgba(124,179,66,0.2) 0%, transparent 50%), radial-gradient(ellipse at 90% 10%, rgba(212,175,55,0.15) 0%, transparent 40%); }
+        .composition .section-header { position: relative; z-index: 1; }
+        .composition .section-header h2, .composition .section-header p { color: var(--white); }
+        .composition-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; position: relative; z-index: 1; }
+        .composition-card { background: rgba(255,255,255,0.12); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; padding: 2rem; text-align: center; transition: var(--transition); }
+        .composition-card:hover { background: rgba(255,255,255,0.15); transform: translateY(-5px); }
+        .composition-value { font-family: var(--font-title); font-size: 2.5rem; font-weight: 800; color: var(--accent); margin-bottom: 0.5rem; }
+        .composition-label { color: rgba(255,255,255,0.9); font-size: 0.95rem; font-weight: 500; }
+        .composition-note { text-align: center; margin-top: 3rem; color: rgba(255,255,255,0.7); font-size: 0.9rem; position: relative; z-index: 1; }
+        .usage { background: var(--bg-cream); }
+        .usage-content { max-width: 800px; margin: 0 auto; }
+        .accordion { display: flex; flex-direction: column; gap: 1rem; }
+        .accordion-item { background: var(--white); border-radius: 16px; overflow: hidden; border: 1px solid rgba(0,75,48,0.1); transition: var(--transition); }
+        .accordion-item:hover { border-color: var(--golden-border); }
+        .accordion-header { width: 100%; padding: 1.5rem 2rem; background: transparent; border: none; display: flex; align-items: center; justify-content: space-between; cursor: pointer; font-family: var(--font-title); font-size: 1.1rem; font-weight: 600; color: var(--primary); text-align: left; }
+        .accordion-header:hover { background: rgba(0,75,48,0.02); }
+        .accordion-icon { width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; transition: var(--transition); }
+        .accordion-icon svg { width: 20px; height: 20px; stroke: var(--accent); }
+        .accordion-item.active .accordion-icon { transform: rotate(180deg); }
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
+        .accordion-item.active .accordion-content { max-height: 500px; }
+        .accordion-body { padding: 0 2rem 2rem; }
+        .dosage-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+        .dosage-table th, .dosage-table td { padding: 1rem; text-align: left; border-bottom: 1px solid rgba(0,75,48,0.1); }
+        .dosage-table th { background: rgba(0,75,48,0.05); font-family: var(--font-title); font-weight: 600; color: var(--primary); }
+        .dosage-table td { color: var(--text-light); }
+        .dosage-highlight { color: var(--bio-green); font-weight: 600; }
+        .cta-section { background: var(--bg-light); position: relative; overflow: hidden; }
+        .cta-section::before { content: ''; position: absolute; bottom: -100px; left: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(212,175,55,0.1) 0%, transparent 70%); border-radius: 50%; }
+        .cta-content { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .cta-text h2 { margin-bottom: 1.5rem; }
+        .cta-text p { font-size: 1.1rem; margin-bottom: 2rem; }
+        .cta-features { display: flex; flex-direction: column; gap: 1rem; }
+        .cta-feature { display: flex; align-items: center; gap: 0.75rem; }
+        .cta-feature svg { width: 20px; height: 20px; stroke: var(--bio-green); flex-shrink: 0; }
+        .cta-feature span { color: var(--text-dark); }
+        .contact-form { background: var(--white); border-radius: 24px; padding: 2.5rem; border: 1px solid var(--golden-border); box-shadow: 0 20px 60px var(--golden-shadow); }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; font-family: var(--font-title); font-weight: 600; color: var(--primary); margin-bottom: 0.5rem; }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 1rem; border: 2px solid rgba(0,75,48,0.1); border-radius: 12px; font-family: var(--font-body); font-size: 1rem; transition: var(--transition); background: var(--bg-light); }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px rgba(212,175,55,0.1); }
+        .form-group textarea { min-height: 120px; resize: vertical; }
+        .form-submit { width: 100%; }
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 30px rgba(37,211,102,0.4); z-index: 1000; transition: var(--transition); animation: float 3s ease-in-out infinite; }
+        .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 12px 40px rgba(37,211,102,0.5); }
+        .whatsapp-float svg { width: 30px; height: 30px; fill: var(--white); }
+        .footer { background: var(--primary); padding: 3rem 0; }
+        .footer-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .footer-logo { display: flex; align-items: center; gap: 1rem; }
+        .footer-logo span { font-family: var(--font-title); font-weight: 700; font-size: 1.25rem; color: var(--white); }
+        .footer-links { display: flex; gap: 2rem; }
+        .footer-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; transition: var(--transition); }
+        .footer-links a:hover { color: var(--accent); }
+        .footer-copy { width: 100%; text-align: center; padding-top: 2rem; margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); font-size: 0.875rem; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInScale { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+        @keyframes pulse { 0%, 100% { opacity: 0.5; transform: scale(1); } 50% { opacity: 0.8; transform: scale(1.1); } }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+        .reveal-delay-5 { transition-delay: 0.5s; }
+        .reveal-delay-6 { transition-delay: 0.6s; }
+        @media (max-width: 1024px) { .hero-content { grid-template-columns: 1fr; text-align: center; } .hero-image { order: -1; } .hero-image img { max-height: 50vh; } .intro-content { grid-template-columns: 1fr; } .benefits-grid { grid-template-columns: repeat(2, 1fr); } .composition-grid { grid-template-columns: repeat(2, 1fr); } .cta-content { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) { .section { padding: 60px 0; } .benefits-grid { grid-template-columns: 1fr; } .composition-grid { grid-template-columns: 1fr; } .footer-content { flex-direction: column; text-align: center; } .footer-links { flex-wrap: wrap; justify-content: center; } .whatsapp-float { bottom: 20px; right: 20px; width: 55px; height: 55px; } }
+        @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; } .reveal { opacity: 1; transform: none; } #particle-canvas { display: none; } }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <canvas id="particle-canvas"></canvas>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <span class="hero-badge">Bioracional Integral</span>
+                    <h1>SULPHOMAX<br><span>Escudo y Nutricion Premium</span></h1>
+                    <p class="hero-subtitle">Solucion bioracional avanzada que combina control de plagas y accion como precursor de proteinas. Protege tus cultivos con la naturaleza.</p>
+                    <div class="hero-cta">
+                        <a href="#contacto" class="btn btn-primary">Descubre Mas</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-glow"></div>
+                    <img src="images/sulphomax_bottle_1772241667175.png" alt="SULPHOMAX" loading="eager">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="intro section">
+        <div class="container">
+            <div class="intro-content">
+                <div class="intro-text reveal">
+                    <h2>Que es SULPHOMAX?</h2>
+                    <p>SULPHOMAX es una solucion bioracional de ultima generacion que revoluciona la proteccion de cultivos. Su formula exclusiva combina azufre elemental de alta pureza con bioactivadores naturales.</p>
+                    <p>Este producto actua como un escudo protector de amplio espectro, ofreciendo doble accion: control efectivo de acaros y prevencion de mas de 50 enfermedades fungicas, mientras nutre tus cultivos con nutrientes esenciales.</p>
+                    <div class="intro-features">
+                        <div class="intro-feature">
+                            <div class="intro-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                            <span>Escudo Protector de Amplio Espectro</span>
+                        </div>
+                        <div class="intro-feature">
+                            <div class="intro-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+                            <span>Precursor de Proteinas</span>
+                        </div>
+                        <div class="intro-feature">
+                            <div class="intro-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+                            <span>Nutricion Premium</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="intro-visual reveal reveal-delay-2">
+                    <div class="intro-card">
+                        <div class="intro-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+                        <h3>Tecnologia Bioracional Avanzada</h3>
+                        <p>Gracias a su formulacion unica, SULPHOMAX no solo protege, sino que potencia la respuesta natural de las plantas frente a estres biotico y abiotico.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="benefits section">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Beneficios que Transforman tu Cultivo</h2>
+                <p>Descubre por que SULPHOMAX es la eleccion preferida de agricultores profesionales</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card reveal reveal-delay-1">
+                    <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+                    <h3>Control de Acaros</h3>
+                    <p>Eficaz control de diversas especies de acaros que afectan los cultivos.</p>
+                    <span class="benefit-tag">+50 Especies</span>
+                </div>
+                <div class="benefit-card reveal reveal-delay-2">
+                    <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+                    <h3>Control Fungicida</h3>
+                    <p>Proteccion preventiva y curativa contra mas de 50 enfermedades fungicas.</p>
+                    <span class="benefit-tag">Amplio Espectro</span>
+                </div>
+                <div class="benefit-card reveal reveal-delay-3">
+                    <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+                    <h3>Nutricion Premium</h3>
+                    <p>Aporta azufre esencial y nutrientes que promueven el desarrollo saludable.</p>
+                    <span class="benefit-tag">Bioactivadores</span>
+                </div>
+                <div class="benefit-card reveal reveal-delay-4">
+                    <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
+                    <h3>Precursor de Proteinas</h3>
+                    <p>Estimula la sintesis de proteinas vegetales, mejorando calidad y rendimiento.</p>
+                    <span class="benefit-tag">Mayor Rendimiento</span>
+                </div>
+                <div class="benefit-card reveal reveal-delay-5">
+                    <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
+                    <h3>Accion Sistemica</h3>
+                    <p>Penetra en los tejidos vegetales proporcionando proteccion interna duradera.</p>
+                    <span class="benefit-tag">Larga Duracion</span>
+                </div>
+                <div class="benefit-card reveal reveal-delay-6">
+                    <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12z"/><path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg></div>
+                    <h3>Compatible con Bioles</h3>
+                    <p>Se integra perfectamente en programas de manejo integrado de plagas.</p>
+                    <span class="benefit-tag">Sostenible</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="composition section">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Composicion Tecnica</h2>
+                <p>Formula balanceada para maxima eficacia</p>
+            </div>
+            <div class="composition-grid">
+                <div class="composition-card reveal reveal-delay-1"><div class="composition-value">80%</div><div class="composition-label">Azufre Elemental</div></div>
+                <div class="composition-card reveal reveal-delay-2"><div class="composition-value">5%</div><div class="composition-label">Extractos Botanicos</div></div>
+                <div class="composition-card reveal reveal-delay-3"><div class="composition-value">3%</div><div class="composition-label">Bioactivadores</div></div>
+                <div class="composition-card reveal reveal-delay-4"><div class="composition-value">12%</div><div class="composition-label">Coformulantes</div></div>
+            </div>
+            <p class="composition-note reveal reveal-delay-5">Presentaciones disponibles: 1L, 5L, 20L | Registro ICA: En proceso</p>
+        </div>
+    </section>
+    <section class="usage section">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Modo de Uso</h2>
+                <p>Instrucciones detalladas para aplicaciones optimas</p>
+            </div>
+            <div class="usage-content">
+                <div class="accordion">
+                    <div class="accordion-item reveal">
+                        <button class="accordion-header"><span>Dosis Recomendadas</span><div class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div></button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <table class="dosage-table"><thead><tr><th>Cultivo</th><th>Dosis</th><th>Frecuencia</th></tr></thead><tbody><tr><td>Citricos</td><td class="dosage-highlight">200-300 cc/200L</td><td>Cada 15 dias</td></tr><tr><td>Fresas</td><td class="dosage-highlight">150-200 cc/200L</td><td>Cada 7-10 dias</td></tr><tr><td>Hortalizas</td><td class="dosage-highlight">150-250 cc/200L</td><td>Cada 10-15 dias</td></tr><tr><td>Cafe</td><td class="dosage-highlight">250-350 cc/200L</td><td>Cada 21 dias</td></tr></tbody></table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item reveal reveal-delay-1">
+                        <button class="accordion-header"><span>Metodo de Aplicacion</span><div class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div></button>
+                        <div class="accordion-content">
+                            <div class="accordion-body"><p><strong>Aplicacion Foliar:</strong> Rociar uniformemente sobre el follaje.</p><br><p><strong>Momificado:</strong> Para mejor adherencia, aplicar en horas de la manana o al atardecer.</p><br><p><strong>Compatible:</strong> Se mezcla con la mayoria de fertilizantes foliares.</p></div>
+                        </div>
+                    </div>
+                    <div class="accordion-item reveal reveal-delay-2">
+                        <button class="accordion-header"><span>Recomendaciones Tecnicas</span><div class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div></button>
+                        <div class="accordion-content">
+                            <div class="accordion-body"><ul style="margin-left:1.5rem;color:var(--text-light)"><li style="margin-bottom:0.5rem">No aplicar en horas de maxima radiacion solar</li><li style="margin-bottom:0.5rem">Temperatura ideal: 15-28C</li><li style="margin-bottom:0.5rem">Intervalo de seguridad: 7 dias antes de cosecha</li><li style="margin-bottom:0.5rem">Almacenar en lugar fresco y ventilado</li></ul></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="cta-section section" id="contacto">
+        <div class="container">
+            <div class="cta-content">
+                <div class="cta-text reveal">
+                    <h2>Transforma tu Agricultura con SULPHOMAX</h2>
+                    <p>Unete a los agricultores que ya estan protegiendo sus cultivos con la mejor tecnologia bioracional.</p>
+                    <div class="cta-features">
+                        <div class="cta-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Asesoria tecnica personalizada</span></div>
+                        <div class="cta-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Envios a todo el pais</span></div>
+                        <div class="cta-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Garantia de calidad BioNeural</span></div>
+                        <div class="cta-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Soporte post-venta</span></div>
+                    </div>
+                </div>
+                <div class="contact-form reveal reveal-delay-2">
+                    <form id="contactForm">
+                        <div class="form-group"><label for="name">Nombre Completo</label><input type="text" id="name" name="name" placeholder="Tu nombre" required></div>
+                        <div class="form-group"><label for="email">Correo Electronico</label><input type="email" id="email" name="email" placeholder="tu@email.com" required></div>
+                        <div class="form-group"><label for="phone">Telefono</label><input type="tel" id="phone" name="phone" placeholder="Tu numero"></div>
+                        <div class="form-group"><label for="interest">Producto de Interes</label><select id="interest" name="interest"><option value="sulphomax">SULPHOMAX</option><option value="nutriquel">NUTRIQUEL</option><option value="humicos">Acidos Humicos</option><option value="otros">Otros Productos</option></select></div>
+                        <div class="form-group"><label for="message">Mensaje</label><textarea id="message" name="message" placeholder="En que podemos ayudarte?"></textarea></div>
+                        <button type="submit" class="btn btn-primary form-submit">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <a href="https://wa.me/573000000000" class="whatsapp-float" target="_blank" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo"><span>BioNeural Solutions</span></div>
+                <div class="footer-links"><a href="#">Politica de Privacidad</a><a href="#">Terminos y Condiciones</a><a href="#">Contacto</a></div>
+            </div>
+            <p class="footer-copy">2026 BioNeural Solutions. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    <script>
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        class Particle { constructor() { this.reset(); } reset() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.size = Math.random() * 3 + 1; this.speedX = (Math.random() - 0.5) * 0.5; this.speedY = (Math.random() - 0.5) * 0.5; this.opacity = Math.random() * 0.5 + 0.1; this.color = Math.random() > 0.5 ? '#D4AF37' : '#7CB342'; } update() { this.x += this.speedX; this.y += this.speedY; if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset(); } draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fillStyle = this.color; ctx.globalAlpha = this.opacity; ctx.fill(); ctx.globalAlpha = 1; } }
+        function initParticles() { particles = []; for (let i = 0; i < Math.min(50, Math.floor(window.innerWidth / 20)); i++) particles.push(new Particle()); }
+        function animateParticles() { ctx.clearRect(0, 0, canvas.width, canvas.height); particles.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(animateParticles); }
+        if (!window.matchMedia('(prefers-reduced-motion:reduce)').matches) { resizeCanvas(); initParticles(); animateParticles(); }
+        window.addEventListener('resize', () => { if (!window.matchMedia('(prefers-reduced-motion:reduce)').matches) { resizeCanvas(); initParticles(); } });
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => { const windowHeight = window.innerHeight; revealElements.forEach(el => { const elementTop = el.getBoundingClientRect().top; if (elementTop < windowHeight - 100) el.classList.add('active'); }); };
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+        document.querySelectorAll('.accordion-item').forEach(item => { item.querySelector('.accordion-header').addEventListener('click', () => { const isActive = item.classList.contains('active'); document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active')); if (!isActive) item.classList.add('active'); }); });
+        document.getElementById('contactForm').addEventListener('submit', function(e) { e.preventDefault(); const btn = this.querySelector('.form-submit'); btn.textContent = 'Mensaje Enviado!'; btn.style.background = 'linear-gradient(135deg, #7CB342 0%, #558B2F 100%)'; this.reset(); setTimeout(() => { btn.textContent = 'Enviar Mensaje'; btn.style.background = ''; }, 3000); });
+        document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener('click', function(e) { e.preventDefault(); const t = document.querySelector(this.getAttribute('href')); if (t) t.scrollIntoView({ behavior: 'smooth' }); }); });
+    </script>
+</body>
+</html>

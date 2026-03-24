@@ -1,0 +1,194 @@
+/* src/assets/styles/labels.css */
+
+/* Global container for the label generator page to hide UI noise */
+.label-generator-page {
+    background-color: #e2e8f0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* The exact 19x20cm rigid container */
+.product-label-canvas {
+    width: 19cm;
+    height: 20cm;
+    background-color: var(--label-bg, #ffffff);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Split into front (right) and back (left) theoretically, or top/bottom */
+    grid-template-rows: auto 1fr auto;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #cbd5e1;
+}
+
+/* Base structural blocks */
+.label-header {
+    grid-column: 1 / -1;
+    padding: 1cm 1.5cm;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: var(--label-primary, #1e293b);
+    color: white;
+    border-bottom: 0.5cm solid var(--label-accent, #76BC43);
+}
+
+.label-title-wrapper {
+    max-width: 60%;
+}
+
+.label-brand-logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.label-product-name {
+    font-size: 3rem;
+    font-weight: 900;
+    margin: 0.5rem 0 0;
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--label-accent, #F9C21A);
+}
+
+.label-category {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.9;
+    margin-top: 0.25rem;
+}
+
+/* Body content layout */
+.label-content-left {
+    padding: 1.5cm;
+    border-right: 1px dashed rgba(0, 0, 0, 0.1);
+}
+
+.label-content-right {
+    padding: 1.5cm;
+    display: flex;
+    flex-direction: column;
+}
+
+.label-section-title {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--label-primary, #333);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    border-bottom: 2px solid var(--label-accent, #ccc);
+    padding-bottom: 0.25rem;
+}
+
+.label-text-block {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: #334155;
+    margin-bottom: 1.5cm;
+}
+
+.label-list {
+    padding-left: 1.2rem;
+    margin: 0 0 1cm 0;
+    font-size: 0.85rem;
+    color: #334155;
+}
+
+.label-list li {
+    margin-bottom: 0.4rem;
+}
+
+/* Technical table */
+.label-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+    margin-bottom: 1cm;
+}
+
+.label-table th {
+    background-color: var(--label-primary, #1e293b);
+    color: white;
+    padding: 0.4rem;
+    text-align: left;
+}
+
+.label-table td {
+    border-bottom: 1px solid #e2e8f0;
+    padding: 0.4rem;
+    color: #334155;
+    font-weight: 600;
+}
+
+/* Footer / QR Section */
+.label-footer {
+    grid-column: 1 / -1;
+    padding: 1cm 1.5cm;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #e2e8f0;
+}
+
+.label-mandatory-info {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #dc2626;
+    /* Warning red */
+    text-transform: uppercase;
+    max-width: 60%;
+}
+
+.label-qr-placeholder {
+    width: 3cm;
+    height: 3cm;
+    border: 2px dashed var(--label-primary, #1e293b);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    color: #64748b;
+    text-align: center;
+    font-weight: bold;
+    background-color: #f8fafc;
+}
+
+/* PRINT MEDIA QUERIES */
+/* Ensure exact physical dimensions when printing from browser */
+@media print {
+    @page {
+        size: 19cm 20cm;
+        margin: 0;
+    }
+
+    body {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        margin: 0;
+    }
+
+    .label-generator-page {
+        padding: 0;
+        background-color: transparent;
+    }
+
+    .product-label-canvas {
+        box-shadow: none;
+        border: none;
+    }
+
+    /* Hide standard web UI headers/navs if they bleed into this page */
+    nav,
+    header,
+    footer {
+        display: none !important;
+    }
+}

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUTRIQUEL MAX - Etiqueta Resumida</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-blanco: #ffffff;
+            /* Colores corporativos base */
+            --verde-principal: #4CAF50;
+            --texto-oscuro: #333333;
+            --gris-texto: #555555;
+            
+            /* NUEVA PROPUESTA DE COLOR PARA LÍNEA NUTRICIONAL (QUELATOS) */
+            --azul-nutricion: #1976D2; /* Azul fuerte para destacar elementos minerales */
+            --azul-oscuro: #0D47A1;
+            --dorado-energia: #FFA000; /* Dorado para destacar los fúlvicos y energía */
+            
+            --font-principal: 'Montserrat', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 2rem;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: var(--font-principal);
+        }
+
+        /* Contenedor principal estilo "Etiqueta Frontal Cuadrada/Rectangular" */
+        .etiqueta-resumida {
+            width: 800px;
+            height: 900px;
+            background-color: var(--bg-blanco);
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+        }
+
+        /* Fondos Curvos Laterales (Identidad visual BNS, pero en azul/índigo) */
+        .forma-azul-der {
+            position: absolute;
+            right: -100px;
+            top: 15%;
+            width: 500px;
+            height: 800px;
+            background-color: var(--azul-oscuro);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        /* Contenido Principal (Texto alineado a la izquierda) */
+        .contenido-izquierdo {
+            width: 55%;
+            padding: 3rem 2rem 2rem 3rem;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- Encabezado --- */
+        .encabezado {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .logo-placeholder {
+            width: 50px;
+            height: 50px;
+            background-color: var(--verde-principal);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .encabezado-textos {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tipo-producto {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--texto-oscuro);
+            line-height: 1.2;
+        }
+
+        .sub-tipo {
+            font-size: 1.1rem;
+            color: var(--azul-oscuro);
+            font-weight: 700;
+        }
+
+        /* --- Nombre Principal --- */
+        .titulo-producto {
+            font-size: 4.2rem;
+            font-weight: 900;
+            color: var(--azul-oscuro);
+            line-height: 0.95;
+            margin: 0 0 1rem 0;
+            text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- Subtítulo / Ingrediente --- */
+        .ingrediente-activo {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--texto-oscuro);
+            margin-bottom: 2rem;
+            line-height: 1.4;
+        }
+
+        .destacado-oro {
+            color: var(--dorado-energia);
+            font-weight: 800;
+        }
+
+        /* --- Pastillas (Dosis y Beneficios) --- */
+        .pastilla-azul {
+            background-color: var(--azul-nutricion);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            width: fit-content;
+            box-shadow: 0 4px 10px rgba(25, 118, 210, 0.3);
+        }
+
+        .pastilla-azul .titulo-pastilla {
+            display: block;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.3rem;
+        }
+
+        .pastilla-azul .valor-pastilla {
+            display: block;
+            font-size: 1.4rem;
+            font-weight: 800;
+        }
+
+        .pastilla-titulo-lista {
+            background-color: var(--azul-oscuro);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            display: inline-block;
+            font-size: 1.1rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        /* --- Beneficio Estrella (Reemplazo de la alerta naranja) --- */
+        .beneficio-estrella {
+            background-color: rgba(255, 160, 0, 0.1);
+            border-left: 4px solid var(--dorado-energia);
+            padding: 0.8rem;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            color: var(--texto-oscuro);
+            font-weight: 600;
+        }
+
+        /* --- Lista de Control --- */
+        .lista-control {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 2rem 0;
+        }
+
+        .lista-control li {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--texto-oscuro);
+            margin-bottom: 0.8rem;
+        }
+
+        .visto-bueno {
+            background-color: var(--dorado-energia);
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+            box-shadow: 0 2px 5px rgba(255, 160, 0, 0.4);
+        }
+
+        /* --- Pie / Info Fabricante --- */
+        .footer-info {
+            margin-top: auto;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .footer-textos {
+            color: var(--texto-oscuro);
+            line-height: 1.4;
+        }
+
+        .footer-textos .elaborado-por {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .footer-textos .nombre-marca {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--verde-principal); /* Se mantiene verde corporativo BNS */
+        }
+
+        .footer-textos .descripcion {
+            font-size: 0.9rem;
+            color: var(--gris-texto);
+        }
+
+        .contacto {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-top: 0.5rem;
+        }
+
+        .icono-whatsapp {
+            background-color: #25D366;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        /* --- Imágenes / Burbujas Derecha --- */
+        .contenedor-imagenes {
+            width: 45%;
+            position: relative;
+            z-index: 20;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: flex-end;
+        }
+
+        .copy-derecha {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1.2rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--texto-oscuro);
+            line-height: 1.3;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            text-align: right;
+            border-right: 4px solid var(--dorado-energia);
+        }
+
+        .burbuja-imagen {
+            border-radius: 50%;
+            border: 6px solid var(--azul-nutricion);
+            background-color: #e0e0e0;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            position: absolute;
+        }
+
+        /* PLACEHOLDERS - ¡El usuario pondrá las imágenes aquí! */
+        .img-grande {
+            width: 550px;
+            height: 550px;
+            right: -80px;
+            top: 200px;
+            border-width: 8px;
+            /* background-image: url('TU_IMAGEN_PRINCIPAL_AQUI.png'); */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--azul-oscuro);
+            font-weight: 800;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .img-secundaria {
+            width: 250px;
+            height: 250px;
+            right: 320px;
+            top: 90px;
+            border-width: 6px;
+            border-color: var(--dorado-energia);
+            /* background-image: url('TU_IMAGEN_SECUNDARIA_AQUI.png'); */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--dorado-energia);
+            font-weight: 800;
+            font-size: 1.2rem;
+            text-align: center;
+            background-color: white;
+        }
+
+        .qr-pequeno {
+            width: 130px;
+            height: 130px;
+            right: 30px;
+            bottom: 30px;
+            border-width: 4px;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 800;
+            color: var(--azul-oscuro);
+            font-size: 1.2rem;
+            text-align: center;
+            background-image: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-color: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="etiqueta-resumida">
+        <!-- Fondos decorativos -->
+        <div class="forma-azul-der"></div>
+
+        <!-- ================= LADO IZQUIERDO ================= -->
+        <div class="contenido-izquierdo">
+
+            <div class="encabezado">
+                <div class="logo-placeholder">Bio</div>
+                <div class="encabezado-textos">
+                    <span class="tipo-producto">Fertilizante Foliar Biorracional</span>
+                    <span class="sub-tipo">Alta Asimilación Sistémica</span>
+                </div>
+            </div>
+
+            <h1 class="titulo-producto">NUTRIQUEL<br>MAX</h1>
+
+            <div class="ingrediente-activo">
+                Mix de Micronutrientes Esenciales<br>
+                Quelatados orgánicamente con <br><span class="destacado-oro">Ácidos Fúlvicos y Cítricos</span>
+            </div>
+
+            <!-- Pastilla de Dosis -->
+            <div class="pastilla-azul">
+                <span class="titulo-pastilla">DOSIS SUGERIDA:</span>
+                <span class="valor-pastilla">200 - 300 ML / 20 L</span>
+            </div>
+
+            <!-- Beneficio Estrella Fúlvicos -->
+            <div class="beneficio-estrella">
+                <span style="font-size: 1.2rem;">🌱</span> Efecto bioestimulante adicional: Previene el bloqueo mineral en el suelo y mejora la actividad fotosintética.
+            </div>
+
+            <!-- Lista de Control -->
+            <div class="pastilla-titulo-lista">BENEFICIOS CLAVE:</div>
+
+            <ul class="lista-control">
+                <li>
+                    <div class="visto-bueno">✓</div> CORRIGE DEFICIENCIAS MÚLTIPLES
+                </li>
+                <li>
+                    <div class="visto-bueno">✓</div> RÁPIDA PENETRACIÓN FOLIAR
+                </li>
+                <li>
+                    <div class="visto-bueno">✓</div> PREVIENE CAÍDA DE FLORES Y CLOROSIS
+                </li>
+            </ul>
+
+            <!-- Información Footer -->
+            <div class="footer-info">
+                <div class="logo-placeholder" style="width: 40px; height: 40px; font-size: 1rem; background-color: var(--verde-principal);">BNS</div>
+                <div class="footer-textos">
+                    <div class="elaborado-por">ELABORADO POR:</div>
+                    <div class="nombre-marca">BIONEURAL SOLUTIONS</div>
+                    <div class="descripcion">
+                        Biotecnología Agrícola y<br>
+                        Regeneración de Suelos.
+                    </div>
+                    <div class="contacto">
+                        <div class="icono-whatsapp">W</div> 
+                        CEL: 321 365 7236
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ================= LADO DERECHO ================= -->
+        <div class="contenedor-imagenes">
+
+            <div class="copy-derecha">
+                Nutrición Balanceada y<br> 100% Biodisponible.<br>
+                <span style="color: var(--azul-oscuro); font-weight: 800;">Activa el Metabolismo Vegetal</span>
+            </div>
+
+            <!-- Burbujas de imágenes locales -->
+            <div class="burbuja-imagen img-grande">
+                [IMAGEN PRINCIPAL<br>PLANTA SANA]
+            </div>
+            
+            <div class="burbuja-imagen img-secundaria">
+                [IMAGEN SECUNDARIA<br>DEFICIENCIA]
+            </div>
+
+            <!-- Espacio redondo inferior para el código QR -->
+            <div class="burbuja-imagen qr-pequeno">QR<br>AQUÍ</div>
+
+        </div>
+    </div>
+
+</body>
+</html>

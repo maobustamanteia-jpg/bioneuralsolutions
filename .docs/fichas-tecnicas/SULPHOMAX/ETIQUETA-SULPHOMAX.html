@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SULPHOMAX - Etiqueta Resumida</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-blanco: #ffffff;
+            --verde-principal: #4CAF50;
+            --verde-oscuro: #2E7D32;
+            --texto-oscuro: #333333;
+            --gris-texto: #555555;
+            --naranja-alerta: #FF9800;
+            --font-principal: 'Montserrat', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 2rem;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: var(--font-principal);
+        }
+
+        .etiqueta-resumida {
+            width: 800px;
+            height: 900px;
+            background-color: var(--bg-blanco);
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .forma-verde-der {
+            position: absolute;
+            right: -100px;
+            top: 15%;
+            width: 500px;
+            height: 800px;
+            background-color: var(--verde-oscuro);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .contenido-izquierdo {
+            width: 55%;
+            padding: 3rem 2rem 2rem 3rem;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .encabezado {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .logo-placeholder {
+            width: 50px;
+            height: 50px;
+            background-color: var(--verde-principal);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .encabezado-textos {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tipo-producto {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--texto-oscuro);
+            line-height: 1.2;
+        }
+
+        .sub-tipo {
+            font-size: 1.1rem;
+            color: var(--verde-oscuro);
+            font-weight: 700;
+        }
+
+        .titulo-producto {
+            font-size: 4.5rem;
+            font-weight: 900;
+            color: var(--verde-oscuro);
+            line-height: 0.9;
+            margin: 0 0 1rem 0;
+            text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .ingrediente-activo {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--texto-oscuro);
+            margin-bottom: 2rem;
+        }
+
+        .pastilla-verde {
+            background-color: var(--verde-principal);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            width: fit-content;
+        }
+
+        .pastilla-verde .titulo-pastilla {
+            display: block;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.3rem;
+        }
+
+        .pastilla-verde .valor-pastilla {
+            display: block;
+            font-size: 1.4rem;
+            font-weight: 800;
+        }
+
+        .pastilla-titulo-lista {
+            background-color: var(--verde-principal);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            display: inline-block;
+            font-size: 1.1rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .lista-control {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 2rem 0;
+        }
+
+        .lista-control li {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--texto-oscuro);
+            margin-bottom: 0.8rem;
+        }
+
+        .visto-bueno {
+            background-color: var(--verde-principal);
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .footer-info {
+            margin-top: auto;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .footer-textos {
+            color: var(--texto-oscuro);
+            line-height: 1.4;
+        }
+
+        .footer-textos .elaborado-por {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .footer-textos .nombre-marca {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--verde-oscuro);
+        }
+
+        .footer-textos .descripcion {
+            font-size: 0.9rem;
+            color: var(--gris-texto);
+        }
+
+        .contacto {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-top: 0.5rem;
+        }
+
+        .icono-whatsapp {
+            background-color: #25D366;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .alerta-uso {
+            background-color: rgba(255, 152, 0, 0.1);
+            border-left: 4px solid var(--naranja-alerta);
+            padding: 0.8rem;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--texto-oscuro);
+            font-weight: 600;
+        }
+
+        .contenedor-imagenes {
+            width: 45%;
+            position: relative;
+            z-index: 20;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: flex-end;
+        }
+
+        .copy-derecha {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--texto-oscuro);
+            line-height: 1.3;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: right;
+        }
+
+        .burbuja-imagen {
+            border-radius: 50%;
+            border: 6px solid var(--verde-principal);
+            background-color: #ccc;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            position: absolute;
+        }
+
+        .img-grande {
+            width: 550px;
+            height: 550px;
+            right: -80px;
+            top: 200px;
+            border-width: 8px;
+            background-image: url('Esparrago.png');
+        }
+
+        .img-secundaria {
+            width: 250px;
+            height: 250px;
+            right: 320px;
+            top: 90px;
+            border-width: 6px;
+            background-image: url('Trips.webp');
+        }
+
+        .qr-pequeno {
+            width: 130px;
+            height: 130px;
+            right: 30px;
+            bottom: 30px;
+            border-width: 4px;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 800;
+            color: var(--verde-oscuro);
+            font-size: 1.2rem;
+            text-align: center;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg');
+            background-size: cover;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="etiqueta-resumida">
+        <div class="forma-verde-der"></div>
+
+        <div class="contenido-izquierdo">
+
+            <div class="encabezado">
+                <div class="logo-placeholder">Bio</div>
+                <div class="encabezado-textos">
+                    <span class="tipo-producto">Producto de control Bioracional</span>
+                    <span class="sub-tipo">y precursor de proteinas</span>
+                </div>
+            </div>
+
+            <h1 class="titulo-producto">SULPHO<br>MAX</h1>
+
+            <div class="ingrediente-activo">
+                Con Polisulfuro de potasio
+            </div>
+
+            <div class="pastilla-verde">
+                <span class="titulo-pastilla">DOSIS SUGERIDA:</span>
+                <span class="valor-pastilla">200 - 300 ML / 20 L</span>
+            </div>
+
+            <div class="alerta-uso">
+                <span style="font-size: 1.2rem;">⚠️</span> NO aplicar en plena floración ni con sol intenso.
+            </div>
+
+            <div class="pastilla-titulo-lista">CONTROLA:</div>
+
+            <ul class="lista-control">
+                <li>
+                    <div class="visto-bueno">✓</div> ÁCAROS (ARAÑITA ROJA)
+                </li>
+                <li>
+                    <div class="visto-bueno">✓</div> MAS DE 50 ENFERMEDADES FUNGICAS<br>*ANTRACNOSIS, CENICILLAS ETC*
+                </li>
+            </ul>
+
+            <div class="footer-info">
+                <div class="logo-placeholder" style="width: 40px; height: 40px; font-size: 1rem;">BNS</div>
+                <div class="footer-textos">
+                    <div class="elaborado-por">ELABORADO POR:</div>
+                    <div class="nombre-marca">BIONEURAL SOLUTIONS</div>
+                    <div class="descripcion">
+                        Biotecnología Agrícola y<br>
+                        Regeneración de Suelos.
+                    </div>
+                    <div class="contacto">
+                        <div class="icono-whatsapp">W</div>
+                        CEL: 321 365 7236
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="contenedor-imagenes">
+
+            <div class="copy-derecha">
+                Fungicida Preventivo<br> y Erradicante.<br>
+                <span style="color: var(--naranja-alerta);">Aporta Azufre y Calcio</span>
+            </div>
+
+            <div class="burbuja-imagen img-grande"></div>
+            <div class="burbuja-imagen img-secundaria"></div>
+            <div class="burbuja-imagen qr-pequeno"></div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
